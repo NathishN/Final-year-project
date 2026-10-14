@@ -269,6 +269,8 @@ In accordance with strict scientific publishing ethics, the conclusions of this 
 
 - **Target Repository:** `https://github.com/NathishN/Final-year-project.git`
 - **Target Branch:** `main`
+- **Initial Remote Commit:** `de7b7ff765e031602522556a8db48bef4968b372`
+- **Final Local & Remote Commit:** `025d9ecf68661b8e6ff6ad701a377387bc51fb2e` (Verified via `git rev-parse origin/main`)
 - **File Hygiene Certified:**
   - Raw multi-gigabyte image directories excluded via `.gitignore`.
   - Heavy binary checkpoints ($> 100 \text{ MB}$) excluded from Git tracking.
