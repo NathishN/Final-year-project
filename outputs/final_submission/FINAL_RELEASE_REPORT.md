@@ -186,7 +186,7 @@ All authoritative release deliverables have been compiled, cross-checked, and lo
 | **Per-Seed Metric Audit** | `outputs/phase57_final_submission_lock/tables/gap1_per_seed_metric_verification.csv` | 51,141 | `daebd9088ac886be6c661aa9bc12503ce7ded954475defe66b97b0b6923625cc` |
 | **Recomputed OOD Table** | `outputs/phase57_final_submission_lock/tables/ood_metrics_recomputed.csv` | 1,232 | `c801a67968cf0702eeabfc9872eec7e54497ca3d204e9c8533deb36b4053ca20` |
 | **Split Integrity Summary** | `outputs/phase57_final_submission_lock/tables/split_integrity_summary.csv` | 513 | `94a7319e497c3b401955449327b329ba79be9b2f41a7e495908492c476622424` |
-| **Full Manuscript** | `outputs/phase57_final_submission_lock/manuscript.md` | 31,430 | `82fda3389d5ae33e0187820692d60d66ebd5e2d71ff1ce786661e769bffbad17` |
+| **Full Manuscript** | `outputs/phase57_final_submission_lock/manuscript.md` | 34,088 | `281b7658f90baed5fed642596615c30daa52f25cbc3fa53b9df3cf68e19d77ac` |
 | **Structured Abstract** | `outputs/phase57_final_submission_lock/abstract.md` | 4,381 | `92adedca18c229d578ea7e83a14bc7467b2d59389b1f575bc7b9156dcb183f1c` |
 | **Changelog** | `outputs/phase57_final_submission_lock/CHANGELOG.md` | 10,500 | `df5d70ab43ac97e1622c396a185a65c8ac89859928407597ce51c2eac4b3a448` |
 | **Authoritative Claim Ledger** | `outputs/phase57_final_submission_lock/claim_ledger.csv` | 11,462 | `787cfd14c408ffb83611a1064a88f44724f04d60d5eb1bd13f38579abfe1402f` |
@@ -197,7 +197,7 @@ All authoritative release deliverables have been compiled, cross-checked, and lo
 | **Publication Figure 4** | `outputs/phase57_final_submission_lock/figures/figure4_ood_domain_inversion.png` | 160,911 | `66b7d76b205deae73c6e50745c68d3d37c7a4f46dada50fe6b1430cba12a7b73` |
 | **Publication Figure 5** | `outputs/phase57_final_submission_lock/figures/figure5_selective_risk_coverage.png` | 264,268 | `bd1013661a1fb87da8f128659927e7b1323e813ac68f9757b6ec7360c5a89f8d` |
 | **Publication Figure 6** | `outputs/phase57_final_submission_lock/figures/figure6_inference_benchmarks.png` | 175,027 | `4a241ec6759bc7fcb3ea27a0d94f978764845079bc2a3018c3c75f7913fda3c3` |
-| **Final Submission PDF** | `outputs/final_submission/Trustworthy_Multi_Fruit_Quality_Grading.pdf` | 1,854,468 | `59e1e21ad9a82e367441a66bcfd729092f7e9bb618f661a9982820042658bc39` |
+| **Final Submission PDF** | `outputs/final_submission/Trustworthy_Multi_Fruit_Quality_Grading.pdf` | 1,865,715 | `e8ece4ece53f5c20f9589414adff8b729778c7e9e41afe84e5ffdf7193548f17` |
 
 ---
 
