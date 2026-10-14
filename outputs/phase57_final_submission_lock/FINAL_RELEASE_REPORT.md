@@ -276,7 +276,8 @@ In accordance with strict scientific publishing ethics, the conclusions of this 
 - **Target Repository:** `https://github.com/NathishN/Final-year-project.git`
 - **Target Branch:** `main`
 - **Initial Remote Commit:** `de7b7ff765e031602522556a8db48bef4968b372`
-- **Final Local & Remote Commit:** `7edf81f31b3adcd6f911c5e72c022adf6eedf4fe` (Verified via `git rev-parse origin/main`)
+- **Verified Base Release Commit:** `7edf81f31b3adcd6f911c5e72c022adf6eedf4fe` (Prior remote sync: `6481458de1fe79d8e7b522b34989159449d00fd1`)
+- **Release Commit External Reporting Protocol:** In accordance with non-circular Git integrity principles, the final release closure commit hash is certified and reported externally in the release audit declaration rather than embedded in tracked self-referential files.
 - **File Hygiene Certified:**
   - Raw multi-gigabyte image directories excluded via `.gitignore`.
   - Heavy binary checkpoints ($> 100 \text{ MB}$) excluded from Git tracking.
