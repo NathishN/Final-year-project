@@ -211,11 +211,14 @@ Evaluated against **5,000 real images** of 5 unencountered fruit species (*Cherr
 | **Free Energy Score** | Corrected Symmetric Norm | Species Head Logits ($T=1.0$) | **63.03%** | [62.1%, 64.0%] | **38.32%** | **73.14%** |
 | **MSP** | Corrected Symmetric Norm | Softmax Class Probabilities | **56.27%** | [55.3%, 57.2%] | **32.22%** | **74.76%** |
 
-### Domain-Stratified Inversion Phenomenon
-Stratifying by acquisition environment reveals domain-dependent behavior:
-- `fruits360` (Studio turntable, $n=10,974$): Mahalanobis AUROC = **93.26%**
-- `real_quality` (Market bins, $n=1,480$): Mahalanobis AUROC collapses to **18.08%**, while Free Energy achieves **92.49%**
-- `real_grade` (Packing conveyor, $n=67$): Mahalanobis AUROC collapses to **18.81%**, while Free Energy achieves **98.89%**
+### Domain-Stratified Inversion Phenomenon & Subgroup Uncertainty
+Stratifying by acquisition environment reveals marked domain-dependent behavior across detectors:
+- `fruits360` (Studio turntable, $n=10,974$): Mahalanobis AUROC = **93.26%** (95% CI: [92.85%, 93.62%]); Free Energy = **63.90%** (95% CI: [63.08%, 64.78%])
+- `real_quality` (Market bins, $n=1,480$): Mahalanobis AUROC collapses to **18.08%** (95% CI: [17.03%, 19.27%]); Free Energy achieves **50.91%** (95% CI: [49.29%, 52.49%])
+- `real_grade` (Packing conveyor, $n=67$): Mahalanobis AUROC collapses to **18.81%** (95% CI: [15.35%, 23.11%]); Free Energy achieves **70.54%** (95% CI: [65.40%, 76.19%])
+- `real_severity` (Controlled lab, $n=312$): Mahalanobis = **94.10%** (95% CI: [92.66%, 95.51%]); Free Energy = **88.03%** (95% CI: [85.40%, 90.52%])
+
+*Scientific bounding and small-sample caveat:* Mahalanobis distance exhibits extreme distribution sensitivity on unstructured market bins and industrial conveyor rollers. We document this as an observed distribution-dependent domain shift; background texture causality is not asserted as proven without controlled segmentation ablations. Subgroups with small sample counts (such as packing conveyor, $n=67$) exhibit substantially wider confidence intervals, and must not be over-interpreted.
 
 *Technical note on discrepancy:* Earlier draft notes cited 54.06% / 44.20% and 41.87% / 61.27% without preserved raw score arrays; these are documented and catalogued as unreproducible draft artifacts. The historical 81.99% / 74.26% benchmark arose from pre-norm ID features compared against full forward OOD logits; applying LayerNorm symmetrically yields 63.03% / 56.27% AUROC. Both protocols are traceable in [`outputs/phase57_final_submission_lock/verification/ood/`](outputs/phase57_final_submission_lock/verification/ood/).
 
@@ -225,18 +228,20 @@ Stratifying by acquisition environment reveals domain-dependent behavior:
 
 On representative **Seed 83** (baseline cutpoint MAE = 0.0889), confidence-thresholded selective abstention yields substantial error reduction:
 
-| Retained Coverage | Rejection Rate (%) | Min Confidence Threshold | Selective Accuracy (%) | Selective MAE | Relative Error Reduction (%) |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| **100% (Full)** | 0.0% | $\ge 0.0000$ | 93.71% | 0.0889 | Baseline |
-| **95%** | 5.0% | $\ge 0.6120$ | 97.45% | 0.0382 | 57.03% |
-| **90%** | 10.0% | $\ge 0.7854$ | **99.28%** | **0.0136** | **84.70%** |
-| **85%** | 15.0% | $\ge 0.8841$ | 99.85% | 0.0024 | 97.30% |
+| Retained Coverage | Rejection Rate (%) | Min Confidence Threshold | Selective Accuracy (%) | Selective MAE | Relative Error Reduction (%) | Random Rejection MAE Baseline |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **100% (Full)** | 0.0% | $\ge 0.0000$ | 93.71% | 0.0889 | Baseline | 0.0889 |
+| **95%** | 5.0% | $\ge 0.6120$ | 97.45% | 0.0382 | 57.03% | 0.0889 |
+| **90%** | 10.0% | $\ge 0.7854$ | **99.28%** | **0.0136** | **84.70%** | 0.0889 |
+| **85%** | 15.0% | $\ge 0.8841$ | 99.85% | 0.0024 | 97.30% | 0.0889 |
 
+- **Random-Rejection Contrast:** Under random rejection at 90% coverage, expected MAE remains 0.0889 (0% reduction), proving that confidence thresholding specifically isolates pathology misclassifications.
 - **30-Seed Aggregate:** Mean baseline MAE of 0.1145 drops to **0.0217 ± 0.0053** at 90% coverage (**81.05% mean error reduction**).
 - **Calibration Error (10-bin ECE):**
   - Single-Seed 83 Exemplar: **1.47%**
   - 30-Seed Mean ± SD: **2.11% ± 0.53%**
   - 30-Seed Probability Ensemble: **2.51%** (Brier score = 0.0887)
+- **Calibration Scope Limitation:** Reported ECE metrics quantify in-distribution test-set calibration under identical priors. In accordance with established uncertainty principles, low in-distribution ECE does not imply calibrated confidence under severe domain shifts or open-set anomalies; calibration claims are strictly bounded to in-distribution evaluation.
 
 ---
 

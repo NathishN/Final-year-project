@@ -120,18 +120,20 @@ The table below reports both historical (asymmetric) and corrected (symmetric) m
 
 *Evaluation Conventions:* Positive class is OOD ($y=1$, prevalence 28.04%); score orientation is defined such that higher scores indicate greater OOD likelihood; FPR@95 denotes ID false positive rate when OOD true positive rate is $\ge 95\%$.
 
-### 3.3 Domain-Stratified Inversion Phenomenon
+#### 3.3 Domain-Stratified Inversion Phenomenon & Subgroup Uncertainty
 
 Stratifying in-distribution test samples by acquisition domain reveals a profound failure mode of distance-based OOD detection:
 
-| Acquisition Domain | Environment | ID Samples ($n_{\text{ID}}$) | Mahalanobis AUROC | Free Energy AUROC (Corrected) | Free Energy AUROC (Historical) | MSP AUROC (Corrected) |
+| Acquisition Domain | Environment | ID Samples ($n_{\text{ID}}$) | Mahalanobis AUROC (95% CI) | Free Energy AUROC (Corrected) | MSP AUROC (Corrected) | Free Energy AUROC (Historical) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| `fruits360` | Studio Turntable (Clean White Background) | 10,974 | **93.26%** | 63.90% | 79.99% | 57.68% |
-| `real_quality` | Market Bins (Natural Clutter & Occlusion) | 1,480 | **18.08%** | 50.91% | **92.49%** | 39.22% |
-| `real_grade` | Packing Conveyor (Industrial Rollers) | 67 | **18.81%** | 70.54% | **98.89%** | 74.06% |
-| `real_severity` | Controlled Agricultural Lab | 312 | **94.10%** | 88.03% | **98.67%** | 83.94% |
+| `fruits360` | Studio Turntable (Clean White Background) | 10,974 | **93.26%** [92.85%, 93.62%] | 63.90% [63.08%, 64.78%] | 57.68% [56.83%, 58.54%] | 79.99% |
+| `real_quality` | Market Bins (Natural Clutter & Occlusion) | 1,480 | **18.08%** [17.03%, 19.27%] | 50.91% [49.29%, 52.49%] | 39.22% [37.62%, 40.93%] | **92.49%** |
+| `real_grade` | Packing Conveyor (Industrial Rollers) | 67 | **18.81%** [15.35%, 23.11%] | 70.54% [65.40%, 76.19%] | 74.06% [69.33%, 78.95%] | **98.89%** |
+| `real_severity` | Controlled Agricultural Lab | 312 | **94.10%** [92.66%, 95.51%] | 88.03% [85.40%, 90.52%] | 83.94% [80.39%, 87.32%] | 98.67% |
 
-**Scientific Attribution:** Mahalanobis distance suffers an empirical performance inversion under natural unstructured domain shifts (collapsing to $< 19\%$ AUROC on market bins and conveyors), while Free Energy score exhibits greater domain resilience. In accordance with strict scientific bounding, this is catalogued as an observed distribution-dependent domain shift; causal attribution to background textures remains a hypothesis pending dedicated foreground-segmentation ablation experiments.
+**Scientific Attribution & Subgroup Caveats:**
+1. **Domain-Dependent Inversion:** Mahalanobis distance suffers an empirical performance inversion under natural unstructured domain shifts (collapsing to $< 19\%$ AUROC on market bins and conveyors), while Free Energy and MSP maintain higher stability. In accordance with strict scientific bounding, this is catalogued as an observed distribution-dependent domain shift; causal attribution to background textures remains a hypothesis pending dedicated foreground-segmentation ablation experiments.
+2. **Small Subgroup Uncertainty:** For small subgroups like packing conveyors ($n=67$), confidence intervals are noticeably wider ([15.35%, 23.11%] for Mahalanobis, [65.40%, 76.19%] for Energy). Small-sample metrics must not be over-interpreted.
 
 ---
 
@@ -150,7 +152,7 @@ The draft release summary mistakenly claimed contrasts were between "Validation"
 ### 4.2 Authoritative Statistical Contrasts Table
 
 | Split Protocol | Contrast | Mean Diff ($\Delta$) | 95% Paired CI | Cohen's $d_z$ | Paired $t(29)$ | Raw $p_t$ | Holm $p_{t,\text{adj}}$ | Wilcoxon $W$ | Pairs (+ / $-$) | Exact Permutation $p_w$ | Monte Carlo $p$ ($B=2\text{M}$) | Holm $p_{w,\text{adj}}$ | Significant ($p < 0.05$)? |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Historical V2** | **B vs A** | **$-0.0360$** | [$-0.0537, -0.0183$] | $-0.7593$ | $-4.1586$ | $2.60 \times 10^{-4}$ | **$2.60 \times 10^{-4}$** | 72.0 | 9 / 21 | **$0.000555$** | $0.000553$ | **$0.000555$** | **YES (Degradation)** |
 | Historical V2 | **C vs A** | **$-0.0700$** | [$-0.0902, -0.0498$] | $-1.2947$ | $-7.0914$ | $8.40 \times 10^{-8}$ | **$1.68 \times 10^{-7}$** | 16.0 | 2 / 28 | **$3.15 \times 10^{-7}$** | $< 1.0 \times 10^{-6}$ | **$6.30 \times 10^{-7}$** | **YES (Degradation)** |
 | Historical V2 | **D vs A** | **$-0.0848$** | [$-0.1008, -0.0687$] | $-1.9704$ | $-10.7923$ | $1.14 \times 10^{-11}$ | **$3.41 \times 10^{-11}$** | 0.0 | 0 / 30 | **$1.86 \times 10^{-9}$** | $< 1.0 \times 10^{-6}$ | **$5.59 \times 10^{-9}$** | **YES (Degradation)** |
@@ -160,10 +162,10 @@ The draft release summary mistakenly claimed contrasts were between "Validation"
 
 ### 4.3 Validation of the Exact Wilcoxon Distribution
 
-1. **Exact Dynamic Programming Calculation:**
-   The exact conditional permutation distribution was computed by formulating the generating polynomial over doubled mid-ranks:
+1. **Exact Dynamic Programming Algorithm:**
+   The exact conditional permutation distribution was computed via the generating polynomial over doubled integer mid-ranks:
    $$P(x) = \prod_{i=1}^{30} (1 + x^{2 r_i})$$
-   enumerating all $2^{30} = 1,073,741,824$ sign assignments without asymptotic approximation.
+   Dynamic programming is employed to expand this polynomial by iteratively updating coefficient arrays, exactly counting the frequency of sign assignments producing rank sums $\le W$ out of all $2^{30} = 1,073,741,824$ configurations without naive exponential branching.
 2. **Sensitivity to Precision & Ties:**
    - In full float64 precision, all 30 paired differences are strictly unique (zero ties), yielding $W = 72.0$ ($p_{\text{exact}} = 0.000555$).
    - If rounded to 4 decimal places, Seed 3 ($\Delta = +0.0263$) and Seed 73 ($\Delta = -0.0263$) tie at rank 13.5, yielding $W = 71.5$ ($p_{\text{exact}} = 0.000514$).
@@ -178,15 +180,17 @@ All authoritative release deliverables have been compiled, cross-checked, and lo
 
 | Release Deliverable | File Path | Size (Bytes) | SHA-256 Cryptographic Checksum |
 | :--- | :--- | :---: | :--- |
-| **Authoritative Results JSON** | `outputs/phase57_final_submission_lock/final_results.json` | 13,073 | `87a803625f2a47eff1e249b1218ec957e2d75ec3e3ad7eed1502a9b7c91fcae6` |
-| **Statistical Contrasts Table** | `outputs/phase57_final_submission_lock/tables/authoritative_statistical_table.csv` | 1,618 | `09cc384736ca753983d0fe34369ae39c67d948f1f27f079a5b8e30d15b9a277b` |
-| **Aggregate Summary Table** | `outputs/phase57_final_submission_lock/tables/gap1_aggregate_metrics_summary.csv` | 2,320 | `ec3a3783a754bfc6c98a16db30d8692348ab0c83aadeb48de27b4e04aac3aac7` |
-| **Per-Seed Metric Audit** | `outputs/phase57_final_submission_lock/tables/gap1_per_seed_metric_verification.csv` | 51,382 | `1adcc4b0988032354f3dbb98631c956e45c7e778e2ea12dea9bde442bdfb53b6` |
+| **Authoritative Results JSON** | `outputs/phase57_final_submission_lock/final_results.json` | 12,660 | `81f3256f3a6a9ec4d7d26834b0fefbcbce7252c520987f675f71f1a7a5f5c57c` |
+| **Statistical Contrasts Table** | `outputs/phase57_final_submission_lock/tables/authoritative_statistical_table.csv` | 1,611 | `4cbcf49aca65030d440d65ae26b86784139a76707190c39312e93a0acb0357d6` |
+| **Aggregate Summary Table** | `outputs/phase57_final_submission_lock/tables/gap1_aggregate_metrics_summary.csv` | 2,311 | `9c622bb1895b730fdb74b68ae0c2028f3a38210b5c0503d76396a448a12fc9cd` |
+| **Per-Seed Metric Audit** | `outputs/phase57_final_submission_lock/tables/gap1_per_seed_metric_verification.csv` | 51,141 | `daebd9088ac886be6c661aa9bc12503ce7ded954475defe66b97b0b6923625cc` |
 | **Recomputed OOD Table** | `outputs/phase57_final_submission_lock/tables/ood_metrics_recomputed.csv` | 1,232 | `c801a67968cf0702eeabfc9872eec7e54497ca3d204e9c8533deb36b4053ca20` |
-| **Split Integrity Summary** | `outputs/phase57_final_submission_lock/tables/split_integrity_summary.csv` | 516 | `112204944ec88e6a998c3e46c443ad1e4675fa835d66902c380fc1fd7a3d4971` |
-| **Full Manuscript** | `outputs/phase57_final_submission_lock/manuscript.md` | 28,900 | `c0877780862490a9ffe9651b25d26d92636d62533f9778a16e8c384c9606d36a` |
-| **Structured Abstract** | `outputs/phase57_final_submission_lock/abstract.md` | 4,391 | `c66dae55895899a88ff1799d4ba5ba7dca5f3e9c76a257f4520a553e2d422202` |
-| **Authoritative Claim Ledger** | `outputs/phase57_final_submission_lock/claim_ledger.csv` | 11,476 | `ecf07e23f730392d8d188583766dbe4ddab82b97eced29fb90272f95c1b1a1d0` |
+| **Split Integrity Summary** | `outputs/phase57_final_submission_lock/tables/split_integrity_summary.csv` | 513 | `94a7319e497c3b401955449327b329ba79be9b2f41a7e495908492c476622424` |
+| **Full Manuscript** | `outputs/phase57_final_submission_lock/manuscript.md` | 30,997 | `687863c847897168440dd41f09f1a30321b431e5887e89da31071bb85e3d2e69` |
+| **Structured Abstract** | `outputs/phase57_final_submission_lock/abstract.md` | 4,381 | `92adedca18c229d578ea7e83a14bc7467b2d59389b1f575bc7b9156dcb183f1c` |
+| **Changelog** | `outputs/phase57_final_submission_lock/CHANGELOG.md` | 10,445 | `8b6c3a2bb6511c08f4046767ddeaa9cf3421772f1d31e9c59ae69ce875a31744` |
+| **Authoritative Claim Ledger** | `outputs/phase57_final_submission_lock/claim_ledger.csv` | 11,462 | `787cfd14c408ffb83611a1064a88f44724f04d60d5eb1bd13f38579abfe1402f` |
+| **Artifact Checksum Manifest** | `outputs/phase57_final_submission_lock/tables/artifact_sha256_manifest.csv` | 2,190 | `3152080a85b048578481f5af825a1b421888a025b4b40abd08c14cfc0eee42fa` |
 | **Publication Figure 1** | `outputs/phase57_final_submission_lock/figures/figure1_dataset_composition.png` | 182,804 | `88f206bd640680675bd4a72cbff9038e2800f3563e27d09d7147a1d6c4b2b8ab` |
 | **Publication Figure 2** | `outputs/phase57_final_submission_lock/figures/figure2_qwk_distribution.png` | 220,539 | `a7ac45080bc0fa47c92dc28da68bfcb61b45bc3dcf24c8343c0e022a57c835b9` |
 | **Publication Figure 3** | `outputs/phase57_final_submission_lock/figures/figure3_paired_contrasts.png` | 158,426 | `64ac1255f61e5103aa8201a4f6280552032ad242c200292b0d93d20a2cffe627` |
@@ -202,7 +206,7 @@ The full automated regression test harness and integrity audit tools were execut
 
 ```text
 pytest tests outputs/casm_v2/test_corrected_modules.py -v
-============================= 28 passed in 15.96s =============================
+============================= 28 passed in 15.62s =============================
 Exit Code: 0
 ```
 
@@ -258,9 +262,11 @@ In accordance with strict scientific publishing ethics, the conclusions of this 
 
 1. **Species and Domain Scope:**
    Evaluations are conducted on five primary horticultural species (*Apple, Banana, Mango, Orange, Tomato*) across 56,036 images and 30 deterministic seeds. While results consistently show that auxiliary species conditioning degrades performance across all evaluated seeds, generalization to wild forest flora or broader agricultural cultivars requires separate empirical validation.
-2. **Domain-Stratified OOD Inversion:**
-   Mahalanobis distance exhibits extreme distribution sensitivity, achieving 93.26% AUROC on clean studio turntable backgrounds but collapsing to 18.08% on natural market bins. This demonstrates that distance metrics in penultimate feature space correlate strongly with background visual context. Causal isolation of background textures from foreground pathology is catalogued as an empirical observation, pending future segmentation-mask ablation studies.
-3. **Hardware Deployment Qualifications:**
+2. **Domain-Stratified OOD Inversion & Subgroup Sample Size:**
+   Mahalanobis distance exhibits extreme distribution sensitivity, achieving 93.26% AUROC on clean studio turntable backgrounds but collapsing to 18.08% on natural market bins and 18.81% on industrial conveyors. This demonstrates that distance metrics in penultimate feature space correlate strongly with background visual context. Causal isolation of background textures from foreground pathology is catalogued as an empirical observation, pending future segmentation-mask ablation studies. Furthermore, small subgroups (such as packing conveyor, $n=67$) exhibit wide confidence intervals ([15.35%, 23.11%] and [65.40%, 76.19%]), underscoring that small-sample subgroup metrics must not be over-interpreted.
+3. **Uncertainty Calibration & Selective Prediction Scope:**
+   Confidence thresholding at 90% coverage reduces MAE from 0.0889 to 0.0136 (84.70% error reduction for Seed 83; 81.05% across 30 seeds), substantially outperforming a random-rejection baseline (expected MAE remains unchanged at 0.0889). However, low Expected Calibration Error (1.47%–2.51%) characterizes in-distribution test data only; neural confidence estimates under severe distribution shifts or open-set anomalies exhibit well-documented overconfidence. Calibration guarantees are strictly confined to in-distribution evaluation.
+4. **Hardware Deployment Qualifications:**
    Reported inference throughput (49.0–90.4 FPS on NVIDIA RTX 3050 Laptop GPU) reflects neural forward evaluation and image pre-processing only. Industrial packinghouse sorters operating at 10–30 fruits per second require additional overhead for high-speed conveyor image acquisition, multi-camera photometric calibration, and pneumatic mechanical rejection.
 
 ---

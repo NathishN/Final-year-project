@@ -73,3 +73,20 @@
   - All artifacts compiled from authoritative results: manuscript, tables, figures, JSON, claim ledger, and SHA-256 manifests.
   - Final package locked in `outputs/phase57_final_submission_lock/` and synchronized to `outputs/final_submission/`.
 
+## Phase 5.8 — Experiment Reconciliation, Scientific Validation & Release Lock
+- **Paired Statistical Comparisons Certified:**
+  - Confirmed all 6 paired contrasts across 30 deterministic seeds: Historical B-A ($W=72.0, p=0.000555$), C-A ($W=16.0, p=3.15 \times 10^{-7}$), D-A ($W=0.0, p=1.86 \times 10^{-9}$); Session Holdout B-A ($W=125.0, p=0.026229$), C-A ($W=29.0, p=3.24 \times 10^{-6}$), D-A ($W=9.0, p=6.15 \times 10^{-8}$).
+  - Documented exact dynamic programming generating function over doubled mid-ranks ($2^{30} = 1,073,741,824$ states) and independently cross-validated via Monte Carlo sign-flip simulation ($B=2,000,000$).
+  - Clarified that in full float64 precision there are zero ties ($W=72.0, p=0.000555$), while 4-decimal rounding creates a tie between Seed 3 and Seed 73 ($W=71.5, p=0.000514$), with identical scientific conclusions.
+  - All 6 contrasts confirmed statistically significant ($p_{\text{adj}} < 0.05$) under Holm-Bonferroni FWER control.
+- **OOD Evaluation Pipeline & Domain Stratification:**
+  - Formally separated Authoritative Invariant Mahalanobis (84.22% AUROC, 53.28% AUPR, 38.39% FPR@95) from Corrected Symmetric LayerNorm Free Energy (63.03% AUROC, 38.32% AUPR, 73.14% FPR@95) and MSP (56.27% AUROC, 32.22% AUPR, 74.76% FPR@95).
+  - Explicitly defined OOD positive class ($y=1$), higher-score orientation, and test-score FPR@95 convention.
+  - Computed 95% bootstrap confidence intervals for all domain subgroups (`fruits360`, `real_quality`, `real_grade`, `real_severity`), highlighting wider uncertainty intervals on small subgroups ($n=67$ conveyor images: Mahalanobis AUROC 18.81% [15.35%, 23.11%]).
+  - Strictly qualified domain-dependent inversion as an observed distribution shift, explicitly avoiding untested background texture causality claims.
+- **Uncertainty Calibration & Selective Prediction:**
+  - Evaluated random-rejection baseline: random pruning at 90% coverage preserves 0.0889 MAE (0% error reduction), proving that confidence thresholding specifically isolates pathology misclassifications (84.70% error reduction on Seed 83; 81.05% across 30 seeds).
+  - Explicitly bounded probability calibration: low in-distribution ECE (1.47%–2.51%) does not imply calibrated probabilities under open-set or severe domain shifts.
+- **Package Synchronization:** Synchronized `manuscript.md`, `abstract.md`, `README.md`, `final_results.json`, tables, figures, and release reports across all submission directories.
+
+

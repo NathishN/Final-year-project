@@ -153,34 +153,40 @@ Across 30 prespecified deterministic random seeds ($n_{\text{seeds}}=30$, degree
 
 We benchmark open-set recognition on 5,000 real images of unencountered species (*Cherry, Kiwi, Peach, Pineapple, Plum*, $n=1,000$ per species) extracted through the frozen ConvNeXt-Tiny encoder:
 
-### Table 3: Pooled OOD Detection Performance (5,000 Real Anomaly Images)
+### Table 3: Real-Image Open-Set Anomaly Detection Performance (5,000 Real OOD Images)
 
-| Detector | Feature Representation | AUROC (%) | AUPR (OOD=1) (%) | FPR @ 95% TPR (%) | Scope |
-|:---|:---|---:|---:|---:|:---|
-| **Mahalanobis Distance** | 768-D Feature Embeddings | **84.22%** | **53.28%** | **38.39%** | Fit on training features |
-| **Free Energy Score** | Cutpoint Logits ($T=1.0$) | **81.99%** | **49.96%** | **41.38%** | Validation 95% TPR threshold |
-| **MSP (Max Softmax)** | Softmax Probs | **74.26%** | **43.16%** | **47.85%** | Validation 95% TPR threshold |
+*Conventions:* Positive class is OOD ($y=1$, $N_{\text{OOD}}=5,000$; prevalence 28.04%); negative class is In-Distribution ($y=0$, $N_{\text{ID}}=12,833$). All detectors are oriented such that higher scores indicate greater OOD likelihood. FPR@95 indicates the proportion of ID test images incorrectly flagged as OOD at an operating threshold achieving $\ge 95\%$ OOD True Positive Rate.
+
+| OOD Detector | Evaluation Protocol | Feature Representation | AUROC (%) | 95% Bootstrap CI | AUPR (OOD=1) (%) | FPR @ 95% TPR (%) | Status |
+|:---|:---|:---|:---:|:---:|:---:|:---:|:---|
+| **Mahalanobis Distance** | **Authoritative (Symmetric)** | 768-D Penultimate Backbone Features | **84.22%** | [83.68%, 84.80%] | **53.28%** | **38.39%** | **Invariant / Authoritative** |
+| **Free Energy Score** | **Corrected (Symmetric Norm)** | Classifier Head Logits ($T=1.0$, Post-LayerNorm) | **63.03%** | [62.18%, 63.92%] | **38.32%** | **73.14%** | Corrected Symmetric Baseline |
+| **MSP (Max Softmax)** | **Corrected (Symmetric Norm)** | Softmax Class Probabilities (Post-LayerNorm) | **56.27%** | [55.33%, 57.10%] | **32.22%** | **74.76%** | Corrected Symmetric Baseline |
+| *Free Energy (Legacy)* | Historical (Pre-Norm ID) | Classifier Head Logits ($T=1.0$, Asymmetric) | *81.99%* | [81.32%, 82.60%] | *49.97%* | *41.32%* | Historical Defect Documented |
+| *MSP (Legacy)* | Historical (Pre-Norm ID) | Softmax Class Probabilities (Asymmetric) | *74.26%* | [73.60%, 74.90%] | *43.16%* | *47.78%* | Historical Defect Documented |
 
 ### Table 4: In-Distribution Domain Breakdown: Mahalanobis Collapse vs Energy Resilience
 
-| In-Distribution Domain | Sample Count | Proportion (%) | Mahalanobis AUROC (%) | Free Energy AUROC (%) | MSP AUROC (%) |
-|:---|---:|---:|---:|---:|---:|
-| `fruits360` (Studio Turntable) | 10,974 | 85.5% | **93.26%** | 79.99% | 75.21% |
-| `real_quality` (Market Bins) | 1,480 | 11.5% | **18.08%** | **92.49%** | 61.74% |
-| `real_grade` (Packing Conveyor) | 67 | 0.5% | **18.81%** | **98.89%** | 96.57% |
-| `real_severity` (Controlled Lab) | 312 | 2.4% | **94.10%** | **98.67%** | 95.30% |
+| In-Distribution Domain | Sample Count | Proportion (%) | Mahalanobis AUROC (95% CI) | Free Energy AUROC (Corrected) | MSP AUROC (Corrected) | Free Energy AUROC (Historical) |
+|:---|---:|---:|:---:|:---:|:---:|:---:|
+| `fruits360` (Studio Turntable) | 10,974 | 85.5% | **93.26%** [92.85%, 93.62%] | 63.90% [63.08%, 64.78%] | 57.68% [56.83%, 58.54%] | 79.99% |
+| `real_quality` (Market Bins) | 1,480 | 11.5% | **18.08%** [17.03%, 19.27%] | 50.91% [49.29%, 52.49%] | 39.22% [37.62%, 40.93%] | 92.49% |
+| `real_grade` (Packing Conveyor) | 67 | 0.5% | **18.81%** [15.35%, 23.11%] | 70.54% [65.40%, 76.19%] | 74.06% [69.33%, 78.95%] | 98.89% |
+| `real_severity` (Controlled Lab) | 312 | 2.4% | **94.10%** [92.66%, 95.51%] | 88.03% [85.40%, 90.52%] | 83.94% [80.39%, 87.32%] | 98.67% |
 
-> **Scientific Attribution:** Mahalanobis distance collapses to 18.08% on market bins because background shift distorts embedding covariance relative to the studio-dominated training distribution. In contrast, Free Energy aggregates unnormalized logits and remains robust across domains ($>92.5\%$). We bound this strictly as an observed distribution-dependent performance inversion; background causality is not asserted as proven without controlled foreground segmentation ablations.
+> **Scientific Attribution & Subgroup Caveat:** Mahalanobis distance collapses to 18.08% on market bins and 18.81% on packing conveyors because penultimate feature covariance is dominated by the studio turntable training distribution. In contrast, Free Energy and MSP operate on output logits and maintain greater cross-domain stability. We explicitly bound this as an observed distribution-dependent performance inversion; background texture causality is not asserted as proven without controlled foreground segmentation ablations. Furthermore, for small subgroups such as packing conveyors ($n=67$), confidence intervals are noticeably wider ([15.35%, 23.11%] and [65.40%, 76.19%]), underscoring that small-sample subgroup metrics must be interpreted with caution.
 
 ---
 
 ## 5.3 Calibration and Selective Prediction
 
 Selective classification allows packing lines to abstain on low-confidence items:
-- **Seed 83 Exemplar:** Full test accuracy = 93.71%, ordinal cutpoint MAE = 0.0889, categorical argmax MAE = 0.1234, ECE = 1.47%, Brier Score = 0.0857.
-- **Selective Abstention (90% Coverage Target):** For Seed 83, abstaining on the lowest 10% confidence raises selective accuracy to **99.28%** (+5.57%) and slashes ordinal cutpoint MAE to **0.0136**, achieving an exact **84.70% error reduction**:
+- **Seed 83 Exemplar:** Full test accuracy = 93.71%, ordinal cutpoint MAE = 0.0889, categorical argmax MAE = 0.1234, Expected Calibration Error (ECE, 10 bins) = 1.47%, Brier Score = 0.0857.
+- **Selective Abstention (90% Coverage Target):** For Seed 83, abstaining on the lowest 10% confidence predictions raises selective accuracy to **99.28%** (+5.57%) and slashes ordinal cutpoint MAE to **0.0136**, achieving an exact **84.70% error reduction**:
 $$\text{Error Reduction} = \frac{0.0889 - 0.0136}{0.0889} \times 100\% = 84.70\%$$
-- **30-Seed Aggregate:** Across 30 seeds, 90% coverage drops mean MAE from 0.1145 to **0.0217** (81.05% mean reduction). Multi-seed mean ECE is **2.11% ± 0.53%**, while the 30-seed probability ensemble ECE is **2.51%** (Brier score = 0.0887).
+- **Random-Rejection Baseline:** In contrast, random rejection at 90% coverage yields an expected MAE of 0.0889 (0% error reduction), proving that confidence thresholding specifically isolates pathology misclassifications.
+- **30-Seed Aggregate:** Across 30 seeds, 90% coverage drops mean MAE from 0.1145 to **0.0217 ± 0.0053** (81.05% mean reduction). Multi-seed mean ECE is **2.11% ± 0.53%**, while the 30-seed probability ensemble ECE is **2.51%** (Brier score = 0.0887).
+- **Calibration Scope and Limitation:** These ECE values reflect in-distribution test-set calibration under identical acquisition priors. In accordance with established uncertainty principles, low in-distribution ECE does not imply calibrated confidence under open-set or severe domain shifts, where neural architectures exhibit well-documented overconfidence. Probability calibration claims are strictly bounded to in-distribution evaluation.
 
 ---
 
