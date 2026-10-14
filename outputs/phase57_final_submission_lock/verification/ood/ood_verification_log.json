@@ -9,11 +9,11 @@
   },
   "ood_sample_rebuilt_matches_cache": true,
   "ood_pool_sizes": {
-    "Cherry": 12230,
-    "Pineapple": 2624,
-    "Kiwi": 1244,
     "Peach": 29002,
-    "Plum": 8392
+    "Cherry": 12230,
+    "Kiwi": 1244,
+    "Plum": 8392,
+    "Pineapple": 2624
   },
   "ood_files_exist": 5000,
   "n_id_train": 39790,
