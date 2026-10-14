@@ -419,3 +419,65 @@ If you use this codebase, experimental methodology, or findings in academic rese
 ## 18. Experimental Notice
 
 > **Notice:** The models, benchmarks, and architectures in this repository represent experimental academic research. Performance metrics reflect evaluation on curated experimental benchmarks and do not guarantee equivalent defect detection accuracy in commercial packinghouse environments without site-specific sensor calibration and physical validation.
+
+---
+
+## 19. FruitGrade AI — Local Full-Stack Web Application (Phase 7.0)
+
+FruitGrade AI is an interactive local research demonstration application connecting the real ConvNeXt-Tiny feature extraction backbone and Monotonic CORAL ordinal classification head (Config A, Seed 83) to a modern React + TypeScript frontend and FastAPI REST backend.
+
+### Features
+- **Interactive Image Grading:** Drag-and-drop or upload fruit images (Apple, Banana, Mango, Orange, Tomato) to compute 5-tier ordinal severity with rank-monotonic probability distributions.
+- **Species Classification:** 5-way softmax classification indicating botanical identity.
+- **Open-Set Anomaly Scoring:** Free Energy inverted scoring detecting out-of-distribution visual anomalies.
+- **Selective Abstention:** Automated routing actions (`AUTOMATED_ACCEPT`, `ROUTE_TO_MANUAL_INSPECTION`, or `REJECT_UNRELIABLE_OOD_ANOMALY`) based on confidence thresholds and OOD flags.
+- **Local SQLite History:** Full audit trail with base64 image thumbnails, filtering, and deletion controls stored locally in `fruitgrade_history.db`.
+- **Transparency Dashboard:** Detailed model architecture, cutpoint parameters, and verified 30-seed confirmatory research metrics ($QWK = 0.8143 \pm 0.0116$).
+
+### Quickstart (Windows Localhost)
+
+#### Terminal 1 — Backend (FastAPI + PyTorch)
+```powershell
+# Navigate to project root
+cd C:\fruit_dataset
+
+# Install backend dependencies
+pip install -r backend/requirements.txt
+
+# Start FastAPI Uvicorn server on port 8000
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+- Local Backend URL: `http://127.0.0.1:8000`
+- Interactive Swagger API Docs: `http://127.0.0.1:8000/docs`
+
+#### Terminal 2 — Frontend (Vite + React + TypeScript + Tailwind)
+```powershell
+# Navigate to frontend directory
+cd C:\fruit_dataset\frontend
+
+# Install frontend dependencies
+npm install
+
+# Start Vite local development server
+npm run dev
+```
+- Local Frontend Application: `http://localhost:5173`
+
+### Testing Suite
+
+```powershell
+# Run backend API and real-model smoke tests (8 tests)
+python -m pytest backend/tests -v
+
+# Run frontend Vitest suite (5 tests)
+cd frontend
+npm test
+
+# Run existing research regression suite (28 tests)
+cd C:\fruit_dataset
+python -m pytest tests outputs/casm_v2/test_corrected_modules.py -v
+
+# Run integrity scanner
+python scripts/scan_integrity.py
+```
+

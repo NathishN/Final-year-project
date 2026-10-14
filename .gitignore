@@ -48,3 +48,13 @@ outputs/phase52_final_validation/session_holdout_retrain/checkpoints/
 # Phase 5.0 Checkpoints: exclude auxiliary weights, preserve verified exemplar
 outputs/casm_v2/phase50_checkpoints/*.pth
 !outputs/casm_v2/phase50_checkpoints/model_A_seed83_best.pth
+
+# Phase 7.0 Full-Stack Web Application (FruitGrade AI)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.sqlite
+*.sqlite3
+*.db
+backend/app/database/*.db
+
