@@ -1,0 +1,72 @@
+{
+  "audit_timestamp": "2026-10-14 10:36:05",
+  "historical_split_v2": {
+    "manifest_name": "historical_split_v2",
+    "manifest_path": "outputs/casm_v2/phase50_split_v2_manifest.csv",
+    "total_samples": 56036,
+    "split_counts": {
+      "train": 39790,
+      "test": 12833,
+      "val": 3413
+    },
+    "duplicate_paths_within_dataset": 0,
+    "cross_split_path_leakage": {
+      "train_intersect_val": 0,
+      "train_intersect_test": 0,
+      "val_intersect_test": 0
+    },
+    "session_isolation": {
+      "total_sessions": 80,
+      "train_sessions_count": 50,
+      "val_sessions_count": 10,
+      "test_sessions_count": 21,
+      "cross_split_sessions_count": 1,
+      "cross_split_sessions": [
+        {
+          "session_id": "20200730",
+          "distribution": {
+            "train": 147,
+            "val": 0,
+            "test": 119
+          }
+        }
+      ]
+    }
+  },
+  "session_holdout_retrain": {
+    "manifest_name": "session_holdout_retrain",
+    "manifest_path": "outputs/phase52_final_validation/session_holdout_manifest.csv",
+    "total_samples": 56036,
+    "split_counts": {
+      "train": 39643,
+      "test": 12980,
+      "val": 3413
+    },
+    "duplicate_paths_within_dataset": 0,
+    "cross_split_path_leakage": {
+      "train_intersect_val": 0,
+      "train_intersect_test": 0,
+      "val_intersect_test": 0
+    },
+    "session_isolation": {
+      "total_sessions": 80,
+      "train_sessions_count": 49,
+      "val_sessions_count": 10,
+      "test_sessions_count": 21,
+      "cross_split_sessions_count": 0,
+      "cross_split_sessions": []
+    }
+  },
+  "training_isolation_audit": {
+    "checkpoint_selection_leakage": "NONE",
+    "evidence_checkpoint_selection": "Inspected configs/training_protocol.json line 44 ('lowest validation MAE / highest validation QWK (val only)') and phase50_stage5_confirmatory.py lines where model selection evaluates solely on val_loss / val_qwk. Test data tensors were never passed to loss.backward() or checkpoint comparator.",
+    "calibration_tuning_leakage": "NONE",
+    "evidence_calibration": "Temperature scaling and confidence thresholds were optimized strictly on the validation partition (3,413 samples), then evaluated zero-shot on the test partition (12,833 samples in split_v2, 12,980 in session holdout).",
+    "session_id_extraction_mechanism": "Session IDs were extracted from image file directory metadata and filenames: (1) In real_quality and real_grade, acquisition dates formatted as YYYYMMDD (e.g. 20200730) represent physical camera collection batches. (2) In fruits360, images originate from motor turntable video sequences under white illumination, where continuous rotation runs constitute acquisition sessions.",
+    "extraction_limitations": [
+      "Certain web-scraped images in public fruit datasets lack EXIF timestamp tags; their session IDs rely on subfolder hierarchy naming.",
+      "Fruits360 video sequences share turntable illumination; however, since each object is an isolated fruit, intra-session correlation is limited to lighting and camera angle.",
+      "In historical split_v2, session 20200730 was split between train (147 samples: Apple G0, Banana G0/G3) and test (119 Banana G2 samples) to provide minority Grade 2 evaluation samples. This was resolved in session_holdout_manifest.csv by moving all 266 samples of session 20200730 to test."
+    ]
+  }
+}

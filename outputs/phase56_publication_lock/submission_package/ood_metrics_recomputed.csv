@@ -1,0 +1,4 @@
+detector,feature_space,positive_class,score_direction,auroc_pct,bootstrap_ci_95,aupr_ood_pct,fpr95_pct,fitted_on
+Mahalanobis Distance,ConvNeXt-Tiny 768-D Embeddings,OOD (is_ood = 1),Higher distance = Higher OOD likelihood,84.22,"[83.7%, 84.8%]",53.28,38.39,Training partition only (class means & tied precision)
+Free Energy Score,Ordinal Head Logits (T=1.0),OOD (is_ood = 1),Higher energy = Higher OOD likelihood,81.99,"[81.3%, 82.6%]",49.96,41.38,Validation thresholding at 95% in-dist TPR
+Maximum Softmax Probability (MSP),Softmax Class Probabilities,OOD (is_ood = 1),Lower max prob (-MSP) = Higher OOD likelihood,74.26,"[73.6%, 74.9%]",43.16,47.85,Validation thresholding at 95% in-dist TPR

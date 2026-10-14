@@ -1,0 +1,273 @@
+{
+  "phase": "5.0",
+  "stage": 1,
+  "status": "PASSED",
+  "split_v1": {
+    "description": "Historical split (untouched). Grade 2 has 0 test samples.",
+    "counts": {
+      "test": {
+        "total": 12714,
+        "grade_counts": {
+          "0": 11605,
+          "1": 88,
+          "3": 868,
+          "4": 153
+        },
+        "species_counts": {
+          "Apple": 5709,
+          "Tomato": 3614,
+          "Orange": 1914,
+          "Banana": 1157,
+          "Mango": 320
+        },
+        "domain_counts": {
+          "fruits360": 10974,
+          "real_quality": 1361,
+          "real_severity": 312,
+          "real_grade": 67
+        }
+      },
+      "train": {
+        "total": 39909,
+        "grade_counts": {
+          "0": 36414,
+          "1": 846,
+          "2": 327,
+          "3": 1606,
+          "4": 716
+        },
+        "species_counts": {
+          "Apple": 18262,
+          "Tomato": 11626,
+          "Orange": 4800,
+          "Banana": 3918,
+          "Mango": 1303
+        },
+        "domain_counts": {
+          "fruits360": 32988,
+          "real_quality": 4163,
+          "real_severity": 1515,
+          "real_grade": 1243
+        }
+      },
+      "val": {
+        "total": 3413,
+        "grade_counts": {
+          "0": 1037,
+          "1": 494,
+          "2": 196,
+          "3": 1268,
+          "4": 418
+        },
+        "species_counts": {
+          "Banana": 1066,
+          "Apple": 991,
+          "Tomato": 924,
+          "Mango": 219,
+          "Orange": 213
+        },
+        "domain_counts": {
+          "real_quality": 1864,
+          "real_severity": 775,
+          "real_grade": 774
+        }
+      }
+    },
+    "leakage": {
+      "train_val": {
+        "path_overlap": 0,
+        "session_overlap": 0
+      },
+      "train_test": {
+        "path_overlap": 0,
+        "session_overlap": 0
+      },
+      "val_test": {
+        "path_overlap": 0,
+        "session_overlap": 0
+      }
+    }
+  },
+  "split_v2": {
+    "description": "Corrected split: session 20200730 Banana Grade 2 (n=119) reallocated from train to test.",
+    "seed": "N/A (deterministic reallocation, no random shuffle)",
+    "reallocation": {
+      "session_id": "20200730",
+      "fruit": "Banana",
+      "domain": "real_quality",
+      "quality_label": "mixed",
+      "severity_grade": 2,
+      "n_reallocated": 119
+    },
+    "counts": {
+      "test": {
+        "total": 12833,
+        "grade_counts": {
+          "0": 11605,
+          "1": 88,
+          "2": 119,
+          "3": 868,
+          "4": 153
+        },
+        "species_counts": {
+          "Apple": 5709,
+          "Tomato": 3614,
+          "Orange": 1914,
+          "Banana": 1276,
+          "Mango": 320
+        },
+        "domain_counts": {
+          "fruits360": 10974,
+          "real_quality": 1480,
+          "real_severity": 312,
+          "real_grade": 67
+        }
+      },
+      "train": {
+        "total": 39790,
+        "grade_counts": {
+          "0": 36414,
+          "1": 846,
+          "2": 208,
+          "3": 1606,
+          "4": 716
+        },
+        "species_counts": {
+          "Apple": 18262,
+          "Tomato": 11626,
+          "Orange": 4800,
+          "Banana": 3799,
+          "Mango": 1303
+        },
+        "domain_counts": {
+          "fruits360": 32988,
+          "real_quality": 4044,
+          "real_severity": 1515,
+          "real_grade": 1243
+        }
+      },
+      "val": {
+        "total": 3413,
+        "grade_counts": {
+          "0": 1037,
+          "1": 494,
+          "2": 196,
+          "3": 1268,
+          "4": 418
+        },
+        "species_counts": {
+          "Banana": 1066,
+          "Apple": 991,
+          "Tomato": 924,
+          "Mango": 219,
+          "Orange": 213
+        },
+        "domain_counts": {
+          "real_quality": 1864,
+          "real_severity": 775,
+          "real_grade": 774
+        }
+      }
+    },
+    "leakage": {
+      "train_val": {
+        "path_overlap": 0,
+        "session_overlap": 0
+      },
+      "train_test": {
+        "path_overlap": 0,
+        "session_overlap": 1
+      },
+      "val_test": {
+        "path_overlap": 0,
+        "session_overlap": 0
+      }
+    },
+    "grade2_session_leakage": {
+      "train_val": [],
+      "train_test": [],
+      "val_test": []
+    },
+    "all_grades_in_test": true
+  },
+  "split_real": {
+    "description": "Diagnostic real-world subset: all fruits360 images excluded. NOT an independent external test set \u2014 it is a domain-filtered subset of split_v2. Results on split_real describe real-world domain performance within the development dataset.",
+    "counts": {
+      "test": {
+        "total": 1859,
+        "grade_counts": {
+          "0": 631,
+          "1": 88,
+          "2": 119,
+          "3": 868,
+          "4": 153
+        },
+        "species_counts": {
+          "Orange": 812,
+          "Banana": 631,
+          "Apple": 203,
+          "Tomato": 201,
+          "Mango": 12
+        },
+        "domain_counts": {
+          "real_quality": 1480,
+          "real_severity": 312,
+          "real_grade": 67
+        }
+      },
+      "train": {
+        "total": 6802,
+        "grade_counts": {
+          "0": 3426,
+          "1": 846,
+          "2": 208,
+          "3": 1606,
+          "4": 716
+        },
+        "species_counts": {
+          "Banana": 1882,
+          "Apple": 1691,
+          "Orange": 1475,
+          "Tomato": 1367,
+          "Mango": 387
+        },
+        "domain_counts": {
+          "real_quality": 4044,
+          "real_severity": 1515,
+          "real_grade": 1243
+        }
+      },
+      "val": {
+        "total": 3413,
+        "grade_counts": {
+          "0": 1037,
+          "1": 494,
+          "2": 196,
+          "3": 1268,
+          "4": 418
+        },
+        "species_counts": {
+          "Banana": 1066,
+          "Apple": 991,
+          "Tomato": 924,
+          "Mango": 219,
+          "Orange": 213
+        },
+        "domain_counts": {
+          "real_quality": 1864,
+          "real_severity": 775,
+          "real_grade": 774
+        }
+      }
+    },
+    "independence_warning": "split_real is NOT independent of model development. Models were trained on split_v2 train data which includes real-world images. split_real test set overlaps with split_v2 test set. Use for diagnostic domain analysis only."
+  },
+  "checks_passed": [
+    "split_v1 Grade 2 test count == 0 (confirmed historical defect)",
+    "split_v2 Grade 2 test count == 119 (corrected)",
+    "split_v2 all 5 grades present in test",
+    "split_v2 zero path overlap across splits",
+    "split_v2 zero Grade-2 session leakage"
+  ],
+  "proceed_to_stage2": true
+}

@@ -1,0 +1,1126 @@
+{
+  "audit_timestamp": "2026-10-14 10:21:54",
+  "training_protocol": {
+    "protocol_version": "5.0-CONFIRMATORY",
+    "split_version": "split_v2",
+    "dataset_manifest": "outputs/casm_v2/phase50_split_v2_manifest.csv",
+    "feature_source": "outputs/features/phase4_dataset.pt",
+    "backbone": "ConvNeXt-Tiny (ImageNet-1k pretrained, 768-D)",
+    "num_classes": 5,
+    "classes": [
+      "Healthy",
+      "Mild",
+      "Moderate",
+      "Severe",
+      "Rotten"
+    ],
+    "ordinal_head": "MonotonicCORALHead (softplus parameterized decreasing biases)",
+    "species_embedding": {
+      "known_species": [
+        "Apple",
+        "Banana",
+        "Mango",
+        "Orange",
+        "Tomato"
+      ],
+      "embedding_dim": 16,
+      "unknown_index": 5
+    },
+    "loss_weighting": {
+      "method": "Effective Number of Samples (Cui et al., 2019)",
+      "beta": 0.999,
+      "normalized_weights": [
+        0.4433,
+        0.7762,
+        2.3594,
+        0.5545,
+        0.8667
+      ]
+    },
+    "optimization": {
+      "optimizer": "AdamW",
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "epochs": 15,
+      "batch_size": 2048,
+      "checkpoint_criterion": "lowest validation MAE / highest validation QWK (val only)"
+    },
+    "seeds": [
+      42,
+      123,
+      777,
+      999,
+      2025,
+      1,
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97
+    ],
+    "configurations": {
+      "A": "Image Only",
+      "B": "Image + Species (Primary Hypothesis)",
+      "C": "Image + OOD",
+      "D": "Image + Species + OOD"
+    }
+  },
+  "historical_checkpoints": {
+    "count": 120,
+    "files": [
+      {
+        "filename": "model_A_seed11_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed123_best.pth",
+        "size_bytes": 2510984
+      },
+      {
+        "filename": "model_A_seed13_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed17_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed19_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed1_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed2025_best.pth",
+        "size_bytes": 2511007
+      },
+      {
+        "filename": "model_A_seed23_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed2_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed31_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed37_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed3_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed41_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed42_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed43_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed47_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed53_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed59_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed5_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed61_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed67_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed71_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed73_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed777_best.pth",
+        "size_bytes": 2510984
+      },
+      {
+        "filename": "model_A_seed79_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed7_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed83_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed89_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed97_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed999_best.pth",
+        "size_bytes": 2510984
+      },
+      {
+        "filename": "model_B_seed11_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed123_best.pth",
+        "size_bytes": 2528018
+      },
+      {
+        "filename": "model_B_seed13_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed17_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed19_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed1_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed2025_best.pth",
+        "size_bytes": 2528042
+      },
+      {
+        "filename": "model_B_seed23_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed2_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed31_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed37_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed3_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed41_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed42_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed43_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed47_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed53_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed59_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed5_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed61_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed67_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed71_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed73_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed777_best.pth",
+        "size_bytes": 2528018
+      },
+      {
+        "filename": "model_B_seed79_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed7_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed83_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed89_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed97_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed999_best.pth",
+        "size_bytes": 2528018
+      },
+      {
+        "filename": "model_C_seed11_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed123_best.pth",
+        "size_bytes": 2513032
+      },
+      {
+        "filename": "model_C_seed13_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed17_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed19_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed1_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed2025_best.pth",
+        "size_bytes": 2513055
+      },
+      {
+        "filename": "model_C_seed23_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed2_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed31_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed37_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed3_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed41_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed42_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed43_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed47_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed53_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed59_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed5_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed61_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed67_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed71_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed73_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed777_best.pth",
+        "size_bytes": 2513032
+      },
+      {
+        "filename": "model_C_seed79_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed7_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed83_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed89_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed97_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed999_best.pth",
+        "size_bytes": 2513032
+      },
+      {
+        "filename": "model_D_seed11_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed123_best.pth",
+        "size_bytes": 2530066
+      },
+      {
+        "filename": "model_D_seed13_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed17_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed19_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed1_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed2025_best.pth",
+        "size_bytes": 2530090
+      },
+      {
+        "filename": "model_D_seed23_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed2_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed31_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed37_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed3_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed41_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed42_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed43_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed47_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed53_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed59_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed5_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed61_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed67_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed71_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed73_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed777_best.pth",
+        "size_bytes": 2530066
+      },
+      {
+        "filename": "model_D_seed79_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed7_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed83_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed89_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed97_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed999_best.pth",
+        "size_bytes": 2530066
+      }
+    ],
+    "sample_inspection": {
+      "example_file": "model_A_seed11_best.pth",
+      "keys_count": 19,
+      "param_count": 626180,
+      "layer_keys": [
+        "vis_proj.0.weight",
+        "vis_proj.0.bias",
+        "vis_proj.1.weight",
+        "vis_proj.1.bias",
+        "vis_proj.4.weight",
+        "vis_proj.4.bias",
+        "vis_proj.5.weight",
+        "vis_proj.5.bias",
+        "fusion_mlp.0.weight",
+        "fusion_mlp.0.bias",
+        "fusion_mlp.1.weight",
+        "fusion_mlp.1.bias",
+        "fusion_mlp.4.weight",
+        "fusion_mlp.4.bias",
+        "fusion_mlp.5.weight",
+        "fusion_mlp.5.bias",
+        "head.weight",
+        "head.theta_0",
+        "head.raw_deltas"
+      ],
+      "has_optimizer_state": false,
+      "has_epoch_history": false
+    }
+  },
+  "retrained_checkpoints": {
+    "count": 120,
+    "files": [
+      {
+        "filename": "model_A_seed11_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed123_best.pth",
+        "size_bytes": 2510984
+      },
+      {
+        "filename": "model_A_seed13_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed17_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed19_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed1_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed2025_best.pth",
+        "size_bytes": 2511007
+      },
+      {
+        "filename": "model_A_seed23_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed2_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed31_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed37_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed3_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed41_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed42_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed43_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed47_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed53_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed59_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed5_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed61_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed67_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed71_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed73_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed777_best.pth",
+        "size_bytes": 2510984
+      },
+      {
+        "filename": "model_A_seed79_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed7_best.pth",
+        "size_bytes": 2510938
+      },
+      {
+        "filename": "model_A_seed83_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed89_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed97_best.pth",
+        "size_bytes": 2510961
+      },
+      {
+        "filename": "model_A_seed999_best.pth",
+        "size_bytes": 2510984
+      },
+      {
+        "filename": "model_B_seed11_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed123_best.pth",
+        "size_bytes": 2528018
+      },
+      {
+        "filename": "model_B_seed13_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed17_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed19_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed1_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed2025_best.pth",
+        "size_bytes": 2528042
+      },
+      {
+        "filename": "model_B_seed23_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed2_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed31_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed37_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed3_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed41_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed42_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed43_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed47_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed53_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed59_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed5_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed61_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed67_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed71_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed73_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed777_best.pth",
+        "size_bytes": 2528018
+      },
+      {
+        "filename": "model_B_seed79_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed7_best.pth",
+        "size_bytes": 2527970
+      },
+      {
+        "filename": "model_B_seed83_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed89_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed97_best.pth",
+        "size_bytes": 2527994
+      },
+      {
+        "filename": "model_B_seed999_best.pth",
+        "size_bytes": 2528018
+      },
+      {
+        "filename": "model_C_seed11_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed123_best.pth",
+        "size_bytes": 2513032
+      },
+      {
+        "filename": "model_C_seed13_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed17_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed19_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed1_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed2025_best.pth",
+        "size_bytes": 2513055
+      },
+      {
+        "filename": "model_C_seed23_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed2_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed31_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed37_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed3_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed41_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed42_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed43_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed47_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed53_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed59_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed5_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed61_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed67_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed71_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed73_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed777_best.pth",
+        "size_bytes": 2513032
+      },
+      {
+        "filename": "model_C_seed79_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed7_best.pth",
+        "size_bytes": 2512986
+      },
+      {
+        "filename": "model_C_seed83_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed89_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed97_best.pth",
+        "size_bytes": 2513009
+      },
+      {
+        "filename": "model_C_seed999_best.pth",
+        "size_bytes": 2513032
+      },
+      {
+        "filename": "model_D_seed11_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed123_best.pth",
+        "size_bytes": 2530066
+      },
+      {
+        "filename": "model_D_seed13_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed17_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed19_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed1_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed2025_best.pth",
+        "size_bytes": 2530090
+      },
+      {
+        "filename": "model_D_seed23_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed2_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed31_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed37_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed3_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed41_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed42_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed43_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed47_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed53_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed59_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed5_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed61_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed67_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed71_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed73_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed777_best.pth",
+        "size_bytes": 2530066
+      },
+      {
+        "filename": "model_D_seed79_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed7_best.pth",
+        "size_bytes": 2530018
+      },
+      {
+        "filename": "model_D_seed83_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed89_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed97_best.pth",
+        "size_bytes": 2530042
+      },
+      {
+        "filename": "model_D_seed999_best.pth",
+        "size_bytes": 2530066
+      }
+    ],
+    "sample_inspection": {
+      "example_file": "model_A_seed11_best.pth",
+      "keys_count": 19,
+      "param_count": 626180,
+      "layer_keys": [
+        "vis_proj.0.weight",
+        "vis_proj.0.bias",
+        "vis_proj.1.weight",
+        "vis_proj.1.bias",
+        "vis_proj.4.weight",
+        "vis_proj.4.bias",
+        "vis_proj.5.weight",
+        "vis_proj.5.bias",
+        "fusion_mlp.0.weight",
+        "fusion_mlp.0.bias",
+        "fusion_mlp.1.weight",
+        "fusion_mlp.1.bias",
+        "fusion_mlp.4.weight",
+        "fusion_mlp.4.bias",
+        "fusion_mlp.5.weight",
+        "fusion_mlp.5.bias",
+        "head.weight",
+        "head.theta_0",
+        "head.raw_deltas"
+      ],
+      "has_optimizer_state": false,
+      "has_epoch_history": false
+    }
+  },
+  "provenance_findings": {
+    "backbone_status": "FROZEN_PRECOMPUTED_FEATURES",
+    "backbone_name": "ConvNeXt-Tiny (ImageNet-1k pretrained, 27.8M parameters)",
+    "head_parameters_count": 626180,
+    "state_dict_contents": "Weight tensors only; optimizer states and per-epoch logs not saved in checkpoints",
+    "loss_function": "MonotonicCORAL (monotonic cumulative ordinal cross-entropy)",
+    "optimizer": "AdamW",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 2048,
+    "epochs": 15,
+    "selection_criterion": "lowest validation MAE / highest validation QWK (val only)"
+  }
+}

@@ -1,0 +1,5 @@
+config,name,n_seeds,reported_qwk,recomputed_qwk,reported_mae,recomputed_mae,reported_acc,recomputed_acc,macro_f1_mean,grade2_recall_mean,grade2_precision_mean,delta_qwk,delta_mae,delta_acc
+A,Image-Only Baseline,30,0.8478 ± 0.0260,0.8478 ± 0.0260,0.1145,0.1145,92.11%,92.11%,49.48,7.42,1.88,1.9e-05,2.2e-05,0.0038
+B,Image + Species Conditioning,30,0.8118 ± 0.0364,0.8118 ± 0.0364,0.1268,0.1268,92.06%,92.06%,49.35,21.54,7.14,1e-05,3e-05,0.0036
+C,Image + OOD Context,30,0.7778 ± 0.0450,0.7778 ± 0.0450,0.1554,0.1554,89.41%,89.41%,42.39,6.58,1.47,1.2e-05,3e-05,0.003
+D,Image + Species + OOD Context,30,0.7630 ± 0.0402,0.7630 ± 0.0402,0.1536,0.1536,90.29%,90.29%,44.39,12.72,3.86,4e-06,4.8e-05,0.0043

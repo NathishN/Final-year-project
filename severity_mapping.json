@@ -1,0 +1,39 @@
+{
+    "taxonomy": {
+        "0": "Healthy",
+        "1": "Mild Defect",
+        "2": "Moderate Defect",
+        "3": "Severe Defect",
+        "4": "Rotten"
+    },
+    "mappings_by_domain": {
+        "real_severity": {
+            "fresh": 0,
+            "mild": 1,
+            "rotten": 4
+        },
+        "real_quality": {
+            "good": 0,
+            "mixed": 2,
+            "bad": 3
+        },
+        "real_grade": {
+            "grade_1": 0,
+            "grade_2": 1,
+            "grade_3": 3
+        },
+        "fruits360": {
+            "all_varieties": 0
+        }
+    },
+    "mapping_rationale": {
+        "fresh_good_grade1_fruits360": "Mapped to 0 (Healthy): Represents pristine fruits without observable physical, fungal, or structural defects.",
+        "mild_grade2": "Mapped to 1 (Mild Defect): Represents minor surface blemishes, slight discoloration, or commercial grade 2 fruits suitable for retail with minor visual flaws.",
+        "mixed": "Mapped to 2 (Moderate Defect): Represents moderate quality degradation, heterogeneous surface defects, or intermediate quality tier.",
+        "bad_grade3": "Mapped to 3 (Severe Defect): Represents major physical damage, processing grade 3 quality, or structural deterioration requiring immediate processing.",
+        "rotten": "Mapped to 4 (Rotten): Represents advanced biological decay, fungal colonization, active necrosis, and complete loss of commercial utility."
+    },
+    "exclusions": {
+        "Banana_3rd_grade": "Excluded (n=2): Insufficient sample size for statistically valid train/val/test stratification."
+    }
+}

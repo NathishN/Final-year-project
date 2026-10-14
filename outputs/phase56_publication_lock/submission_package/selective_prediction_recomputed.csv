@@ -1,0 +1,9 @@
+scope,coverage_target,retained_count,rejected_count,rejection_rate_pct,min_conf_threshold,coral_cutpoint_accuracy,coral_cutpoint_mae,coral_mae_reduction_pct,argmax_accuracy,argmax_mae,argmax_mae_reduction_pct
+Single Exemplar Seed 83,100%,12833,0,0.00%,0.2429,93.71%,0.0889,0.00%,91.98%,0.1234,0.00%
+Single Exemplar Seed 83,95%,12191,642,5.00%,0.2950,97.28%,0.0451,49.26%,95.34%,0.0724,41.28%
+Single Exemplar Seed 83,90%,11550,1283,10.00%,0.6431,99.28%,0.0136,84.71%,99.28%,0.0136,88.98%
+Single Exemplar Seed 83,85%,10908,1925,15.00%,0.9333,99.92%,0.0023,97.42%,99.92%,0.0023,98.14%
+Single Exemplar Seed 83,80%,10266,2567,20.00%,0.9936,100.00%,0.0000,100.00%,100.00%,0.0000,100.00%
+Single Exemplar Seed 83,70%,8983,3850,30.00%,0.9988,100.00%,0.0000,100.00%,100.00%,0.0000,100.00%
+Single Exemplar Seed 83,60%,7700,5133,40.00%,0.9991,100.00%,0.0000,100.00%,100.00%,0.0000,100.00%
+Single Exemplar Seed 83,50%,6416,6417,50.00%,0.9992,100.00%,0.0000,100.00%,100.00%,0.0000,100.00%

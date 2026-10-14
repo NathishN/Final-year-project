@@ -1,0 +1,7 @@
+command,description,attempt,status,exit_code,duration_sec,note
+python -m unittest discover tests -v,Execute full unit and integration test suite,1,PASSED,0,17.07,run via os.system inside run_phase52_validation.py
+python scripts/phaseB_dataset_integrity.py,Verify dataset manifest and class distribution,1,PASSED,0,3.52,run via os.system inside run_phase52_validation.py
+python scripts/phaseC_ordinal_loss_audit.py,Verify monotonic cutpoint constraints,1,PASSED,0,7.57,run via os.system inside run_phase52_validation.py
+python scripts/phaseH_model_efficiency.py,Verify parameter census and latency benchmarking,1,FAILED,-1073740791,59.91,"0xC0000409 crash when launched as a child of run_phase52_validation.py while the parent still held the GPU; root cause not isolated"
+python scripts/phaseH_model_efficiency.py,Verify parameter census and latency benchmarking,2,PASSED,0,~73,"standalone rerun (task-997); duration estimated from task start/finish timestamps, not timed"
+python scripts/assemble_paper.py,Compile manuscript and bibliography,1,PASSED,0,1.98,run via os.system inside run_phase52_validation.py

@@ -1,0 +1,8 @@
+issue_id,phase_originated,component,description,severity,resolution_status,resolution_artifact
+ISSUE-01,Phase 4.0,Dataset Splits,Historical split_v1 placed zero Grade 2 samples in test set.,CRITICAL,RESOLVED,outputs/casm_v2/phase50_split_v2_manifest.csv (n=119 in test)
+ISSUE-02,Phase 3.0,CORAL Head,"Unconstrained cutpoint biases inverted across random seeds, creating negative probabilities.",CRITICAL,RESOLVED,phase50_casm_v2_model.py (MonotonicCORALHead softplus parameterization)
+ISSUE-03,Phase 2.0,Open-Set OOD,100.0% AUROC claim was derived from synthetic Gaussian vectors rather than real images.,CRITICAL,RESOLVED,"phase50_ood_report.md (84.22% AUROC on 5,000 real images)"
+ISSUE-04,Phase 4.0,Loss Weighting,"Raw inverse frequency weighting created a 175:1 weight ratio, causing false Grade 2 explosions.",HIGH,RESOLVED,phase50_loss_and_pilot_report.md (Effective Number beta=0.999 bounded at 5.32x)
+ISSUE-05,Phase 4.0,Species Embedding,Out-of-range or negative species IDs caused runtime index errors or silently corrupted embeddings.,HIGH,RESOLVED,phase50_casm_v2_model.py (RobustSpeciesEmbedding reserved index 5)
+ISSUE-06,Phase 4.5,Domain Generalization,High test accuracy (~92%) was driven by turntable studio images (fruits360); real bin accuracy collapsed to ~46%.,HIGH,DOCUMENTED_LIMITATION,phase50_domain_generalization_report.md (Split_real evaluated transparently)
+ISSUE-07,Phase 4.5,Species Conditioning Claim,Historical claim that species embeddings improve grading was contradicted by 30-seed confirmatory study.,HIGH,RESOLVED_NEGATIVE_FINDING,"phase50_confirmatory_statistics.csv (delta QWK = -0.0360, p < 0.001)"

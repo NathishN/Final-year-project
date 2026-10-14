@@ -1,0 +1,197 @@
+{
+  "audit_timestamp": "2026-10-14 10:39:33",
+  "verification_status": "EXACT_REPRODUCTION_VERIFIED",
+  "score_directions": {
+    "Mahalanobis": "Higher distance from class centroid indicates OOD (positive class 1)",
+    "Energy": "Higher negative free energy (-T * logsumexp) indicates lower confidence / OOD",
+    "MSP": "Negative maximum softmax probability (-max(p)) indicates low confidence / OOD"
+  },
+  "test_data_independence": "Verified: Class centroids mu_k and covariance matrix Sigma are fitted exclusively on the 39,790 training samples. Test data (12,833 samples) and OOD data (5,000 samples) were never exposed to covariance fitting.",
+  "pooled_metrics": {
+    "Mahalanobis": {
+      "auroc": 84.22,
+      "aupr_ood": 53.28,
+      "fpr95": 38.39
+    },
+    "Energy": {
+      "auroc": 81.99,
+      "aupr_ood": 49.96,
+      "fpr95": 41.38
+    },
+    "MSP": {
+      "auroc": 74.26,
+      "aupr_ood": 43.16,
+      "fpr95": 47.85
+    }
+  },
+  "domain_stratified_metrics": {
+    "fruits360": {
+      "sample_count": 10974,
+      "Mahalanobis": {
+        "auroc": 93.26,
+        "aupr_ood": 85.06,
+        "fpr95": 30.25
+      },
+      "Energy": {
+        "auroc": 79.99,
+        "aupr_ood": 50.81,
+        "fpr95": 44.42
+      },
+      "MSP": {
+        "auroc": 75.21,
+        "aupr_ood": 47.59,
+        "fpr95": 45.6
+      }
+    },
+    "real_grade": {
+      "sample_count": 67,
+      "Mahalanobis": {
+        "auroc": 18.81,
+        "aupr_ood": 97.17,
+        "fpr95": 100.0
+      },
+      "Energy": {
+        "auroc": 98.89,
+        "aupr_ood": 99.98,
+        "fpr95": 4.48
+      },
+      "MSP": {
+        "auroc": 96.57,
+        "aupr_ood": 99.93,
+        "fpr95": 16.42
+      }
+    },
+    "real_quality": {
+      "sample_count": 1480,
+      "Mahalanobis": {
+        "auroc": 18.08,
+        "aupr_ood": 61.8,
+        "fpr95": 100.0
+      },
+      "Energy": {
+        "auroc": 92.49,
+        "aupr_ood": 97.05,
+        "fpr95": 26.76
+      },
+      "MSP": {
+        "auroc": 61.74,
+        "aupr_ood": 82.43,
+        "fpr95": 70.88
+      }
+    },
+    "real_severity": {
+      "sample_count": 312,
+      "Mahalanobis": {
+        "auroc": 94.1,
+        "aupr_ood": 99.56,
+        "fpr95": 18.91
+      },
+      "Energy": {
+        "auroc": 98.67,
+        "aupr_ood": 99.92,
+        "fpr95": 11.54
+      },
+      "MSP": {
+        "auroc": 95.3,
+        "aupr_ood": 99.63,
+        "fpr95": 24.68
+      }
+    }
+  },
+  "per_species_metrics": {
+    "Cherry": {
+      "sample_count": 1000,
+      "Mahalanobis": {
+        "auroc": 76.99,
+        "aupr_ood": 13.65,
+        "fpr95": 48.38
+      },
+      "Energy": {
+        "auroc": 81.02,
+        "aupr_ood": 15.4,
+        "fpr95": 33.88
+      },
+      "MSP": {
+        "auroc": 69.06,
+        "aupr_ood": 10.56,
+        "fpr95": 44.43
+      }
+    },
+    "Kiwi": {
+      "sample_count": 1000,
+      "Mahalanobis": {
+        "auroc": 84.77,
+        "aupr_ood": 18.44,
+        "fpr95": 22.42
+      },
+      "Energy": {
+        "auroc": 82.84,
+        "aupr_ood": 18.89,
+        "fpr95": 53.5
+      },
+      "MSP": {
+        "auroc": 79.12,
+        "aupr_ood": 21.24,
+        "fpr95": 57.65
+      }
+    },
+    "Peach": {
+      "sample_count": 1000,
+      "Mahalanobis": {
+        "auroc": 78.28,
+        "aupr_ood": 14.41,
+        "fpr95": 48.15
+      },
+      "Energy": {
+        "auroc": 74.21,
+        "aupr_ood": 12.63,
+        "fpr95": 52.01
+      },
+      "MSP": {
+        "auroc": 71.98,
+        "aupr_ood": 12.15,
+        "fpr95": 53.58
+      }
+    },
+    "Pineapple": {
+      "sample_count": 1000,
+      "Mahalanobis": {
+        "auroc": 93.0,
+        "aupr_ood": 33.7,
+        "fpr95": 12.14
+      },
+      "Energy": {
+        "auroc": 84.23,
+        "aupr_ood": 17.92,
+        "fpr95": 24.64
+      },
+      "MSP": {
+        "auroc": 74.94,
+        "aupr_ood": 12.07,
+        "fpr95": 39.41
+      }
+    },
+    "Plum": {
+      "sample_count": 1000,
+      "Mahalanobis": {
+        "auroc": 88.08,
+        "aupr_ood": 22.22,
+        "fpr95": 19.89
+      },
+      "Energy": {
+        "auroc": 87.64,
+        "aupr_ood": 25.17,
+        "fpr95": 31.39
+      },
+      "MSP": {
+        "auroc": 76.21,
+        "aupr_ood": 13.84,
+        "fpr95": 48.52
+      }
+    }
+  },
+  "causal_attribution": {
+    "status": "UNRESOLVED",
+    "reason": "The photographic dataset does not contain pixel-level ground truth segmentation masks. While feature covariance distortion on market bins correlates with complex visual background clutter, proving causality requires background-invariance intervention experiments."
+  }
+}

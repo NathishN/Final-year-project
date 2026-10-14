@@ -1,0 +1,13 @@
+mode,precision,batch_size,latency_per_batch_ms,latency_per_sample_ms,throughput_fps,device
+Head-Only (Precomputed Features),FP32,1,2.53,2.5303,395.2,NVIDIA GeForce RTX 3050 Laptop GPU
+Head-Only (Precomputed Features),FP32,16,2.497,0.1561,6406.5,NVIDIA GeForce RTX 3050 Laptop GPU
+Head-Only (Precomputed Features),FP32,32,2.147,0.0671,14907.3,NVIDIA GeForce RTX 3050 Laptop GPU
+Full End-to-End Pipeline (ConvNeXt-Tiny + Head),FP32,1,37.195,37.1947,26.9,NVIDIA GeForce RTX 3050 Laptop GPU
+Full End-to-End Pipeline (ConvNeXt-Tiny + Head),FP32,16,405.343,25.3339,39.5,NVIDIA GeForce RTX 3050 Laptop GPU
+Full End-to-End Pipeline (ConvNeXt-Tiny + Head),FP32,32,1606.268,50.1959,19.9,NVIDIA GeForce RTX 3050 Laptop GPU
+Head-Only (Precomputed Features),FP16,1,2.408,2.4085,415.2,NVIDIA GeForce RTX 3050 Laptop GPU
+Head-Only (Precomputed Features),FP16,16,2.252,0.1407,7106.3,NVIDIA GeForce RTX 3050 Laptop GPU
+Head-Only (Precomputed Features),FP16,32,2.37,0.0741,13504.4,NVIDIA GeForce RTX 3050 Laptop GPU
+Full End-to-End Pipeline (ConvNeXt-Tiny + Head),FP16,1,32.048,32.0484,31.2,NVIDIA GeForce RTX 3050 Laptop GPU
+Full End-to-End Pipeline (ConvNeXt-Tiny + Head),FP16,16,227.787,14.2367,70.2,NVIDIA GeForce RTX 3050 Laptop GPU
+Full End-to-End Pipeline (ConvNeXt-Tiny + Head),FP16,32,423.348,13.2296,75.6,NVIDIA GeForce RTX 3050 Laptop GPU

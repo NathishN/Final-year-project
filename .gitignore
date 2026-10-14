@@ -1,0 +1,50 @@
+# ==============================================================================
+# .gitignore for Trustworthy Open-Set Ordinal Multi-Fruit Quality Grading
+# ==============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Environments and Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+venv/
+env/
+ENV/
+
+# Temporary and log files
+*.log
+scratch/
+outputs/logs/
+outputs/misclassified/
+outputs/confusion_matrix/
+
+# Raw Multi-Gigabyte Image Datasets (Not distributable via Git repository)
+# See README.md for instructions on downloading/configuring datasets.
+/Apple/
+/Banana/
+/Mango/
+/Orange/
+/Tomato/
+/open-set-dataset/
+
+# Large Binaries exceeding GitHub size limits (> 100 MB)
+outputs/checkpoints/
+outputs/coral/checkpoints/
+outputs/features/phase4_dataset.pt
+
+# Intermediate / exploratory phase checkpoints (not required for validation)
+outputs/phase4/*.pth
+outputs/phase52_final_validation/session_holdout_retrain/checkpoints/
+
+# Phase 5.0 Checkpoints: exclude auxiliary weights, preserve verified exemplar
+outputs/casm_v2/phase50_checkpoints/*.pth
+!outputs/casm_v2/phase50_checkpoints/model_A_seed83_best.pth

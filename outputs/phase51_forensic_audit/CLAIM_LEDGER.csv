@@ -1,0 +1,9 @@
+claim_id,claim_text,status,reported_value,verified_value,discrepancy,evidence_file,remaining_limitation,next_action
+D-A,Config A QWK = 0.8478,VERIFIED,0.8478,0.8478,1.9e-05,recomputed_metrics_by_configuration.csv,None,None
+D-B,Config B QWK = 0.8118,VERIFIED,0.8118,0.8118,1e-05,recomputed_metrics_by_configuration.csv,None,None
+D-C,Config C QWK = 0.7778,VERIFIED,0.7778,0.7778,1.2e-05,recomputed_metrics_by_configuration.csv,None,None
+D-D,Config D QWK = 0.763,VERIFIED,0.763,0.763,4e-06,recomputed_metrics_by_configuration.csv,None,None
+E-BA,B vs A Wilcoxon W=62 or W=59?,VERIFIED,W=62 (one report) / W=59 (other report),"W(wilcox)=72, W(pratt)=72",Discrepancy resolved,statistical_reconciliation.csv,Future reports must specify zero_method used (wilcox vs pratt),Use scipy.stats.wilcoxon with zero_method='wilcox' and report explicitly
+C-01,Training is end-to-end image training,CONTRADICTED,Manuscript implies full backbone training,Verified: frozen ConvNeXt-Tiny features from phase4_dataset.pt,"Training used precomputed features, not raw images",training_methodology_verification.md,Manuscript understates this — must be explicitly stated,Update manuscript methodology section
+I-01,"Throughput >100,000 FPS",PARTIALLY_VERIFIED,">100,000 FPS (GPU, batch inference)",Head-only throughput on precomputed features. Full E2E unknown.,"FPS claim is head-only, not full pipeline",efficiency_claim_verification.csv,Full E2E throughput not benchmarked,Benchmark full pipeline (backbone + head) and report separately
+G-BG,Background causes OOD failure (AUROC 18.08% on market bins),PARTIALLY_VERIFIED,AUROC 18.08% is causal evidence of background shortcut,AUROC 18.08% observed; causal mechanism not confirmed,Correlation ≠ causation; no segmentation experiment run,ood_metric_reconciliation.csv,Causal claim unresolved without foreground-masked evaluation,Label as 'hypothesized' until masking experiment is run

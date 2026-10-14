@@ -1,0 +1,149 @@
+{
+  "discrepancy_reconciliation": {
+    "why_seed83_acc_93_71_vs_30seed_92_11": "Seed 83 is a single high-performing run achieving 93.71% test accuracy and 0.0889 MAE (ECE=1.45%). The 30-seed aggregate mean is 92.11% accuracy and 0.1145 MAE (ECE=2.51%, Brier=0.0887). Both numbers are exact and derived from outputs/casm_v2/phase50_per_seed_predictions/; earlier reports mixed single-seed exemplar numbers with 30-seed aggregate means without explicit labeling.",
+    "why_selective_top90_acc_99_28_vs_99_14": "Top-90% accuracy of 99.28% is obtained on Seed 83 when retaining the top 90.0% highest-confidence samples (11,550 / 12,833). The historical 99.14% figure was computed on pooled predictions across seeds. Both demonstrate strict monotonic risk reduction with coverage reduction.",
+    "domain_imbalance_finding": "The test set is 85.5% fruits360 (studio white background), where the model achieves 99.88% accuracy and ECE=0.18%. On real market bins (real_quality), the model achieves only 39.86% accuracy and ECE=18.42%. Thus, the pooled low ECE (1.45% - 2.51%) is overwhelmingly studio-driven and masks poor real-domain calibration."
+  },
+  "seed83_exemplar": {
+    "accuracy": 93.71152497467466,
+    "mae": 0.08891140029611158,
+    "ece_10bin": 1.47,
+    "ece_15bin": 1.57,
+    "brier_score": 0.0857,
+    "domain_stratified": {
+      "fruits360": {
+        "sample_count": 10974,
+        "accuracy": 99.77,
+        "mae": 0.0024,
+        "ece_10bin": 0.83,
+        "brier_score": 0.0028,
+        "mean_confidence": 99.16
+      },
+      "real_grade": {
+        "sample_count": 67,
+        "accuracy": 22.39,
+        "mae": 1.194,
+        "ece_10bin": 37.16,
+        "brier_score": 1.0359,
+        "mean_confidence": 47.61
+      },
+      "real_quality": {
+        "sample_count": 1480,
+        "accuracy": 54.8,
+        "mae": 0.6581,
+        "ece_10bin": 10.29,
+        "brier_score": 0.6243,
+        "mean_confidence": 46.1
+      },
+      "real_severity": {
+        "sample_count": 312,
+        "accuracy": 80.45,
+        "mae": 0.1955,
+        "ece_10bin": 14.9,
+        "brier_score": 0.2433,
+        "mean_confidence": 85.48
+      }
+    },
+    "selective_prediction_curve": [
+      {
+        "coverage_target": 1.0,
+        "actual_coverage_pct": 100.0,
+        "retained_samples": 12833,
+        "rejected_samples": 0,
+        "min_confidence_threshold": 0.2429,
+        "selective_accuracy": 93.71,
+        "selective_mae": 0.0889
+      },
+      {
+        "coverage_target": 0.95,
+        "actual_coverage_pct": 95.0,
+        "retained_samples": 12191,
+        "rejected_samples": 642,
+        "min_confidence_threshold": 0.295,
+        "selective_accuracy": 97.28,
+        "selective_mae": 0.0451
+      },
+      {
+        "coverage_target": 0.9,
+        "actual_coverage_pct": 90.0,
+        "retained_samples": 11550,
+        "rejected_samples": 1283,
+        "min_confidence_threshold": 0.6431,
+        "selective_accuracy": 99.28,
+        "selective_mae": 0.0136
+      },
+      {
+        "coverage_target": 0.85,
+        "actual_coverage_pct": 85.0,
+        "retained_samples": 10908,
+        "rejected_samples": 1925,
+        "min_confidence_threshold": 0.9333,
+        "selective_accuracy": 99.92,
+        "selective_mae": 0.0023
+      },
+      {
+        "coverage_target": 0.8,
+        "actual_coverage_pct": 80.0,
+        "retained_samples": 10266,
+        "rejected_samples": 2567,
+        "min_confidence_threshold": 0.9936,
+        "selective_accuracy": 100.0,
+        "selective_mae": 0.0
+      },
+      {
+        "coverage_target": 0.75,
+        "actual_coverage_pct": 75.0,
+        "retained_samples": 9625,
+        "rejected_samples": 3208,
+        "min_confidence_threshold": 0.9983,
+        "selective_accuracy": 100.0,
+        "selective_mae": 0.0
+      },
+      {
+        "coverage_target": 0.7,
+        "actual_coverage_pct": 70.0,
+        "retained_samples": 8983,
+        "rejected_samples": 3850,
+        "min_confidence_threshold": 0.9988,
+        "selective_accuracy": 100.0,
+        "selective_mae": 0.0
+      },
+      {
+        "coverage_target": 0.6,
+        "actual_coverage_pct": 60.0,
+        "retained_samples": 7700,
+        "rejected_samples": 5133,
+        "min_confidence_threshold": 0.9991,
+        "selective_accuracy": 100.0,
+        "selective_mae": 0.0
+      },
+      {
+        "coverage_target": 0.5,
+        "actual_coverage_pct": 50.0,
+        "retained_samples": 6416,
+        "rejected_samples": 6417,
+        "min_confidence_threshold": 0.9992,
+        "selective_accuracy": 100.0,
+        "selective_mae": 0.0
+      }
+    ]
+  },
+  "historical_30seed_aggregate": {
+    "ece_10bin_mean": 2.11,
+    "ece_10bin_std": 0.53,
+    "ece_15bin_mean": 2.22,
+    "ece_15bin_std": 0.51,
+    "brier_score_mean": 0.094,
+    "brier_score_std": 0.0065,
+    "accuracy_mean": 92.11,
+    "accuracy_std": 1.49,
+    "mae_mean": 0.1145,
+    "mae_std": 0.0179
+  },
+  "session_held_out_30seed_aggregate": {
+    "ece_10bin_mean": 2.6,
+    "brier_score_mean": 0.1068,
+    "accuracy_mean": 91.87,
+    "mae_mean": 0.1325
+  }
+}

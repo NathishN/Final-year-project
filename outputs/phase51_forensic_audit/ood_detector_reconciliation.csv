@@ -1,0 +1,4 @@
+detector,metadata_auroc,reported_auroc,metadata_aupr,reported_aupr,metadata_fpr95,reported_fpr95,disc_auroc,disc_aupr,source
+Mahalanobis,84.22,84.22,53.28,53.28,38.39,38.39,0.0,0.0,features_metadata.json
+Energy,81.99,81.99,49.96,49.96,41.38,41.38,0.0,0.0,features_metadata.json
+MSP,74.26,74.26,43.16,43.16,47.85,47.85,0.0,0.0,features_metadata.json

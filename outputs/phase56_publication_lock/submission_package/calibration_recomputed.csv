@@ -1,0 +1,4 @@
+scope,eval_type,sample_count,accuracy_pct,mae,ece_pct,brier_score,nll,notes
+Single Exemplar Seed 83,Individual Checkpoint,12833,93.71,0.0889,1.47,0.0857,0.1736,Ordinal cutpoint baseline MAE=0.0889; Categorical argmax MAE=0.1234
+30-Seed Independent Aggregate (Mean ± SD),Per-Seed Summary Statistics,12833,92.11 ± 1.49,0.1145 ± 0.0179,2.11 ± 0.53,0.0940 ± 0.0065,0.1940 ± 0.0141,30 models evaluated independently then averaged
+30-Seed Probability Ensemble,Averaged Probability Distribution,12833,91.15,0.1382,2.51,0.0887,0.1834,Corresponds to 2.51% ECE and 0.0887 Brier in phase50_calibration_report.md

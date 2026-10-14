@@ -1,0 +1,36 @@
+{
+  "audit_timestamp": "2026-10-14 10:55:06",
+  "root_cause_diagnosis": {
+    "finding": "ARITHMETIC_AND_DECODING_DISCREPANCY_RESOLVED",
+    "explanation": "The reported 84.7% error reduction was computed as: (0.0889 - 0.0136) / 0.0889 = 84.7019% ~ 84.7%. The baseline value 0.0889 is the ordinal CORAL cumulative cutpoint MAE (using pt['predictions']), which matches the stored checkpoint metric (MAE=0.0889, Accuracy=93.71%). In contrast, 0.1234 is the categorical argmax MAE (using argmax(pt['probabilities']), Accuracy=91.98%). Prior text inadvertently paired the categorical argmax baseline MAE (0.1234) with the ordinal cutpoint reduction (84.7%). If using the argmax baseline (0.1234), the reduction to 0.0136 is 88.98%. Because MonotonicCORAL is an ordinal regression model, the ordinal cutpoint prediction (MAE=0.0889, Accuracy=93.71%) is the mathematically appropriate primary formulation, yielding exactly an 84.7% reduction to 0.0136."
+  },
+  "seed83_exemplar_reconciliation": {
+    "checkpoint": "model_A_seed83_best.pth",
+    "coral_cutpoint_baseline": {
+      "accuracy": 0.9371,
+      "mae": 0.0889,
+      "selective_90_accuracy": 0.9928,
+      "selective_90_mae": 0.0136,
+      "exact_relative_reduction_pct": 84.71
+    },
+    "categorical_argmax_baseline": {
+      "accuracy": 0.9198,
+      "mae": 0.1234,
+      "selective_90_accuracy": 0.9928,
+      "selective_90_mae": 0.0136,
+      "exact_relative_reduction_pct": 88.98
+    }
+  },
+  "aggregate_30_seed_reconciliation": {
+    "n_seeds": 30,
+    "coral_cutpoint_mae_mean": 0.11452,
+    "coral_cutpoint_mae_std": 0.017848179661841688,
+    "coral_cutpoint_acc_mean": 0.9211433333333335,
+    "coral_cutpoint_acc_std": 0.01486958671905182,
+    "coral_sel90_mae_mean": 0.022109999999999998,
+    "coral_sel90_mae_std": 0.007592979970182077,
+    "coral_sel90_acc_mean": 0.9879333333333332,
+    "coral_sel90_acc_std": 0.00657756549310548,
+    "coral_sel90_reduction_mean": 81.021
+  }
+}

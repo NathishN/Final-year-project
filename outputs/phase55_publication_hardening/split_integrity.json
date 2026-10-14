@@ -1,0 +1,129 @@
+{
+  "audit_timestamp": "2026-10-14 10:57:12",
+  "historical_split_v2": {
+    "manifest_name": "historical_split_v2",
+    "manifest_path": "outputs/casm_v2/phase50_split_v2_manifest.csv",
+    "total_samples": 56036,
+    "null_or_empty_session_ids": 0,
+    "split_counts": {
+      "train": 39790,
+      "test": 12833,
+      "val": 3413
+    },
+    "duplicate_paths": 0,
+    "cross_split_path_duplicates": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "session_census": {
+      "total_unique_sessions": 80,
+      "train_sessions_count": 50,
+      "val_sessions_count": 10,
+      "test_sessions_count": 21,
+      "cross_split_sessions_count": 1,
+      "cross_split_sessions": [
+        {
+          "session_id": "20200730",
+          "distribution": {
+            "train": 147,
+            "val": 0,
+            "test": 119
+          }
+        }
+      ]
+    },
+    "grade_distribution_by_domain": {
+      "real_grade": {
+        "1": 892,
+        "0": 837,
+        "3": 355
+      },
+      "real_quality": {
+        "0": 3478,
+        "3": 3387,
+        "2": 523
+      },
+      "real_severity": {
+        "4": 1287,
+        "0": 779,
+        "1": 536
+      },
+      "fruits360": {
+        "0": 43962
+      }
+    }
+  },
+  "session_holdout_manifest": {
+    "manifest_name": "session_holdout_retrain",
+    "manifest_path": "outputs/phase52_final_validation/session_holdout_manifest.csv",
+    "total_samples": 56036,
+    "null_or_empty_session_ids": 0,
+    "split_counts": {
+      "train": 39643,
+      "test": 12980,
+      "val": 3413
+    },
+    "duplicate_paths": 0,
+    "cross_split_path_duplicates": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "session_census": {
+      "total_unique_sessions": 80,
+      "train_sessions_count": 49,
+      "val_sessions_count": 10,
+      "test_sessions_count": 21,
+      "cross_split_sessions_count": 0,
+      "cross_split_sessions": []
+    },
+    "grade_distribution_by_domain": {
+      "real_grade": {
+        "1": 892,
+        "0": 837,
+        "3": 355
+      },
+      "real_quality": {
+        "0": 3478,
+        "3": 3387,
+        "2": 523
+      },
+      "real_severity": {
+        "4": 1287,
+        "0": 779,
+        "1": 536
+      },
+      "fruits360": {
+        "0": 43962
+      }
+    }
+  },
+  "leakage_taxonomy": {
+    "file_level_leakage": {
+      "status": "PASSED (0 LEAKAGE)",
+      "details": "0 cross-split image path duplicates exist in either split_v2 or session_holdout_manifest."
+    },
+    "label_leakage": {
+      "status": "PASSED (0 LEAKAGE)",
+      "details": "Test labels were strictly masked during training and validation. No test labels influenced model weights."
+    },
+    "session_leakage": {
+      "historical_split_v2": "PARTIAL (1 cross-split session: 20200730 split with 147 in train, 119 in test)",
+      "session_holdout_manifest": "PASSED (0 cross-split sessions across all 80 unique acquisition sessions)"
+    },
+    "near_duplicate_leakage": {
+      "status": "CONTROLLED",
+      "details": "In fruits360, video rotation turntable frames share visual similarities. Confining sessions strictly to single partitions eliminates frame leakage across train and test."
+    },
+    "domain_and_background_similarity": {
+      "status": "CHARACTERIZED",
+      "details": "85.5% of test data originates from fruits360 clean white backgrounds. Market bins (real_quality) represent 11.5% and industrial conveyors (real_grade) represent 0.5%."
+    },
+    "feature_preprocessing_leakage": {
+      "status": "PASSED (0 LEAKAGE)",
+      "details": "ConvNeXt-Tiny embeddings were extracted independently per image using ImageNet-1k fixed weights. No global dataset-wide mean subtraction or test-dependent feature scaling was applied."
+    }
+  },
+  "certification_verdict": "CERTIFIED_WITH_EXPLICIT_PROTOCOL_DISCLOSURE"
+}

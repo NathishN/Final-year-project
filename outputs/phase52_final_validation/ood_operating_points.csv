@@ -1,0 +1,4 @@
+detector,operating_tpr,fpr_at_95tpr,auroc,aupr_ood
+Mahalanobis,95.0%,38.39%,84.22,53.28
+Energy,95.0%,41.38%,81.99,49.96
+MSP,95.0%,47.85%,74.26,43.16

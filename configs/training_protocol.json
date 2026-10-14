@@ -1,0 +1,84 @@
+{
+  "protocol_version": "5.0-CONFIRMATORY",
+  "split_version": "split_v2",
+  "dataset_manifest": "outputs/casm_v2/phase50_split_v2_manifest.csv",
+  "feature_source": "outputs/features/phase4_dataset.pt",
+  "backbone": "ConvNeXt-Tiny (ImageNet-1k pretrained, 768-D)",
+  "num_classes": 5,
+  "classes": [
+    "Healthy",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Rotten"
+  ],
+  "ordinal_head": "MonotonicCORALHead (softplus parameterized decreasing biases)",
+  "species_embedding": {
+    "known_species": [
+      "Apple",
+      "Banana",
+      "Mango",
+      "Orange",
+      "Tomato"
+    ],
+    "embedding_dim": 16,
+    "unknown_index": 5
+  },
+  "loss_weighting": {
+    "method": "Effective Number of Samples (Cui et al., 2019)",
+    "beta": 0.999,
+    "normalized_weights": [
+      0.4433,
+      0.7762,
+      2.3594,
+      0.5545,
+      0.8667
+    ]
+  },
+  "optimization": {
+    "optimizer": "AdamW",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "epochs": 15,
+    "batch_size": 2048,
+    "checkpoint_criterion": "lowest validation MAE / highest validation QWK (val only)"
+  },
+  "seeds": [
+    42,
+    123,
+    777,
+    999,
+    2025,
+    1,
+    2,
+    3,
+    5,
+    7,
+    11,
+    13,
+    17,
+    19,
+    23,
+    31,
+    37,
+    41,
+    43,
+    47,
+    53,
+    59,
+    61,
+    67,
+    71,
+    73,
+    79,
+    83,
+    89,
+    97
+  ],
+  "configurations": {
+    "A": "Image Only",
+    "B": "Image + Species (Primary Hypothesis)",
+    "C": "Image + OOD",
+    "D": "Image + Species + OOD"
+  }
+}

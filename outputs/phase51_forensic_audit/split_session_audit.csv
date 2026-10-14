@@ -1,0 +1,16 @@
+split,severity_grade,count
+test,0,11605
+test,1,88
+test,2,119
+test,3,868
+test,4,153
+train,0,36414
+train,1,846
+train,2,208
+train,3,1606
+train,4,716
+val,0,1037
+val,1,494
+val,2,196
+val,3,1268
+val,4,418

@@ -1,0 +1,54 @@
+================================================================================
+PHASE 5.6 AUTOMATED TEST EXECUTION REPORT & ARTIFACT REPRODUCIBILITY LOG
+================================================================================
+Timestamp: 2026-10-14 13:53:53
+Execution Command: pytest -v --junitxml=outputs/phase56_publication_lock/test_report.xml
+Root Directory: C:\fruit_dataset
+Operating System: Windows 11 Enterprise (10.0.26300-SP0)
+Python Version: 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]
+Core Libraries:
+  - PyTorch: 2.5.1+cu121 (CUDA Available: True, Device: NVIDIA GeForce RTX 3050 Laptop GPU)
+  - SciPy: 1.17.1
+  - NumPy: 2.4.0
+  - Pandas: 2.3.3
+  - Scikit-Learn: 1.8.0
+  - Pytest: 8.3.3
+
+================================ TEST SUMMARY ==================================
+Total Collected Tests: 28
+Passed: 28
+Failed: 0
+Skipped: 0
+Errors: 0
+Duration: 115.36 seconds (0:01:55)
+
+Detailed Test Outcomes:
+  [PASS] outputs/casm_v2/test_corrected_modules.py::TestCORALImplementationAudit::test_monotonic_coral_extreme_values_and_dtypes
+  [PASS] outputs/casm_v2/test_corrected_modules.py::TestCORALImplementationAudit::test_monotonic_coral_head_properties
+  [PASS] outputs/casm_v2/test_corrected_modules.py::TestCORALImplementationAudit::test_original_coral_failure_mode
+  [PASS] outputs/casm_v2/test_corrected_modules.py::TestRobustSpeciesEmbedding::test_known_and_unknown_species_routing
+  [PASS] tests/test_data_integrity.py::TestDataIntegrity::test_all_five_grades_present
+  [PASS] tests/test_data_integrity.py::TestDataIntegrity::test_grade2_test_coverage
+  [PASS] tests/test_data_integrity.py::TestDataIntegrity::test_total_valid_samples
+  [PASS] tests/test_data_integrity.py::TestDataIntegrity::test_zero_cross_split_path_leakage
+  [PASS] tests/test_data_integrity.py::TestDataIntegrity::test_zero_grade2_session_leakage
+  [PASS] tests/test_end_to_end_smoke.py::TestEndToEndSmoke::test_forward_backward_pass
+  [PASS] tests/test_integration_predictions.py::TestIntegrationPredictions::test_all_120_prediction_files_present
+  [PASS] tests/test_integration_predictions.py::TestIntegrationPredictions::test_confirmatory_statistical_reconciliation
+  [PASS] tests/test_integration_predictions.py::TestIntegrationPredictions::test_prediction_tensor_structure_and_probabilities
+  [PASS] tests/test_integration_predictions.py::TestIntegrationPredictions::test_recomputed_metrics_match_stored
+  [PASS] tests/test_metrics_and_calibration.py::TestMetricsAndCalibration::test_degenerate_qwk_detection
+  [PASS] tests/test_metrics_and_calibration.py::TestMetricsAndCalibration::test_ece_perfect_calibration
+  [PASS] tests/test_metrics_and_calibration.py::TestMetricsAndCalibration::test_qwk_perfect_and_worst
+  [PASS] tests/test_model_properties.py::TestModelProperties::test_class_probs_valid_distribution
+  [PASS] tests/test_model_properties.py::TestModelProperties::test_cutpoint_strictly_decreasing
+  [PASS] tests/test_model_properties.py::TestModelProperties::test_extreme_logit_stability
+  [PASS] tests/test_model_properties.py::TestModelProperties::test_unknown_species_routing
+  [PASS] tests/test_phase56_regression_hardening.py::TestPhase56RegressionHardening::test_holm_bonferroni_multiplicity_control
+  [PASS] tests/test_phase56_regression_hardening.py::TestPhase56RegressionHardening::test_monotonic_coral_head_properties
+  [PASS] tests/test_phase56_regression_hardening.py::TestPhase56RegressionHardening::test_ordinal_decoding_rules
+  [PASS] tests/test_phase56_regression_hardening.py::TestPhase56RegressionHardening::test_real_checkpoint_parameter_count
+  [PASS] tests/test_phase56_regression_hardening.py::TestPhase56RegressionHardening::test_selective_abstention_error_reduction
+  [PASS] tests/test_phase56_regression_hardening.py::TestPhase56RegressionHardening::test_session_isolation_zero_leakage
+  [PASS] tests/test_phase56_regression_hardening.py::TestPhase56RegressionHardening::test_wilcoxon_recomputed_exact_and_approx
+================================================================================

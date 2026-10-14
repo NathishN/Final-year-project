@@ -1,0 +1,6 @@
+Model_ID,Context_Configuration,Accuracy,MAE,QWK,Off_By_One_Acc,Macro_F1,Weighted_F1
+Model A,Image Only,94.35,0.0886,0.8859,97.51,61.32,96.15
+Model B,Image + Species,88.56,0.21,0.696,94.21,55.84,91.58
+Model C,Image + Species + Grade,93.83,0.1056,0.8634,96.81,62.85,95.81
+Model D,Image + Species + Grade + OOD,90.33,0.1586,0.7878,94.88,55.0,93.51
+Model E,Full Context-Aware (CASM),88.82,0.1745,0.7821,95.01,54.4,92.65

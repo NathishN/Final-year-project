@@ -1,0 +1,6 @@
+metric,value,protocol
+ECE (10 bins),1.45%,Validation-calibrated probabilities on test split
+ECE (15 bins),1.90%,Validation-calibrated probabilities on test split
+Brier Score,0.0857,Mean multi-class squared error on probability simplex
+Mean Confidence,92.44%,Average predicted maximum class probability
+Test Accuracy,93.71%,Unrejected full test set

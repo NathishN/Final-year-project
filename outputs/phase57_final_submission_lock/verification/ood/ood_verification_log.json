@@ -1,0 +1,47 @@
+{
+  "ood_cache_sha256": "906fe978a5a7b5b71b212c1944943f8c27ef13d622e21a6c990d5c48d8d511bf",
+  "ood_class_counts": {
+    "Cherry": 1000,
+    "Kiwi": 1000,
+    "Peach": 1000,
+    "Pineapple": 1000,
+    "Plum": 1000
+  },
+  "ood_sample_rebuilt_matches_cache": true,
+  "ood_pool_sizes": {
+    "Cherry": 12230,
+    "Pineapple": 2624,
+    "Kiwi": 1244,
+    "Peach": 29002,
+    "Plum": 8392
+  },
+  "ood_files_exist": 5000,
+  "n_id_train": 39790,
+  "n_id_test": 12833,
+  "id_test_domain_counts": {
+    "fruits360": 10974,
+    "real_quality": 1480,
+    "real_severity": 312,
+    "real_grade": 67
+  },
+  "id_test_paths_unique": true,
+  "ood_id_path_overlap": 0,
+  "id_species_in_test": [
+    "Apple",
+    "Banana",
+    "Mango",
+    "Orange",
+    "Tomato"
+  ],
+  "checkpoint_sha256": "c9ac2622fe04c6c1a4966c481292e6ef39385c595d0209e15648daa88dac1b6a",
+  "fidelity": {
+    "id_msp_correct_vs_stored_fullforward_maxabs": 0.000823676586151123,
+    "id_msp_defective_vs_stored_fullforward_maxabs": 0.5370230674743652,
+    "id_msp_defective_vs_stored_fullforward_meanabs": 0.11247921735048294,
+    "ood_logits_correct_vs_stored_fullforward_maxabs": 0.0021653175354003906,
+    "ood_logits_defective_vs_stored_fullforward_maxabs": 3.759064197540283
+  },
+  "n_ood": 5000,
+  "score_direction": "higher = more OOD for all detectors",
+  "positive_class": "y=1 is OOD"
+}

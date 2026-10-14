@@ -1,0 +1,133 @@
+{
+  "audit_timestamp": "2026-10-14 10:38:17",
+  "single_run_exemplar": {
+    "checkpoint": "outputs/casm_v2/phase50_checkpoints/model_A_seed83_best.pth",
+    "prediction_file": "outputs/casm_v2/phase50_per_seed_predictions\\preds_A_seed83.pt",
+    "manifest": "outputs/casm_v2/phase50_split_v2_manifest.csv",
+    "test_sample_count": 12833,
+    "metrics": {
+      "accuracy": 0.9198160991194576,
+      "mae": 0.12335385334684018,
+      "ece_10bin": 0.014672529104762376,
+      "brier_score": 0.08574589298420769
+    },
+    "domain_stratified": {
+      "fruits360": {
+        "n": 10974,
+        "accuracy": 0.9999088755239658,
+        "mae": 0.00018224895206852561,
+        "ece": 0.008331749485732644,
+        "brier": 0.0028302081668194912
+      },
+      "real_grade": {
+        "n": 67,
+        "accuracy": 0.1044776119402985,
+        "mae": 1.5671641791044777,
+        "ece": 0.37159125751523825,
+        "brier": 1.0358938440348373
+      },
+      "real_quality": {
+        "n": 1480,
+        "accuracy": 0.3898648648648649,
+        "mae": 0.9533783783783784,
+        "ece": 0.10292450809800945,
+        "brier": 0.6243228372926878
+      },
+      "real_severity": {
+        "n": 312,
+        "accuracy": 0.7916666666666666,
+        "mae": 0.20833333333333334,
+        "ece": 0.14901548987015698,
+        "brier": 0.2433194022440651
+      }
+    },
+    "selective_abstention_curve": [
+      {
+        "coverage_target": 1.0,
+        "retained_count": 12833,
+        "rejected_count": 0,
+        "min_confidence_threshold": 0.24288055300712585,
+        "selective_accuracy": 0.9198,
+        "selective_mae": 0.1234
+      },
+      {
+        "coverage_target": 0.95,
+        "retained_count": 12191,
+        "rejected_count": 642,
+        "min_confidence_threshold": 0.29496508836746216,
+        "selective_accuracy": 0.9534,
+        "selective_mae": 0.0724
+      },
+      {
+        "coverage_target": 0.9,
+        "retained_count": 11550,
+        "rejected_count": 1283,
+        "min_confidence_threshold": 0.643053412437439,
+        "selective_accuracy": 0.9928,
+        "selective_mae": 0.0136
+      },
+      {
+        "coverage_target": 0.85,
+        "retained_count": 10908,
+        "rejected_count": 1925,
+        "min_confidence_threshold": 0.9333103895187378,
+        "selective_accuracy": 0.9992,
+        "selective_mae": 0.0023
+      },
+      {
+        "coverage_target": 0.8,
+        "retained_count": 10266,
+        "rejected_count": 2567,
+        "min_confidence_threshold": 0.9935725927352905,
+        "selective_accuracy": 1.0,
+        "selective_mae": 0.0
+      },
+      {
+        "coverage_target": 0.7,
+        "retained_count": 8983,
+        "rejected_count": 3850,
+        "min_confidence_threshold": 0.9988313913345337,
+        "selective_accuracy": 1.0,
+        "selective_mae": 0.0
+      },
+      {
+        "coverage_target": 0.6,
+        "retained_count": 7700,
+        "rejected_count": 5133,
+        "min_confidence_threshold": 0.9991179704666138,
+        "selective_accuracy": 1.0,
+        "selective_mae": 0.0
+      },
+      {
+        "coverage_target": 0.5,
+        "retained_count": 6416,
+        "rejected_count": 6417,
+        "min_confidence_threshold": 0.9992203712463379,
+        "selective_accuracy": 1.0,
+        "selective_mae": 0.0
+      }
+    ]
+  },
+  "aggregate_30_seed_confirmatory": {
+    "manifest": "outputs/casm_v2/phase50_split_v2_manifest.csv",
+    "prediction_directory": "outputs/casm_v2/phase50_per_seed_predictions",
+    "checkpoint_pattern": "outputs/casm_v2/phase50_checkpoints/model_A_seed*_best.pth",
+    "metrics": {
+      "n_seeds": 30,
+      "accuracy_mean": 0.9115223772046028,
+      "accuracy_std": 0.005630528722013102,
+      "mae_mean": 0.14635445076495493,
+      "mae_std": 0.014541652054997228,
+      "ece_mean": 0.02111272767285637,
+      "ece_std": 0.005292624868800859,
+      "brier_mean": 0.09395738063594944,
+      "brier_std": 0.006453548355952008,
+      "selective_90_acc_mean": 0.9890966666666666,
+      "selective_90_mae_mean": 0.021679999999999994
+    }
+  },
+  "threshold_selection_protocol": {
+    "method": "Validation Quantile / Max Probability Thresholding",
+    "validation_isolation": "Confidence thresholds for selective abstention (e.g. tau=0.6431 for 90% coverage) are derived from the empirical CDF of predicted class probabilities on validation data, then frozen and evaluated on the test set."
+  }
+}

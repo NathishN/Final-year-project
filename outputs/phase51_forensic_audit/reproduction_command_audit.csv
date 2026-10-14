@@ -1,0 +1,8 @@
+documented_command,documented_path,documented_exists,actual_path,actual_exists,status
+python scripts/phaseB_dataset_audit.py,C:\fruit_dataset\scripts\phaseB_dataset_audit.py,False,C:\fruit_dataset\scripts\phaseB_dataset_integrity.py,True,WRONG NAME — actual: phaseB_dataset_integrity.py
+python scripts/phaseC_ordinal_audit.py,C:\fruit_dataset\scripts\phaseC_ordinal_audit.py,False,C:\fruit_dataset\scripts\phaseC_ordinal_loss_audit.py,True,WRONG NAME — actual: phaseC_ordinal_loss_audit.py
+python scripts/phaseD_confirmatory_audit.py,C:\fruit_dataset\scripts\phaseD_confirmatory_audit.py,True,C:\fruit_dataset\scripts\phaseD_confirmatory_audit.py,True,OK
+python scripts/phaseE_ood_audit.py,C:\fruit_dataset\scripts\phaseE_ood_audit.py,True,C:\fruit_dataset\scripts\phaseE_ood_audit.py,True,OK
+python scripts/phaseF_domain_audit.py,C:\fruit_dataset\scripts\phaseF_domain_audit.py,True,C:\fruit_dataset\scripts\phaseF_domain_audit.py,True,OK
+python scripts/phaseG_calibration_audit.py,C:\fruit_dataset\scripts\phaseG_calibration_audit.py,True,C:\fruit_dataset\scripts\phaseG_calibration_audit.py,True,OK
+python scripts/phaseH_efficiency_audit.py,C:\fruit_dataset\scripts\phaseH_efficiency_audit.py,False,C:\fruit_dataset\scripts\phaseH_model_efficiency.py,True,WRONG NAME — actual: phaseH_model_efficiency.py

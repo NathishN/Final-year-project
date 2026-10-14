@@ -1,0 +1,308 @@
+{
+  "overall": {
+    "total_records": 56038,
+    "split_counts": {
+      "train": 39909,
+      "test": 12714,
+      "val": 3413,
+      "EXCLUDED": 2
+    },
+    "excluded_count": 2
+  },
+  "splits": {
+    "train": {
+      "total_images": 39909,
+      "unique_paths": 39909,
+      "files_existing_on_disk": 39909,
+      "grade_counts": {
+        "0": 36414,
+        "1": 846,
+        "2": 327,
+        "3": 1606,
+        "4": 716
+      },
+      "species_counts": {
+        "Apple": 18262,
+        "Tomato": 11626,
+        "Orange": 4800,
+        "Banana": 3918,
+        "Mango": 1303
+      },
+      "domain_counts": {
+        "fruits360": 32988,
+        "real_quality": 4163,
+        "real_severity": 1515,
+        "real_grade": 1243
+      },
+      "grade_x_species": {
+        "grade_0": {
+          "Apple": 17459,
+          "Banana": 2972,
+          "Mango": 1086,
+          "Orange": 4190,
+          "Tomato": 10707
+        },
+        "grade_1": {
+          "Apple": 110,
+          "Banana": 263,
+          "Mango": 100,
+          "Orange": 0,
+          "Tomato": 373
+        },
+        "grade_2": {
+          "Apple": 113,
+          "Banana": 119,
+          "Mango": 0,
+          "Orange": 95,
+          "Tomato": 0
+        },
+        "grade_3": {
+          "Apple": 580,
+          "Banana": 277,
+          "Mango": 117,
+          "Orange": 515,
+          "Tomato": 117
+        },
+        "grade_4": {
+          "Apple": 0,
+          "Banana": 287,
+          "Mango": 0,
+          "Orange": 0,
+          "Tomato": 429
+        }
+      },
+      "grade_x_domain": {
+        "grade_0": {
+          "real_grade": 327,
+          "real_quality": 2538,
+          "real_severity": 561,
+          "fruits360": 32988
+        },
+        "grade_1": {
+          "real_grade": 608,
+          "real_quality": 0,
+          "real_severity": 238,
+          "fruits360": 0
+        },
+        "grade_2": {
+          "real_grade": 0,
+          "real_quality": 327,
+          "real_severity": 0,
+          "fruits360": 0
+        },
+        "grade_3": {
+          "real_grade": 308,
+          "real_quality": 1298,
+          "real_severity": 0,
+          "fruits360": 0
+        },
+        "grade_4": {
+          "real_grade": 0,
+          "real_quality": 0,
+          "real_severity": 716,
+          "fruits360": 0
+        }
+      },
+      "unmapped_labels_count": 0
+    },
+    "val": {
+      "total_images": 3413,
+      "unique_paths": 3413,
+      "files_existing_on_disk": 3413,
+      "grade_counts": {
+        "0": 1037,
+        "1": 494,
+        "2": 196,
+        "3": 1268,
+        "4": 418
+      },
+      "species_counts": {
+        "Banana": 1066,
+        "Apple": 991,
+        "Tomato": 924,
+        "Mango": 219,
+        "Orange": 213
+      },
+      "domain_counts": {
+        "real_quality": 1864,
+        "real_severity": 775,
+        "real_grade": 774
+      },
+      "grade_x_species": {
+        "grade_0": {
+          "Apple": 296,
+          "Banana": 267,
+          "Mango": 77,
+          "Orange": 183,
+          "Tomato": 214
+        },
+        "grade_1": {
+          "Apple": 60,
+          "Banana": 9,
+          "Mango": 142,
+          "Orange": 0,
+          "Tomato": 283
+        },
+        "grade_2": {
+          "Apple": 0,
+          "Banana": 166,
+          "Mango": 0,
+          "Orange": 30,
+          "Tomato": 0
+        },
+        "grade_3": {
+          "Apple": 635,
+          "Banana": 624,
+          "Mango": 0,
+          "Orange": 0,
+          "Tomato": 9
+        },
+        "grade_4": {
+          "Apple": 0,
+          "Banana": 0,
+          "Mango": 0,
+          "Orange": 0,
+          "Tomato": 418
+        }
+      },
+      "grade_x_domain": {
+        "grade_0": {
+          "real_grade": 504,
+          "real_quality": 409,
+          "real_severity": 124
+        },
+        "grade_1": {
+          "real_grade": 261,
+          "real_quality": 0,
+          "real_severity": 233
+        },
+        "grade_2": {
+          "real_grade": 0,
+          "real_quality": 196,
+          "real_severity": 0
+        },
+        "grade_3": {
+          "real_grade": 9,
+          "real_quality": 1259,
+          "real_severity": 0
+        },
+        "grade_4": {
+          "real_grade": 0,
+          "real_quality": 0,
+          "real_severity": 418
+        }
+      },
+      "unmapped_labels_count": 0
+    },
+    "test": {
+      "total_images": 12714,
+      "unique_paths": 12714,
+      "files_existing_on_disk": 12714,
+      "grade_counts": {
+        "0": 11605,
+        "1": 88,
+        "2": 0,
+        "3": 868,
+        "4": 153
+      },
+      "species_counts": {
+        "Apple": 5709,
+        "Tomato": 3614,
+        "Orange": 1914,
+        "Banana": 1157,
+        "Mango": 320
+      },
+      "domain_counts": {
+        "fruits360": 10974,
+        "real_quality": 1361,
+        "real_severity": 312,
+        "real_grade": 67
+      },
+      "grade_x_species": {
+        "grade_0": {
+          "Apple": 5669,
+          "Banana": 858,
+          "Mango": 312,
+          "Orange": 1270,
+          "Tomato": 3496
+        },
+        "grade_1": {
+          "Apple": 2,
+          "Banana": 63,
+          "Mango": 8,
+          "Orange": 0,
+          "Tomato": 15
+        },
+        "grade_2": {
+          "Apple": 0,
+          "Banana": 0,
+          "Mango": 0,
+          "Orange": 0,
+          "Tomato": 0
+        },
+        "grade_3": {
+          "Apple": 38,
+          "Banana": 186,
+          "Mango": 0,
+          "Orange": 644,
+          "Tomato": 0
+        },
+        "grade_4": {
+          "Apple": 0,
+          "Banana": 50,
+          "Mango": 0,
+          "Orange": 0,
+          "Tomato": 103
+        }
+      },
+      "grade_x_domain": {
+        "grade_0": {
+          "real_grade": 6,
+          "real_quality": 531,
+          "real_severity": 94,
+          "fruits360": 10974
+        },
+        "grade_1": {
+          "real_grade": 23,
+          "real_quality": 0,
+          "real_severity": 65,
+          "fruits360": 0
+        },
+        "grade_2": {
+          "real_grade": 0,
+          "real_quality": 0,
+          "real_severity": 0,
+          "fruits360": 0
+        },
+        "grade_3": {
+          "real_grade": 38,
+          "real_quality": 830,
+          "real_severity": 0,
+          "fruits360": 0
+        },
+        "grade_4": {
+          "real_grade": 0,
+          "real_quality": 0,
+          "real_severity": 153,
+          "fruits360": 0
+        }
+      },
+      "unmapped_labels_count": 0
+    }
+  },
+  "path_leakage": {
+    "train_val_overlap": 0,
+    "train_test_overlap": 0,
+    "val_test_overlap": 0
+  },
+  "content_hash_audit": {
+    "non_fruits360_hashed": 12076,
+    "unique_hashes": 12073,
+    "cross_split_content_duplicates_count": 0,
+    "cross_split_duplicates_details": []
+  },
+  "metadata_conflicts": {
+    "total_conflicts": 0,
+    "details": []
+  }
+}

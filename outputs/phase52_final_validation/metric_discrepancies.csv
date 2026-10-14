@@ -1,0 +1,5 @@
+config,name,delta_qwk,delta_mae,delta_acc
+A,Image-Only Baseline,1.9e-05,2.2e-05,0.0038
+B,Image + Species Conditioning,1e-05,3e-05,0.0036
+C,Image + OOD Context,1.2e-05,3e-05,0.003
+D,Image + Species + OOD Context,4e-06,4.8e-05,0.0043

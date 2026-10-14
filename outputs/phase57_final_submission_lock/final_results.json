@@ -1,0 +1,414 @@
+{
+  "metadata": {
+    "project_title": "Trustworthy Open-Set Ordinal Multi-Fruit Quality Grading with Monotonic Ordinal Regression and Real-Image OOD Evaluation",
+    "venue": "IEEE Transactions on Agri-Food Computing / Pattern Analysis & Machine Intelligence",
+    "total_dataset_images": 56036,
+    "total_species": 5,
+    "species_list": [
+      "Apple",
+      "Banana",
+      "Mango",
+      "Orange",
+      "Tomato"
+    ],
+    "total_grades": 5,
+    "grade_list": [
+      "Healthy (0)",
+      "Mild (1)",
+      "Moderate (2)",
+      "Severe (3)",
+      "Rotten (4)"
+    ],
+    "total_sessions": 80,
+    "n_training_seeds": 30,
+    "evaluated_seeds": [
+      42,
+      123,
+      777,
+      999,
+      2025,
+      1,
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      31,
+      37,
+      41,
+      43,
+      47,
+      53,
+      59,
+      61,
+      67,
+      71,
+      73,
+      79,
+      83,
+      89,
+      97
+    ],
+    "total_trained_models": 240,
+    "encoder": "ConvNeXt-Tiny (frozen, 27,820,128 parameters)",
+    "head": "MonotonicCORALHead (trainable, 626,180 parameters)",
+    "total_model_parameters": 28446308
+  },
+  "historical_split_v2": {
+    "n_test_images": 12833,
+    "n_seeds": 30,
+    "summary_by_config": {
+      "A": {
+        "qwk_mean": 0.8477807411415744,
+        "qwk_std": 0.02596338155909093,
+        "qwk_min": 0.7945067340958292,
+        "qwk_max": 0.8889288515013576,
+        "mae_mean": 0.11452245512870467,
+        "mae_std": 0.0178525359375763,
+        "acc_mean": 92.11382113821136,
+        "acc_std": 1.4866949751634992,
+        "macro_f1_mean": 49.48324561983976,
+        "macro_f1_std": 3.6653186513599407,
+        "n_seeds": 30
+      },
+      "B": {
+        "qwk_mean": 0.8117896220255431,
+        "qwk_std": 0.03643073013403863,
+        "qwk_min": 0.732855532014829,
+        "qwk_max": 0.8728766958839661,
+        "mae_mean": 0.1267695264812073,
+        "mae_std": 0.01843155471267082,
+        "acc_mean": 92.0564170497935,
+        "acc_std": 1.2288015667851317,
+        "macro_f1_mean": 49.3472431091456,
+        "macro_f1_std": 3.391791424891875,
+        "n_seeds": 30
+      },
+      "C": {
+        "qwk_mean": 0.7777879243884853,
+        "qwk_std": 0.04496500831437763,
+        "qwk_min": 0.6756016974871123,
+        "qwk_max": 0.8591095396599708,
+        "mae_mean": 0.1553702693576456,
+        "mae_std": 0.024056852135635142,
+        "acc_mean": 89.41297176550039,
+        "acc_std": 1.7117603423995895,
+        "macro_f1_mean": 42.38601419704311,
+        "macro_f1_std": 4.324614432622039,
+        "n_seeds": 30
+      },
+      "D": {
+        "qwk_mean": 0.7630044064414131,
+        "qwk_std": 0.040196921785061755,
+        "qwk_min": 0.6833293742195019,
+        "qwk_max": 0.836967921482425,
+        "mae_mean": 0.15364814670510923,
+        "mae_std": 0.017014484079812216,
+        "acc_mean": 90.28572170705732,
+        "acc_std": 1.353795291614173,
+        "macro_f1_mean": 44.39281408321813,
+        "macro_f1_std": 3.695178449856995,
+        "n_seeds": 30
+      }
+    },
+    "contrasts": {
+      "B-A": {
+        "mean_diff": -0.03599111911603116,
+        "std_diff": 0.04740337063713933,
+        "se_diff": 0.008654631799913083,
+        "ci_95": [
+          -0.05369183171216739,
+          -0.018290406519894924
+        ],
+        "cohen_dz": -0.7592523196616959,
+        "t_stat": -4.15859622316834,
+        "df": 29,
+        "raw_p_t": 0.0002596646927324798,
+        "wilcoxon_stat_W": 72.0,
+        "pos_rank_sum_W_plus": 72.0,
+        "neg_rank_sum_W_minus": 393.0,
+        "raw_p_exact_permutation": 0.0005548261106014252,
+        "raw_p_asymptotic": 0.0009626589290659114,
+        "p_scipy_exact_noties": 0.0005548261106014252,
+        "ties": [],
+        "n_positive": 9,
+        "n_negative": 21,
+        "holm_p_t": 0.0002596646927324798,
+        "holm_p_exact_permutation": 0.0005548261106014252
+      },
+      "C-A": {
+        "mean_diff": -0.06999281675308919,
+        "std_diff": 0.05406103896229214,
+        "se_diff": 0.009870150173937694,
+        "ci_95": [
+          -0.09017954399333178,
+          -0.049806089512846596
+        ],
+        "cohen_dz": -1.294699807784115,
+        "t_stat": -7.091362899209624,
+        "df": 29,
+        "raw_p_t": 8.402773488482756e-08,
+        "wilcoxon_stat_W": 16.0,
+        "pos_rank_sum_W_plus": 16.0,
+        "neg_rank_sum_W_minus": 449.0,
+        "raw_p_exact_permutation": 3.1478703022003174e-07,
+        "raw_p_asymptotic": 8.466081690383873e-06,
+        "p_scipy_exact_noties": 3.1478703022003174e-07,
+        "ties": [],
+        "n_positive": 2,
+        "n_negative": 28,
+        "holm_p_t": 1.6805546976965512e-07,
+        "holm_p_exact_permutation": 6.295740604400635e-07
+      },
+      "D-A": {
+        "mean_diff": -0.08477633470016133,
+        "std_diff": 0.04302511322304668,
+        "se_diff": 0.007855275017158823,
+        "ci_95": [
+          -0.10084217882350507,
+          -0.06871049057681758
+        ],
+        "cohen_dz": -1.9703919025307837,
+        "t_stat": -10.792280921416308,
+        "df": 29,
+        "raw_p_t": 1.138316551506182e-11,
+        "wilcoxon_stat_W": 0.0,
+        "pos_rank_sum_W_plus": 0.0,
+        "neg_rank_sum_W_minus": 465.0,
+        "raw_p_exact_permutation": 1.862645149230957e-09,
+        "raw_p_asymptotic": 1.7343976283205784e-06,
+        "p_scipy_exact_noties": 1.862645149230957e-09,
+        "ties": [],
+        "n_positive": 0,
+        "n_negative": 30,
+        "holm_p_t": 3.414949654518546e-11,
+        "holm_p_exact_permutation": 5.587935447692871e-09
+      }
+    }
+  },
+  "session_holdout_split": {
+    "n_test_images": 12980,
+    "n_seeds": 30,
+    "summary_by_config": {
+      "A": {
+        "qwk_mean": 0.8037667549232529,
+        "qwk_std": 0.03353607980817975,
+        "qwk_min": 0.7071740092000033,
+        "qwk_max": 0.8546709325412412,
+        "mae_mean": 0.13251155624036978,
+        "mae_std": 0.01729399807652202,
+        "acc_mean": 91.87390857729842,
+        "acc_std": 1.171956008888655,
+        "macro_f1_mean": 48.20517156289172,
+        "macro_f1_std": 3.971118568290165,
+        "n_seeds": 30
+      },
+      "B": {
+        "qwk_mean": 0.7776133003105316,
+        "qwk_std": 0.04310305475525903,
+        "qwk_min": 0.6664402897077681,
+        "qwk_max": 0.8451841033510886,
+        "mae_mean": 0.14329738058551617,
+        "mae_std": 0.01769840702931078,
+        "acc_mean": 91.57781201848998,
+        "acc_std": 1.125304762982249,
+        "macro_f1_mean": 45.97545347132404,
+        "macro_f1_std": 3.656665506985157,
+        "n_seeds": 30
+      },
+      "C": {
+        "qwk_mean": 0.7513213325294014,
+        "qwk_std": 0.03515862436544723,
+        "qwk_min": 0.6787027883308901,
+        "qwk_max": 0.8342802824727934,
+        "mae_mean": 0.16354391371340524,
+        "mae_std": 0.017807910387076655,
+        "acc_mean": 89.57267591165898,
+        "acc_std": 1.3671158818317017,
+        "macro_f1_mean": 41.92229873920644,
+        "macro_f1_std": 3.5470276187858327,
+        "n_seeds": 30
+      },
+      "D": {
+        "qwk_mean": 0.7163840547109024,
+        "qwk_std": 0.04938213412096658,
+        "qwk_min": 0.6101300192037455,
+        "qwk_max": 0.8052616166455313,
+        "mae_mean": 0.1724910118130457,
+        "mae_std": 0.018227305581218732,
+        "acc_mean": 89.83256291730868,
+        "acc_std": 1.1480418839886304,
+        "macro_f1_mean": 42.4899018456819,
+        "macro_f1_std": 2.820024134228305,
+        "n_seeds": 30
+      }
+    },
+    "contrasts": {
+      "B-A": {
+        "mean_diff": -0.026153454612721137,
+        "std_diff": 0.05211124675058921,
+        "se_diff": 0.0095141684483385,
+        "ci_95": [
+          -0.04561211734831649,
+          -0.006694791877125787
+        ],
+        "cohen_dz": -0.5018773536141778,
+        "t_stat": -2.748895476754821,
+        "df": 29,
+        "raw_p_t": 0.010182201268586249,
+        "wilcoxon_stat_W": 125.0,
+        "pos_rank_sum_W_plus": 125.0,
+        "neg_rank_sum_W_minus": 340.0,
+        "raw_p_exact_permutation": 0.026228994131088257,
+        "raw_p_asymptotic": 0.02702915661831454,
+        "p_scipy_exact_noties": 0.026228994131088257,
+        "ties": [],
+        "n_positive": 10,
+        "n_negative": 20,
+        "holm_p_t": 0.010182201268586249,
+        "holm_p_exact_permutation": 0.026228994131088257
+      },
+      "C-A": {
+        "mean_diff": -0.05244542239385167,
+        "std_diff": 0.04893163965017026,
+        "se_diff": 0.008933654270704148,
+        "ci_95": [
+          -0.07071680011792392,
+          -0.03417404466977943
+        ],
+        "cohen_dz": -1.0718100347505766,
+        "t_stat": -5.870545333932867,
+        "df": 29,
+        "raw_p_t": 2.2732705129243434e-06,
+        "wilcoxon_stat_W": 29.0,
+        "pos_rank_sum_W_plus": 29.0,
+        "neg_rank_sum_W_minus": 436.0,
+        "raw_p_exact_permutation": 3.2391399145126343e-06,
+        "raw_p_asymptotic": 2.8434237746031825e-05,
+        "p_scipy_exact_noties": 3.2391399145126343e-06,
+        "ties": [],
+        "n_positive": 4,
+        "n_negative": 26,
+        "holm_p_t": 4.546541025848687e-06,
+        "holm_p_exact_permutation": 6.4782798290252686e-06
+      },
+      "D-A": {
+        "mean_diff": -0.08738270021235046,
+        "std_diff": 0.05550897938636489,
+        "se_diff": 0.010134506718000442,
+        "ci_95": [
+          -0.1081100973872065,
+          -0.06665530303749442
+        ],
+        "cohen_dz": -1.5742083745430018,
+        "t_stat": -8.622294369507433,
+        "df": 29,
+        "raw_p_t": 1.701536048025114e-09,
+        "wilcoxon_stat_W": 9.0,
+        "pos_rank_sum_W_plus": 9.0,
+        "neg_rank_sum_W_minus": 456.0,
+        "raw_p_exact_permutation": 6.146728992462158e-08,
+        "raw_p_asymptotic": 4.285685869189864e-06,
+        "p_scipy_exact_noties": 6.146728992462158e-08,
+        "ties": [],
+        "n_positive": 2,
+        "n_negative": 28,
+        "holm_p_t": 5.104608144075342e-09,
+        "holm_p_exact_permutation": 1.8440186977386475e-07
+      }
+    }
+  },
+  "real_image_ood_evaluation": {
+    "n_ood_images": 5000,
+    "ood_species": [
+      "Cherry",
+      "Kiwi",
+      "Peach",
+      "Pineapple",
+      "Plum"
+    ],
+    "id_species": [
+      "Apple",
+      "Banana",
+      "Mango",
+      "Orange",
+      "Tomato"
+    ],
+    "benchmarks": {
+      "Mahalanobis": {
+        "pooled_auroc": 84.22,
+        "pooled_aupr": 53.28,
+        "pooled_fpr95": 38.39,
+        "domain_studio_auroc": 93.26,
+        "domain_market_bin_auroc": 18.08,
+        "domain_conveyor_auroc": 18.81,
+        "domain_severity_auroc": 94.1
+      },
+      "Free_Energy": {
+        "pooled_auroc": 81.99,
+        "pooled_aupr": 49.96,
+        "pooled_fpr95": 41.38,
+        "domain_studio_auroc": 79.99,
+        "domain_market_bin_auroc": 92.49,
+        "domain_conveyor_auroc": 98.89,
+        "domain_severity_auroc": 98.67
+      },
+      "MSP": {
+        "pooled_auroc": 74.26,
+        "pooled_aupr": 43.16,
+        "pooled_fpr95": 47.85,
+        "domain_studio_auroc": 75.21,
+        "domain_market_bin_auroc": 61.74,
+        "domain_conveyor_auroc": 96.57,
+        "domain_severity_auroc": 95.3
+      }
+    }
+  },
+  "calibration_and_selective_prediction": {
+    "seed_83_representative": {
+      "full_test_accuracy": 93.71,
+      "full_test_mae": 0.0889,
+      "full_test_ece": 1.47,
+      "selective_coverage_90": {
+        "selective_accuracy": 99.28,
+        "selective_mae": 0.0136,
+        "mae_reduction_percent": 84.7,
+        "accuracy_improvement_percent": 5.57
+      }
+    },
+    "thirty_seed_aggregate": {
+      "full_test_mae_mean": 0.1145,
+      "selective_mae_mean_90_coverage": 0.0217,
+      "mae_reduction_percent_mean": 81.05,
+      "ece_mean": 2.11,
+      "ece_std": 0.53
+    },
+    "thirty_seed_probability_ensemble": {
+      "ece": 2.51,
+      "brier_score": 0.0887
+    }
+  },
+  "hardware_inference_benchmarks": {
+    "device": "NVIDIA GeForce RTX 3050 Laptop GPU (6GB, 60W TGP)",
+    "environment": "PyTorch 2.5.1+cu121, CUDA 12.1, Windows 11 Enterprise",
+    "batch_size_1": {
+      "fp16_latency_ms": 20.43,
+      "fp16_throughput_fps": 49.0,
+      "fp32_latency_ms": 37.04,
+      "fp32_throughput_fps": 27.0
+    },
+    "batch_size_32": {
+      "fp16_latency_ms": 354.1,
+      "fp16_latency_per_sample_ms": 11.07,
+      "fp16_throughput_fps": 90.4,
+      "fp32_latency_ms": 798.24,
+      "fp32_latency_per_sample_ms": 24.95,
+      "fp32_throughput_fps": 40.1
+    },
+    "deployment_qualifications": "Neural inference only (forward pass + pre-processing). Commercial fruit grading lines (10-30 fruits/sec) require additional physical camera capture, real-time segmentation, lighting calibration, and pneumatic rejection timing."
+  }
+}

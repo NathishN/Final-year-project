@@ -1,0 +1,50 @@
+test_backward_gradient_finiteness (__main__.TestMonotonicCORALHead.test_backward_gradient_finiteness)
+Full forward/backward pass with gradient check. ... ok
+test_bias_strictly_decreasing (__main__.TestMonotonicCORALHead.test_bias_strictly_decreasing)
+Bias cutpoints b_0 > b_1 > b_2 > b_3 for all random inits. ... ok
+test_class_probs_nonnegative (__main__.TestMonotonicCORALHead.test_class_probs_nonnegative)
+All P(Y=k) >= 0. ... ok
+test_class_probs_shape (__main__.TestMonotonicCORALHead.test_class_probs_shape)
+Class probs shape = [B, K]. ... ok
+test_class_probs_sum_to_one (__main__.TestMonotonicCORALHead.test_class_probs_sum_to_one)
+All P(Y=k) sum to 1.0 within 1e-5. ... ok
+test_cumulative_prob_monotonic (__main__.TestMonotonicCORALHead.test_cumulative_prob_monotonic)
+P(Y>k) must be non-increasing across k for any input. ... ok
+test_extreme_logits_no_nan (__main__.TestMonotonicCORALHead.test_extreme_logits_no_nan)
+Extreme inputs must not produce NaN. ... ok
+test_loss_inference_consistency (__main__.TestMonotonicCORALHead.test_loss_inference_consistency)
+Training loss uses sigmoid(logits) directly for binary CE on K-1 tasks. ... ok
+test_mixed_precision_fp16 (__main__.TestMonotonicCORALHead.test_mixed_precision_fp16)
+FP16 forward pass should not produce NaN. ... ok
+test_output_shape (__main__.TestMonotonicCORALHead.test_output_shape)
+Logits shape should be [B, K-1] = [B, 4]. ... ok
+test_rank_valid_range (__main__.TestMonotonicCORALHead.test_rank_valid_range)
+Predicted rank in {0,1,2,3,4}. ... ok
+test_known_species_pass_through (__main__.TestRobustSpeciesEmbedding.test_known_species_pass_through)
+IDs 0-4 (known species) should pass through unchanged. ... ok
+test_mixed_batch_routing (__main__.TestRobustSpeciesEmbedding.test_mixed_batch_routing)
+Mixed valid/invalid IDs in one batch. ... ok
+test_negative_ids_fallback (__main__.TestRobustSpeciesEmbedding.test_negative_ids_fallback)
+Negative IDs must route to UNKNOWN_INDEX=5. ... ok
+test_out_of_range_ids_fallback (__main__.TestRobustSpeciesEmbedding.test_out_of_range_ids_fallback)
+IDs > 4 (not 5) must route to UNKNOWN_INDEX=5. ... ok
+test_output_shape (__main__.TestRobustSpeciesEmbedding.test_output_shape)
+Output shape = [B, embedding_dim]. ... ok
+test_training_inference_identical_encoding (__main__.TestRobustSpeciesEmbedding.test_training_inference_identical_encoding)
+Same species IDs must produce identical embeddings in train and eval mode. ... ok
+test_unknown_index_five_reserved (__main__.TestRobustSpeciesEmbedding.test_unknown_index_five_reserved)
+Index 5 is the explicit UNKNOWN_SPECIES index. ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.913s
+
+OK
+
+
+Summary: {
+  "tests_run": 18,
+  "failures": 0,
+  "errors": 0,
+  "passed": 18,
+  "status": "PASSED"
+}

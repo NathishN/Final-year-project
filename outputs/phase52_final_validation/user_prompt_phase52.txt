@@ -1,0 +1,779 @@
+<USER_REQUEST>
+# PHASE 5.2 — FINAL SCIENTIFIC VALIDATION, RESEARCH REPAIR & PUBLICATION READINESS
+
+## 1. Role and Mission
+
+Act as a Senior Machine Learning Research Scientist, Computer Vision Engineer, Statistical Reviewer, MLOps Engineer, and Journal Manuscript Auditor.
+
+My research project is located at:
+
+`C:\fruit_dataset`
+
+Research topic:
+
+**Trustworthy Open-Set Ordinal Multi-Fruit Quality Grading with Monotonic Ordinal Regression and Real-Image OOD Evaluation**
+
+Your mission is to complete every remaining feasible task, verify the Phase 5.1 claims against actual project artifacts, repair any remaining defects, execute the necessary targeted experiments, and produce a reproducible, publication-ready research package.
+
+Do not merely create a plan or write another report. Inspect the code, load the actual artifacts, run the required checks, implement fixes, execute feasible experiments, and update the manuscript according to the verified evidence.
+
+The objective is scientific correctness, not maximizing model scores.
+
+### Hardware constraints
+
+- NVIDIA RTX 3050 Laptop GPU, 6 GB VRAM
+- 16 GB RAM
+- Windows environment
+- Existing PyTorch codebase
+- Previously generated feature tensors, checkpoints, and prediction files
+
+Use resource-efficient workflows. Do not launch a new 120-run training campaign unless a specific missing experiment genuinely requires it.
+
+---
+
+## 2. Mandatory Scientific Integrity Rules
+
+1. Inspect the actual repository before making changes.
+2. Preserve all historical reports, checkpoints, predictions, and configurations.
+3. Never overwrite historical evidence without a versioned backup.
+4. Never fabricate results, execution logs, model checkpoints, sample counts, citations, or completed experiments.
+5. Distinguish reported findings from independently reproduced findings.
+6. Do not treat the existence of a checkpoint file as proof that a training run completed correctly.
+7. Do not use test data to tune hyperparameters, calibration, thresholds, or model selection.
+8. Do not exclude failed seeds without an explicit, scientifically justified protocol.
+9. Record all commands, exit codes, exceptions, configurations, and generated artifacts.
+10. When an experiment is infeasible or data are unavailable, document the exact blocker.
+11. Do not claim that background causality, calibration, OOD robustness, or commercial readiness has been established without suitable evidence.
+12. Do not silently alter the existing evaluation split and then present new results as historical results.
+13. Keep exploratory results separate from confirmatory results.
+14. Do not claim journal readiness merely because all tests pass.
+15. If a new test fails, investigate the root cause rather than weakening the test.
+
+Create:
+
+`outputs/phase52_final_validation/PROGRESS.md`
+
+`outputs/phase52_final_validation/COMMAND_LOG.md`
+
+`outputs/phase52_final_validation/ISSUES.csv`
+
+`outputs/phase52_final_validation/CLAIM_LEDGER.csv`
+
+`outputs/phase52_final_validation/DECISIONS.md`
+
+Update these files throughout execution so that work can resume after interruption.
+
+---
+
+# PHASE A — Independently Verify the Phase 5.1 Repository
+
+## A1. Inventory the current project
+
+Inspect the current versions of:
+
+- Training scripts
+- Model architecture files
+- Feature-extraction code
+- Dataset manifests
+- Split-generation scripts
+- Checkpoints
+- Per-seed prediction tensors
+- Metric reports
+- OOD score artifacts
+- Calibration outputs
+- Efficiency benchmarks
+- Tests
+- Manuscript
+- BibTeX references
+- README and reproduction commands
+
+Expected paths may include:
+
+- `outputs/casm_v2/phase50_checkpoints/`
+- `outputs/casm_v2/phase50_per_seed_predictions/`
+- `outputs/casm_v2/phase50_ood_features/`
+- `outputs/phase51_forensic_audit/`
+- `scripts/`
+- `tests/`
+- `configs/`
+- `paper/`
+
+Verify actual paths before using them.
+
+## A2. Verify the 120-run experiment
+
+For each of the four configurations A, B, C, and D and each of the 30 planned seeds, verify:
+
+- Checkpoint existence and loadability
+- Configuration identity
+- Seed identity
+- Prediction artifact existence
+- Prediction tensor dimensions
+- Sample IDs and ordering
+- Ground-truth labels
+- Model version
+- Training log and checkpoint metadata
+- Whether the run was complete, partial, failed, or duplicated
+- Whether predictions are linked to the correct checkpoint
+
+Create:
+
+`run_verification_matrix.csv`
+
+`run_verification_report.md`
+
+Use `VERIFIED_COMPLETE`, `PARTIAL`, `FAILED`, `DUPLICATE`, and `UNVERIFIABLE` statuses.
+
+Report the number of runs that are actually verifiable. Do not claim 120 successful runs unless the evidence supports it.
+
+## A3. Verify the training protocol
+
+The Phase 5.1 report states that the confirmatory experiments used precomputed 768-dimensional ConvNeXt-Tiny features with a frozen backbone and a trainable ordinal head.
+
+Verify this by inspecting the model, optimizer, gradient flow, feature cache, checkpoints, and logs.
+
+Document:
+
+- Whether features were precomputed
+- How the backbone was initialized
+- Whether the backbone was frozen
+- Which parameters were optimized
+- Which loss was used
+- How checkpoints were selected
+- Whether all configurations used equivalent training conditions
+
+Correct any inconsistent descriptions in the manuscript and README.
+
+Do not describe the experiment as end-to-end backbone training if the backbone was frozen.
+
+---
+
+# PHASE B — Reconcile Statistics and Experimental Metrics
+
+The Phase 5.1 report gives the following headline values:
+
+| Configuration | QWK mean ± SD | MAE | Accuracy |
+|---|---:|---:|---:|
+| A: Image-only | 0.8478 ± 0.0260 | 0.1145 | 92.11% |
+| B: Image + species | 0.8118 ± 0.0364 | 0.1268 | 92.06% |
+| C: Image + OOD | 0.7778 ± 0.0450 | 0.1554 | 89.41% |
+| D: Image + species + OOD | 0.7630 ± 0.0402 | 0.1536 | 90.29% |
+
+Treat these as historical reported values. Independently recompute them.
+
+## B1. Recompute metrics
+
+From saved predictions and verified labels, calculate:
+
+- QWK
+- MAE
+- Accuracy
+- Macro-F1
+- Per-grade precision, recall, and F1
+- Grade 2 precision and recall
+- Confusion matrices
+- Predicted grade distributions
+- Per-domain performance
+- Per-species performance where meaningful
+
+Ensure that every configuration uses identical evaluation sample IDs and labels.
+
+Generate:
+
+- `recomputed_metrics_by_seed.csv`
+- `recomputed_metrics_by_configuration.csv`
+- `metric_discrepancies.csv`
+
+## B2. Resolve the Wilcoxon discrepancy
+
+The Phase 5.1 report gives:
+
+- Configuration B versus A mean QWK difference: −0.0360
+- Paired t-test: \(t(29)=-4.1590\), \(p=0.000260\)
+- Wilcoxon statistic: \(W=71.5\), reported p-value \(=0.000555\)
+
+Independently recompute all these statistics from the actual 30 paired seed results.
+
+Record:
+
+- The complete paired-difference vector
+- Mean and standard deviation of the differences
+- Confidence interval
+- Paired t-test statistic and p-value
+- Wilcoxon statistic and p-value
+- Zero-difference handling
+- Exact versus asymptotic p-value settings
+- Effect size and formula
+- Multiplicity correction for the predeclared comparison family
+
+Resolve any discrepancy rather than copying the prior report.
+
+Repeat the analysis for C versus A and D versus A.
+
+Clearly distinguish primary from exploratory comparisons.
+
+Create:
+
+`paired_differences.csv`
+
+`statistical_reconciliation.md`
+
+If the previous result cannot be reproduced, retain it as a historical result and document the corrected result.
+
+---
+
+# PHASE C — Strengthen the Dataset Split Evaluation
+
+The existing protocol placed 119 Banana Grade 2 samples from session `20200730` in the test set, while 147 Apple Grade 0 samples from that session reportedly remained in training.
+
+This means complete session-level holdout has not been demonstrated.
+
+## C1. Audit the existing split
+
+Verify:
+
+- Sample counts
+- Grade and species distributions
+- Session membership
+- Exact path overlap
+- Image hash overlap
+- Near-duplicate overlap where feasible
+- Source-image relationships
+- Augmentation leakage
+- Domain composition
+- Excluded samples
+
+Produce a table showing how every acquisition session is allocated across train, validation, and test.
+
+## C2. Create a separate session-held-out evaluation
+
+If the dataset has enough independent sessions, implement a new group-held-out evaluation in which entire sessions are assigned to only one split.
+
+Requirements:
+
+1. Group by actual session or acquisition-group identifiers.
+2. Avoid splitting correlated samples across partitions.
+3. Keep the existing Phase 5.1 split unchanged for historical comparisons.
+4. Version the new split manifest.
+5. Document any unavoidable class-distribution imbalance.
+6. Do not force every grade into every split if doing so would violate the group-held-out protocol.
+7. Never tune on the new test partition.
+
+Use validation data to select the model and freeze all decisions before final evaluation.
+
+If the number of sessions or their label distribution makes valid evaluation impossible, document that limitation instead of inventing a split.
+
+## C3. Evaluate the baseline first
+
+Use the image-only configuration as the primary baseline. Evaluate the other configurations on the same held-out sessions if their features and metadata support a fair comparison.
+
+Report:
+
+- QWK where mathematically defined
+- MAE
+- Accuracy
+- Macro-F1
+- Per-grade metrics
+- Confusion matrices
+- Domain and session composition
+- Confidence intervals where appropriate
+
+Create:
+
+`session_holdout_manifest.csv`
+
+`session_holdout_results.csv`
+
+`session_holdout_report.md`
+
+Clearly label this experiment as new evidence, not a reproduction of the original split.
+
+---
+
+# PHASE D — Validate the OOD Detector Scientifically
+
+The Phase 5.1 report states:
+
+- Mahalanobis AUROC on real-market ID versus real OOD: 18.08%
+- Energy Score AUROC: 92.49%
+- MSP AUROC: 61.74%
+- Energy Score on conveyor acquisitions: 98.89%
+
+These are reported claims requiring independent verification.
+
+## D1. Recompute OOD metrics
+
+Load the actual known and unknown prediction scores.
+
+Verify:
+
+- Sample counts
+- Known and unknown labels
+- Sample identities
+- Feature extraction
+- Score direction and polarity
+- Threshold selection
+- Preprocessing consistency
+- Confidence intervals
+- Dataset source and group independence
+- Unknown-species distribution
+
+Recompute:
+
+- AUROC
+- AUPR with the positive class explicitly identified
+- FPR@95TPR
+- Per-species results
+- Per-domain results
+- Confidence intervals using a defensible sampling unit
+
+Create:
+
+`ood_metrics_recomputed.csv`
+
+`ood_species_results.csv`
+
+`ood_domain_results.csv`
+
+## D2. Investigate acquisition-domain confounding
+
+The reported Mahalanobis result suggests domain confounding but does not by itself prove that background caused the performance inversion.
+
+Perform the following controlled experiments where the data permit:
+
+1. Match known and unknown images by acquisition source or domain.
+2. Compare studio, real-market, and conveyor subsets separately.
+3. Evaluate each unseen fruit species independently.
+4. Check the score distribution by domain.
+5. Verify that score direction is consistent across evaluations.
+6. Compare foreground-only and full-image results if valid masks are available.
+7. Test background-only features as a diagnostic if segmentation masks are available.
+8. Perform background replacement or masking only when technically and scientifically defensible.
+
+Do not invent masks or pretend that controlled background experiments have been completed when they have not.
+
+If source matching or segmentation is unavailable, state that the causal background hypothesis remains unresolved.
+
+## D3. Compare detectors fairly
+
+Ensure Mahalanobis, Energy, and MSP are evaluated on the same appropriate sample sets.
+
+Document any detector-specific preprocessing or fitting requirements.
+
+Select operational thresholds using validation data only.
+
+Report false acceptance and false rejection at the chosen operating points.
+
+Create:
+
+`ood_confounding_report.md`
+
+`ood_operating_points.csv`
+
+Do not claim robust open-set recognition merely because one domain-specific AUROC is high.
+
+---
+
+# PHASE E — Verify Calibration and Selective Prediction
+
+The previous report claims:
+
+- ECE = 2.51%
+- Brier score = 0.0887
+- Accuracy after rejecting the lowest-confidence 10% = 99.14%
+- MAE after rejection = 0.0166
+
+Recompute these results from saved predictions.
+
+## E1. Calibration audit
+
+Identify:
+
+- Model and configuration
+- Evaluation split
+- Probability representation
+- ECE binning strategy
+- Brier score definition
+- Confidence score
+- Number of samples
+- Calibration method
+- Threshold-selection procedure
+
+Check whether calibration and confidence thresholds were selected on validation data.
+
+If any method was selected using test labels, label the existing result exploratory and establish a corrected validation-only protocol.
+
+## E2. Domain-specific calibration
+
+Calculate calibration metrics separately for:
+
+- Fruits360
+- real_severity
+- real_quality
+- real_grade
+- Other valid domains
+
+Do not calculate or interpret a metric where sample count or label diversity makes it unreliable without explicitly documenting that limitation.
+
+## E3. Selective prediction
+
+Generate:
+
+- Reliability diagram
+- Risk-versus-coverage curve
+- Accuracy-versus-coverage curve
+- MAE-versus-coverage curve
+- Coverage and rejection counts
+- Domain-stratified selective performance
+- Confidence intervals where appropriate
+
+Check whether pooled results are dominated by the studio-image majority.
+
+Distinguish grading confidence for known species from OOD rejection confidence for unknown species.
+
+Create:
+
+`calibration_recomputed.csv`
+
+`selective_prediction_results.csv`
+
+`calibration_and_abstention_report.md`
+
+Do not call the model well-calibrated across real-world domains unless the evidence supports that statement.
+
+---
+
+# PHASE F — Verify Real-Checkpoint End-to-End Performance
+
+The earlier report separated cached-feature head throughput from complete image-to-prediction throughput.
+
+It reported approximately:
+
+- Head-only throughput above 100,000 FPS
+- Full pipeline: 41 FPS at batch size 1
+- Full pipeline: approximately 74.6–76.2 FPS at batch sizes 16–32 in FP16
+
+Verify these numbers.
+
+## F1. Validate the benchmark setup
+
+Confirm that the full-pipeline benchmark loads the actual trained checkpoint and correct preprocessing configuration.
+
+A random input or `pretrained=False` smoke test is not sufficient evidence for trained-model performance.
+
+Benchmark:
+
+1. Image loading and preprocessing
+2. Backbone feature extraction
+3. Ordinal head inference
+4. Full image-to-prediction pipeline
+
+Record:
+
+- Hardware and GPU
+- PyTorch and CUDA versions
+- Model checkpoint
+- Input dimensions
+- Precision
+- Batch size
+- Warm-up iterations
+- Measured iterations
+- Synchronization method
+- Median and tail latency
+- Throughput
+- Peak VRAM
+
+Use CUDA synchronization and appropriate timing methodology for GPU measurements.
+
+Run batch sizes 1, 16, and 32 if feasible. Test larger batches only if memory allows.
+
+Use the actual image preprocessing and trained model. Do not substitute random inputs for the primary benchmark.
+
+Create:
+
+`e2e_benchmark_results.csv`
+
+`e2e_benchmark_report.md`
+
+## F2. Correct deployment claims
+
+Distinguish measured computational throughput from demonstrated deployment viability.
+
+Do not claim industrial readiness based only on FPS. Discuss whether the evaluation includes acquisition, localization, image transfer, concurrent objects, failure handling, and the actual deployment distribution.
+
+Use the phrase “initial inference benchmark” unless end-to-end operational testing has been completed.
+
+---
+
+# PHASE G — Expand Real-Artifact Integration Testing
+
+The current suite reportedly contains 17 tests.
+
+Run the existing suite before changing anything:
+
+`python -m unittest discover tests -v`
+
+Inspect every test to understand what it actually validates.
+
+## G1. Add tests for real experimental artifacts
+
+Test that:
+
+- All expected prediction files can be loaded.
+- Every prediction file maps to the correct seed and configuration.
+- Prediction sample counts and IDs match the verified manifest.
+- Probabilities are finite, nonnegative, and sum to one within tolerance.
+- Ordinal cumulative probabilities satisfy the intended monotonic constraint.
+- Saved ground-truth labels match the verified dataset.
+- Recomputed metrics match the report within documented tolerances.
+- Paired statistical tests are reproduced from the raw seed-level values.
+- Unknown species do not crash inference.
+- Checkpoint and configuration compatibility is enforced.
+- Invalid image inputs fail safely.
+- Split-leakage checks use actual data.
+- Calibration and OOD metrics use correct label polarity.
+
+Do not allow tests to pass by loading metadata from the same result file being validated without an independent source of truth.
+
+## G2. Test documented commands
+
+Verify all reproduction commands in the README.
+
+Check:
+- File paths
+- Imports
+- Dependencies
+- Exit codes
+- Generated output paths
+- Whether the script performs the advertised calculation
+
+Create:
+
+`integration_test_audit.md`
+
+`reproduction_command_results.csv`
+
+Do not weaken tests just to achieve a passing suite.
+
+---
+
+# PHASE H — Audit and Correct the Manuscript
+
+Review:
+
+- `paper/manuscript.md`
+- `paper/abstract.md`
+- `paper/methodology.md`
+- `paper/results.md`
+- `paper/limitations.md`
+- `paper/references.bib`
+- `paper/reproducibility_checklist.md`
+- `paper/claim_evidence_matrix.csv`
+
+Update the paper using only verified evidence.
+
+## Required scientific corrections
+
+1. State that the confirmatory experiment used precomputed 768-dimensional visual features and a frozen backbone if confirmed by the audit.
+2. Report the actual number of verified runs.
+3. Use the independently recomputed statistical results.
+4. Distinguish the original split from the new session-held-out split.
+5. State whether full session-level independence was established.
+6. Report real-domain performance separately from studio-domain performance.
+7. Qualify the background-shortcut hypothesis unless controlled experiments establish causality.
+8. Distinguish OOD detector-specific performance from universal OOD capability.
+9. Report calibration and selective prediction only under a documented protocol.
+10. Report full-pipeline throughput separately from cached-feature throughput.
+11. Remove unsupported claims of commercial readiness.
+12. Preserve negative findings and minority-grade trade-offs.
+13. Document all remaining limitations.
+14. Verify references against real scholarly sources.
+15. Never invent citations, results, novelty, or statistical significance.
+
+Create:
+
+`paper/final_claim_evidence_matrix.csv`
+
+`paper/final_reproducibility_checklist.md`
+
+`paper/publication_readiness_assessment.md`
+
+`paper/manuscript_revision_log.md`
+
+Do not claim novelty or state-of-the-art performance without a fair comparison with relevant published work.
+
+---
+
+# PHASE I — Independent Final Claim Audit
+
+Build a table covering every major claim:
+
+| Claim | Evidence | Status | Remaining action |
+|---|---|---|---|
+| Ordinal probabilities are valid | Mathematical and integration tests | Pending verification | Reproduce tests |
+| 120 model runs are complete | Checkpoints, logs, predictions | Pending verification | Audit every run |
+| Species conditioning improves QWK | Paired results | Pending verification | Recompute statistics |
+| OOD conditioning improves grading | Paired results | Pending verification | Recompute statistics |
+| OOD detection recognizes unknown species | Real-image score files | Pending verification | Audit confounding |
+| Model is calibrated | Probabilities and labels | Pending verification | Recompute calibration |
+| Abstention improves reliability | Confidence and error vectors | Pending verification | Recompute selective risk |
+| Session generalization is established | Group-held-out results | Pending verification | Run if feasible |
+| Full-pipeline speed is reproducible | Timed actual checkpoint | Pending verification | Rerun benchmark |
+| Model is commercially deployable | Operational validation | Pending verification | Limit claim if absent |
+
+Use these final status values:
+
+- `VERIFIED`
+- `PARTIALLY_VERIFIED`
+- `CONTRADICTED`
+- `UNVERIFIABLE`
+- `NOT_TESTED`
+
+Do not leave `Pending verification` as a final status.
+
+For each claim, identify the exact file, command, output, and reasoning supporting the status.
+
+---
+
+# PHASE J — Final Publication Package
+
+Prepare the final manuscript and reproducibility package.
+
+Expected files:
+
+`paper/manuscript.md`
+
+`paper/abstract.md`
+
+`paper/methodology.md`
+
+`paper/results.md`
+
+`paper/limitations.md`
+
+`paper/references.bib`
+
+`paper/final_claim_evidence_matrix.csv`
+
+`paper/final_reproducibility_checklist.md`
+
+`paper/publication_readiness_assessment.md`
+
+`outputs/phase52_final_validation/FINAL_REPORT.md`
+
+`outputs/phase52_final_validation/CLAIM_LEDGER.csv`
+
+`outputs/phase52_final_validation/PROGRESS.md`
+
+Update the README with tested, copy-paste-ready commands for:
+
+1. Environment setup
+2. Dataset validation
+3. Split validation
+4. Unit and integration tests
+5. Statistical report regeneration
+6. OOD evaluation
+7. Calibration evaluation
+8. Session-held-out evaluation, if implemented
+9. Full-pipeline benchmarking
+10. Final report generation
+
+Clearly mark long-running or optional experiments.
+
+Do not include credentials or restricted datasets in the reproducibility package.
+
+---
+
+# PHASE K — Execution Strategy
+
+Perform the work in this order:
+
+1. Inspect the repository and preserve historical evidence.
+2. Verify the 120-run experiment matrix.
+3. Verify the training methodology.
+4. Recompute the primary metrics and statistical tests.
+5. Audit the original split and implement a separate session-held-out evaluation if feasible.
+6. Recompute OOD metrics and investigate acquisition confounding.
+7. Recompute calibration and selective-prediction results.
+8. Benchmark the actual trained checkpoint end to end.
+9. Expand integration tests.
+10. Run all documented reproduction commands.
+11. Correct the manuscript and references.
+12. Generate the final claim ledger and publication-readiness verdict.
+
+After each stage, update the progress file, command log, and issue tracker.
+
+If a stage fails, document the error, investigate it, and fix it when safe.
+
+Do not repeat already completed expensive experiments merely to create new filenames.
+
+If a necessary experiment cannot run on the local GPU, prepare a precise command and configuration for a suitable environment and clearly mark the experiment as blocked until executed.
+
+---
+
+# PHASE L — Final Acceptance Criteria
+
+The project can be described as technically complete only when all applicable criteria are supported by evidence:
+
+- [ ] Every expected model run has a verified status.
+- [ ] Training methodology is confirmed from code and artifacts.
+- [ ] Headline metrics are reproduced from saved predictions.
+- [ ] Statistical discrepancies are resolved.
+- [ ] Split and leakage claims are verified.
+- [ ] A session-held-out experiment is completed if feasible, or its blocker is documented.
+- [ ] OOD metrics are independently recomputed.
+- [ ] OOD confounding is evaluated without unsupported causal claims.
+- [ ] Calibration and abstention metrics are independently reproduced.
+- [ ] Full-pipeline benchmarks use the actual trained checkpoint.
+- [ ] Integration tests validate real experimental artifacts.
+- [ ] All documented reproduction commands work.
+- [ ] The manuscript matches the verified evidence.
+- [ ] References and claims are checked.
+- [ ] Remaining limitations are explicit.
+- [ ] The final claim ledger contains no unexplained pending statuses.
+
+## Required final response
+
+At the end, provide:
+
+1. Overall verdict: technically complete, partially complete, or blocked.
+2. Number of verified, partial, failed, and unverifiable model runs.
+3. Confirmed training methodology.
+4. Recomputed QWK, MAE, and accuracy for all four configurations.
+5. Correct paired statistical results and multiplicity policy.
+6. Session-held-out evaluation results or the exact blocker.
+7. Verified OOD metrics and unresolved confounding.
+8. Calibration and abstention results.
+9. End-to-end latency and throughput from the actual trained checkpoint.
+10. Test results and reproduction-command status.
+11. Manuscript changes made.
+12. Remaining publication blockers.
+13. Exact file paths and commands for reproduction.
+
+Use the strictest defensible publication verdict:
+
+- `READY FOR SUBMISSION`
+- `NOT READY — TECHNICAL REPAIRS REQUIRED`
+- `NOT READY — SCIENTIFIC EVIDENCE INSUFFICIENT`
+- `PARTIALLY BLOCKED — SPECIFY BLOCKERS`
+
+Do not equate a completed checklist with a valid scientific result.
+
+**Start by inspecting the current `C:\fruit_dataset` repository. Execute the verification and targeted experiments, fix the remaining issues, update the manuscript, and continue until every feasible task is complete.**
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-13T17:33:34+05:30.
+
+The user's current state is as follows:
+Active Document: c:\fruit_dataset\paper\reproducibility_checklist.md (LANGUAGE_MARKDOWN)
+Cursor is on line: 1
+Other open documents:
+- c:\fruit_dataset\phase50_stage4_real_ood.py (LANGUAGE_PYTHON)
+- c:\fruit_dataset\phase4_context_audit_master_report.md (LANGUAGE_MARKDOWN)
+- c:\fruit_dataset\train_phase3_coral.py (LANGUAGE_PYTHON)
+- c:\fruit_dataset\scripts\assemble_paper.py (LANGUAGE_PYTHON)
+- c:\fruit_dataset\paper\reproducibility_checklist.md (LANGUAGE_MARKDOWN)
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.8 Flash (Medium) to Claude Opus 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

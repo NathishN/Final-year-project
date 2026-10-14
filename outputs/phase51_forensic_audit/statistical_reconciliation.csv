@@ -1,0 +1,4 @@
+contrast,n_seeds,mean_diff,std_diff,cohen_dz,ci_95_low,ci_95_high,t_statistic,p_value_ttest,wilcoxon_W_wilcox,p_wilcox_wilcox,wilcoxon_W_pratt,p_wilcox_pratt,reported_mean_diff,reported_p_ttest,reported_wilcoxon_W,reported_p_wilcox
+B vs A (Primary: Species Effect),30,-0.035991,0.047403,-0.7593,-0.053692,-0.01829,-4.1586,0.0002596656500432449,72.0,0.0005548261106014252,72.0,0.0005548261106014252,-0.036,0.000259,62.0,0.000928
+C vs A (Secondary: OOD Effect),30,-0.069993,0.054061,-1.2947,-0.090179,-0.049806,-7.0914,8.403015534332441e-08,16.0,3.1478703022003174e-07,16.0,3.1478703022003174e-07,-0.07,1.84e-11,,
+D vs A (Secondary: Full vs Image),30,-0.084776,0.043025,-1.9704,-0.100842,-0.06871,-10.7923,1.1383425454392623e-11,0.0,1.862645149230957e-09,0.0,1.862645149230957e-09,-0.0848,1.02e-13,,

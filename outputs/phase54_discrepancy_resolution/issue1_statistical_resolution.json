@@ -1,0 +1,100 @@
+{
+  "summary_by_config": {
+    "A": {
+      "mean": 0.8037699999999999,
+      "std": 0.03354123710012641,
+      "min": 0.7072,
+      "max": 0.8547
+    },
+    "B": {
+      "mean": 0.7776166666666667,
+      "std": 0.04310123674786375,
+      "min": 0.6664,
+      "max": 0.8452
+    },
+    "C": {
+      "mean": 0.7513166666666665,
+      "std": 0.035164697063109034,
+      "min": 0.6787,
+      "max": 0.8343
+    },
+    "D": {
+      "mean": 0.7163833333333333,
+      "std": 0.04937947418983285,
+      "min": 0.6101,
+      "max": 0.8053
+    }
+  },
+  "contrasts": {
+    "B-A": {
+      "n": 30,
+      "mean_diff": -0.02615333333333334,
+      "std_diff": 0.052109445389972954,
+      "se_diff": 0.009513839566390592,
+      "ci_95": [
+        -0.04561132002501033,
+        -0.006695346641656351
+      ],
+      "cohen_dz": -0.5018923755109825,
+      "t_stat": -2.7489777550721852,
+      "df": 29,
+      "raw_p_t": 0.010180183106955842,
+      "wilcoxon_stat": 125.0,
+      "pos_rank_sum": 125.0,
+      "neg_rank_sum": 340.0,
+      "raw_p_w": 0.02702510905275905,
+      "n_positive": 10,
+      "n_negative": 20,
+      "holm_p_t": 0.010180183106955842,
+      "holm_p_w": 0.02702510905275905
+    },
+    "C-A": {
+      "n": 30,
+      "mean_diff": -0.052453333333333345,
+      "std_diff": 0.04893114608785762,
+      "se_diff": 0.00893356415896676,
+      "ci_95": [
+        -0.07072452356114647,
+        -0.03418214310552021
+      ],
+      "cohen_dz": -1.0719825208907128,
+      "t_stat": -5.871490079430963,
+      "df": 29,
+      "raw_p_t": 2.2673675170394157e-06,
+      "wilcoxon_stat": 29.0,
+      "pos_rank_sum": 29.0,
+      "neg_rank_sum": 436.0,
+      "raw_p_w": 3.2391399145126343e-06,
+      "n_positive": 4,
+      "n_negative": 26,
+      "holm_p_t": 4.5347350340788314e-06,
+      "holm_p_w": 6.4782798290252686e-06
+    },
+    "D-A": {
+      "n": 30,
+      "mean_diff": -0.0873866666666667,
+      "std_diff": 0.055506021626320956,
+      "se_diff": 0.010133966707368524,
+      "ci_95": [
+        -0.10811295576896277,
+        -0.06666037756437063
+      ],
+      "cohen_dz": -1.5743637195793534,
+      "t_stat": -8.623145229313495,
+      "df": 29,
+      "raw_p_t": 1.6979937426810342e-09,
+      "wilcoxon_stat": 9.0,
+      "pos_rank_sum": 9.0,
+      "neg_rank_sum": 456.0,
+      "raw_p_w": 6.146728992462158e-08,
+      "n_positive": 2,
+      "n_negative": 28,
+      "holm_p_t": 5.0939812280431026e-09,
+      "holm_p_w": 1.8440186977386475e-07
+    }
+  },
+  "discrepancy_explanation": {
+    "finding": "ERRONEOUS_INTERPOLATION_TRANSCRIPTION_DISCOVERED",
+    "detailed_root_cause": "1. Actual True Retrained Session-Held-Out Results (30 seeds, 12,980 test samples):\n   - Config A QWK: 0.8038 +- 0.0335\n   - Config B QWK: 0.7776 +- 0.0431\n   - Difference (B - A): mean_diff = -0.026153, 95% CI [-0.045611, -0.006695]\n   - Paired t-test: t(29) = -2.748978, raw two-sided p = 0.01018018\n   - Holm-Bonferroni family of 3 contrasts (B-A, C-A, D-A): adjusted p = 0.01018018\n   - Wilcoxon signed-rank test: W = 125.0 (positive rank sum 125.0, negative rank sum 340.0), p = 0.027025\n2. Where did 't=-2.859, p=0.0078, W=92.0, p=0.00339' come from?\n   - In an earlier draft, an agent drafted text citing Config A as 0.8440 and Config B as 0.8178 with t=-2.859, p=0.0078, W=92.0. That came from a preliminary 20-seed exploratory subset or manual placeholder.\n   - The true 30-seed confirmatory retrain statistics are: t(29) = -2.7490, raw p = 0.01018, Holm-adjusted p = 0.01018, Wilcoxon W = 125.0, p = 0.02703.\n3. Resolution:\n   - Both raw p and Holm-adjusted p are exactly 0.01018 (since B-A is the least significant contrast in the family, its Holm multiplier is m - 2 = 1, so adjusted p == raw p = 0.01018).\n   - The manuscript text must be corrected to state: QWK 0.8038 +- 0.0335 vs 0.7776 +- 0.0431, delta = -0.0262, t(29) = -2.749, p = 0.01018, Wilcoxon W = 125.0, p = 0.02703."
+  }
+}

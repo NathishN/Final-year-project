@@ -1,0 +1,3 @@
+protocol,n_train,n_val,n_test,n_total,duplicate_image_paths,n_sessions_total,sessions_train_test_overlap,sessions_train_val_overlap,sessions_val_test_overlap,samples_in_train_from_test_sessions,samples_in_test_from_train_sessions
+historical,39790,3413,12833,56036,0,80,1,0,0,147,119
+session_holdout,39643,3413,12980,56036,0,80,0,0,0,0,0

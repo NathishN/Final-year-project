@@ -1,0 +1,9 @@
+experiment_type,config,name,n_seeds,n_test_samples,qwk_mean,qwk_sd,mae_mean,acc_mean,macro_f1_mean,b_minus_a_mean_diff,p_t,p_w,p_holm
+Historical_Checkpoints_Evaluated_On_Holdout,A,Image-Only Baseline,5,12980,0.8266,0.0326,0.1267,91.74,48.21,0.0,-,-,-
+Historical_Checkpoints_Evaluated_On_Holdout,B,Image + Species,5,12980,0.7980,0.0343,0.1400,91.27,45.98,-0.0286,-,-,-
+Historical_Checkpoints_Evaluated_On_Holdout,C,Image + OOD,5,12980,0.7901,0.0340,0.1516,89.77,41.92,-0.0365,-,-,-
+Historical_Checkpoints_Evaluated_On_Holdout,D,Image + Species + OOD,5,12980,0.7593,0.0274,0.1583,90.11,42.49,-0.0673,-,-,-
+Full_120_Run_Retraining_Session_Holdout,A,Image-Only Baseline,30,12980,0.8038,0.0335,0.1325,91.87,48.21,0.0,-,-,-
+Full_120_Run_Retraining_Session_Holdout,B,Image + Species,30,12980,0.7776,0.0431,0.1433,91.58,45.98,-0.0262,0.010180,0.027025,0.010180
+Full_120_Run_Retraining_Session_Holdout,C,Image + OOD,30,12980,0.7513,0.0352,0.1635,89.57,41.92,-0.0524,0.000002,0.000003,0.000005
+Full_120_Run_Retraining_Session_Holdout,D,Image + Species + OOD,30,12980,0.7164,0.0494,0.1725,89.83,42.49,-0.0874,0.000000,0.000000,0.000000

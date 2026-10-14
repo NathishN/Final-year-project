@@ -1,0 +1,15 @@
+benchmark_scope,device,batch_size,batch_latency_ms,latency_per_image_ms,throughput_fps
+Head Only (Features -> Head),CPU,1,1.108,1.108,902.5
+Head Only (Features -> Head),CPU,16,1.316,0.0822,12158.8
+Head Only (Features -> Head),CPU,64,1.69,0.0264,37876.7
+Head Only (Features -> Head),CPU,256,3.248,0.0127,78816.7
+Head Only (Features -> Head),CPU,2048,18.859,0.0092,108593.4
+Head Only (Features -> Head),NVIDIA RTX 3050 GPU,1,1.906,1.9062,524.6
+Head Only (Features -> Head),NVIDIA RTX 3050 GPU,16,2.155,0.1347,7423.1
+Head Only (Features -> Head),NVIDIA RTX 3050 GPU,64,1.984,0.031,32251.2
+Head Only (Features -> Head),NVIDIA RTX 3050 GPU,256,2.119,0.0083,120818.5
+Head Only (Features -> Head),NVIDIA RTX 3050 GPU,2048,6.772,0.0033,302417.9
+Full E2E (Raw Image -> Backbone -> Head),NVIDIA RTX 3050 GPU (FP16),1,24.386,24.3858,41.0
+Full E2E (Raw Image -> Backbone -> Head),NVIDIA RTX 3050 GPU (FP16),8,115.532,14.4415,69.2
+Full E2E (Raw Image -> Backbone -> Head),NVIDIA RTX 3050 GPU (FP16),16,214.5,13.4062,74.6
+Full E2E (Raw Image -> Backbone -> Head),NVIDIA RTX 3050 GPU (FP16),32,420.171,13.1303,76.2

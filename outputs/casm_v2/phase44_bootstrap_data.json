@@ -1,0 +1,43 @@
+{
+  "qwk_diff_mean": 0.02942000000000001,
+  "qwk_diff_std": 0.0655729774253164,
+  "boot_95_lo": 0.0036691250000000074,
+  "boot_95_hi": 0.05971124999999998,
+  "boot_90_lo": 0.00737925000000002,
+  "boot_90_hi": 0.05466124999999999,
+  "n_reps": 10000,
+  "rng_seed": 2024,
+  "n_pairs": 20,
+  "holm_bonferroni": {
+    "QWK": {
+      "raw_p": 0.0593,
+      "adj_p": 0.1186,
+      "sig_raw": false,
+      "sig_holm": false
+    },
+    "MAE": {
+      "raw_p": 0.0468,
+      "adj_p": 0.1186,
+      "sig_raw": true,
+      "sig_holm": false
+    },
+    "Accuracy": {
+      "raw_p": 0.0535,
+      "adj_p": 0.1186,
+      "sig_raw": false,
+      "sig_holm": false
+    },
+    "OBO_Acc": {
+      "raw_p": 0.0266,
+      "adj_p": 0.1186,
+      "sig_raw": true,
+      "sig_holm": false
+    },
+    "Macro_F1": {
+      "raw_p": 0.533,
+      "adj_p": 0.533,
+      "sig_raw": false,
+      "sig_holm": false
+    }
+  }
+}

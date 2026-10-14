@@ -1,0 +1,5 @@
+config,config_name,n_seeds_verified,qwk_mean_reported,qwk_mean_recomputed,qwk_std_reported,qwk_std_recomputed,mae_mean_reported,mae_mean_recomputed,acc_mean_reported,acc_mean_recomputed,disc_qwk_mean,disc_qwk_std,disc_mae,disc_acc,g2_rec_mean
+A,Image Only,30,0.8478,0.847781,0.026,0.025963,0.1145,0.114522,92.11,92.1138,1.9e-05,3.7e-05,2.2e-05,0.0038,7.42
+B,Image+Species,30,0.8118,0.81179,0.0364,0.036431,0.1268,0.12677,92.06,92.0564,1e-05,3.1e-05,3e-05,0.0036,21.54
+C,Image+OOD,30,0.7778,0.777788,0.045,0.044965,0.1554,0.15537,89.41,89.413,1.2e-05,3.5e-05,3e-05,0.003,6.58
+D,Image+Species+OOD,30,0.763,0.763004,0.0402,0.040197,0.1536,0.153648,90.29,90.2857,4e-06,3e-06,4.8e-05,0.0043,12.72

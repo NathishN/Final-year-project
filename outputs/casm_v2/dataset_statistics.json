@@ -1,0 +1,60 @@
+{
+    "total_samples": 56036,
+    "by_split": {
+        "train": {
+            "total": 39909,
+            "class_counts": {
+                "Healthy": 36414,
+                "Mild Defect": 846,
+                "Moderate Defect": 327,
+                "Severe Defect": 1606,
+                "Rotten": 716
+            }
+        },
+        "val": {
+            "total": 3413,
+            "class_counts": {
+                "Healthy": 1037,
+                "Mild Defect": 494,
+                "Moderate Defect": 196,
+                "Severe Defect": 1268,
+                "Rotten": 418
+            }
+        },
+        "test": {
+            "total": 12714,
+            "class_counts": {
+                "Healthy": 11605,
+                "Mild Defect": 88,
+                "Moderate Defect": 0,
+                "Severe Defect": 868,
+                "Rotten": 153
+            }
+        }
+    },
+    "by_class": {
+        "Healthy": 49056,
+        "Mild Defect": 1428,
+        "Moderate Defect": 523,
+        "Severe Defect": 3742,
+        "Rotten": 1287
+    },
+    "by_species": {
+        "Apple": 24962,
+        "Banana": 6141,
+        "Mango": 1842,
+        "Orange": 6927,
+        "Tomato": 16164
+    },
+    "by_domain": {
+        "fruits360": 43962,
+        "real_grade": 2084,
+        "real_quality": 7388,
+        "real_severity": 2602
+    },
+    "leakage_audit": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+    }
+}

@@ -1,0 +1,10 @@
+model_component,total_params,trainable_params,role
+ConvNeXt-Tiny Backbone (Phase 1),27823973,27823973,Visual Feature Extractor (768-D)
+CASM v2 Head (Config A),626180,626180,Projection & Monotonic Head (Config A)
+Full Pipeline (Config A + Backbone),28450153,626180,End-to-end inference (Config A)
+CASM v2 Head (Config B),630372,630372,Projection & Monotonic Head (Config B)
+Full Pipeline (Config B + Backbone),28454345,630372,End-to-end inference (Config B)
+CASM v2 Head (Config C),626692,626692,Projection & Monotonic Head (Config C)
+Full Pipeline (Config C + Backbone),28450665,626692,End-to-end inference (Config C)
+CASM v2 Head (Config D),630884,630884,Projection & Monotonic Head (Config D)
+Full Pipeline (Config D + Backbone),28454857,630884,End-to-end inference (Config D)

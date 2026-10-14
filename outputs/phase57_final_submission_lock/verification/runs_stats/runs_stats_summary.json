@@ -1,0 +1,22 @@
+{
+  "n_runs": 240,
+  "n_pass": 240,
+  "max_abs_diff_qwk": 4.957131660543457e-05,
+  "max_abs_diff_mae": 4.99229583975358e-05,
+  "max_abs_diff_acc": 0.004992295839755911,
+  "max_qwk_sklearn_vs_scratch": 2.220446049250313e-16,
+  "min_decode_agreement": 1.0,
+  "sensitivity": {
+    "historical_B-A_from_4dp_stored_qwk": {
+      "W_plus": 71.5,
+      "W_minus": 393.5,
+      "W": 71.5,
+      "n_zero": 0,
+      "n_tied_groups": 1,
+      "count_le": 276128,
+      "total": 1073741824,
+      "p_exact": 0.0005143284797668457
+    },
+    "max_discrepancy_vs_existing_gap3_script": 4.533580868138597e-14
+  }
+}

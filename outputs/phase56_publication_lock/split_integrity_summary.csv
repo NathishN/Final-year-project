@@ -1,0 +1,3 @@
+split_protocol,total_samples,train_samples,val_samples,test_samples,path_level_leakage,total_unique_sessions,train_sessions,val_sessions,test_sessions,cross_split_sessions,session_leakage_detail,test_fruits360_pct,test_market_pct,test_conveyor_pct
+Historical Split V2,56036,39790,3413,12833,0,80,50,10,21,1,"Session 20200730: 147 train, 119 test",85.51%,11.53%,0.52%
+100% Group Session Holdout,56036,39643,3413,12980,0,80,49,10,21,0,ZERO (100% strict session isolation across all 80 sessions),84.55%,12.53%,0.52%

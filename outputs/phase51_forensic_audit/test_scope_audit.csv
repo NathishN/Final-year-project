@@ -1,0 +1,5 @@
+file,exists,uses_real_data,uses_synthetic_fixtures,loads_checkpoint,checks_metrics,checks_sample_counts,verdict
+test_data_integrity.py,True,True,False,False,False,True,INTEGRATION_LEVEL
+test_model_properties.py,True,False,True,False,False,False,UNIT_ONLY
+test_metrics_and_calibration.py,True,False,False,False,True,False,MIXED
+test_end_to_end_smoke.py,True,False,True,False,False,False,UNIT_ONLY

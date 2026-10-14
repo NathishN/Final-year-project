@@ -1,0 +1,17 @@
+{
+    "MSP (Maximum Softmax Probability)": {
+        "AUROC": 89.86591945886424,
+        "AUPR": 97.42547058199396,
+        "FPR95": 50.5
+    },
+    "Energy-Based OOD Detection": {
+        "AUROC": 81.98008232394736,
+        "AUPR": 95.97761054323925,
+        "FPR95": 99.13333333333333
+    },
+    "Mahalanobis Distance OOD": {
+        "AUROC": 100.0,
+        "AUPR": 100.0,
+        "FPR95": 0.0
+    }
+}

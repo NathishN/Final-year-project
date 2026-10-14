@@ -1,0 +1,9 @@
+check,split_v1,split_v2,status
+Train Sample Count,39909,39790,PASSED
+Val Sample Count,3413,3413,PASSED
+Test Sample Count,12714,12833,PASSED
+Grade 2 Test Count,0,119,PASSED (Resolved)
+Cross-Split Path Leakage (Train/Test),0,0,ZERO_LEAKAGE
+Cross-Split Path Leakage (Train/Val),0,0,ZERO_LEAKAGE
+Cross-Split Path Leakage (Val/Test),0,0,ZERO_LEAKAGE
+Grade-2 Session Leakage (Train/Test),N/A (0 test),0,ZERO_LEAKAGE

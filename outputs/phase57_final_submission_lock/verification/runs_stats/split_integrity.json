@@ -1,0 +1,40 @@
+{
+  "historical": {
+    "n_train": 39790,
+    "n_val": 3413,
+    "n_test": 12833,
+    "n_total": 56036,
+    "duplicate_image_paths": 0,
+    "n_sessions_total": 80,
+    "sessions_train_test_overlap": [
+      "20200730"
+    ],
+    "sessions_train_val_overlap": [],
+    "sessions_val_test_overlap": [],
+    "samples_in_train_from_test_sessions": 147,
+    "samples_in_test_from_train_sessions": 119
+  },
+  "session_holdout": {
+    "n_train": 39643,
+    "n_val": 3413,
+    "n_test": 12980,
+    "n_total": 56036,
+    "duplicate_image_paths": 0,
+    "n_sessions_total": 80,
+    "sessions_train_test_overlap": [],
+    "sessions_train_val_overlap": [],
+    "sessions_val_test_overlap": [],
+    "samples_in_train_from_test_sessions": 0,
+    "samples_in_test_from_train_sessions": 0
+  },
+  "cross_protocol": {
+    "rows_with_different_split": 147,
+    "moved_from_to": {
+      "train->test": 147
+    },
+    "moved_sessions": [
+      "20200730"
+    ],
+    "test_set_identity_hist_subset_of_holdout": true
+  }
+}

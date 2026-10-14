@@ -1,0 +1,44 @@
+{
+    "total_samples": 1602,
+    "by_split": {
+        "train": 869,
+        "val": 681,
+        "test": 52
+    },
+    "by_fruit": {
+        "Mango": 618,
+        "Tomato": 502,
+        "Apple": 482
+    },
+    "by_grade": {
+        "grade_2": 653,
+        "grade_1": 594,
+        "grade_3": 355
+    },
+    "fruit_x_grade": {
+        "Apple": {
+            "grade_1": 198,
+            "grade_2": 172,
+            "grade_3": 112
+        },
+        "Mango": {
+            "grade_1": 251,
+            "grade_2": 250,
+            "grade_3": 117
+        },
+        "Tomato": {
+            "grade_2": 231,
+            "grade_1": 145,
+            "grade_3": 126
+        }
+    },
+    "imbalance_ratio": {
+        "max_to_min": 1.84,
+        "counts": {
+            "grade_1": 594,
+            "grade_2": 653,
+            "grade_3": 355
+        }
+    },
+    "test_split_warning": "CRITICAL: Only 52 test samples available (Tomato has 0). Using 5-fold cross-validation instead of fixed test split."
+}

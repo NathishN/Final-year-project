@@ -1,0 +1,127 @@
+{
+  "audit_timestamp": "2026-10-14 10:19:33",
+  "benchmark_summary": {
+    "ood_dataset_path": "C:\\fruit_dataset\\open-set-dataset",
+    "n_ood_images": 5000,
+    "n_id_images": 12833,
+    "classes_sampled": [
+      "Cherry",
+      "Kiwi",
+      "Peach",
+      "Pineapple",
+      "Plum"
+    ],
+    "backbone": "ConvNeXt-Tiny (outputs/checkpoints/best_model.pth)",
+    "features_dim": 768
+  },
+  "pooled_detectors": [
+    {
+      "AUROC": 84.22,
+      "AUPR_OOD": 53.28,
+      "FPR95": 38.39,
+      "CI_95": "[83.7%, 84.8%]",
+      "detector": "Mahalanobis"
+    },
+    {
+      "AUROC": 81.99,
+      "AUPR_OOD": 49.96,
+      "FPR95": 41.38,
+      "CI_95": "[81.3%, 82.6%]",
+      "detector": "Energy"
+    },
+    {
+      "AUROC": 74.26,
+      "AUPR_OOD": 43.16,
+      "FPR95": 47.85,
+      "CI_95": "[73.6%, 74.9%]",
+      "detector": "MSP"
+    }
+  ],
+  "per_ood_species": [
+    {
+      "ood_class": "Cherry",
+      "sample_count": 1000,
+      "Mahalanobis_AUROC": 76.99,
+      "Mahalanobis_FPR95": 48.38,
+      "Energy_AUROC": 81.02,
+      "Energy_FPR95": 33.88,
+      "MSP_AUROC": 69.06,
+      "MSP_FPR95": 44.43
+    },
+    {
+      "ood_class": "Kiwi",
+      "sample_count": 1000,
+      "Mahalanobis_AUROC": 84.77,
+      "Mahalanobis_FPR95": 22.42,
+      "Energy_AUROC": 82.84,
+      "Energy_FPR95": 53.5,
+      "MSP_AUROC": 79.12,
+      "MSP_FPR95": 57.65
+    },
+    {
+      "ood_class": "Peach",
+      "sample_count": 1000,
+      "Mahalanobis_AUROC": 78.28,
+      "Mahalanobis_FPR95": 48.15,
+      "Energy_AUROC": 74.21,
+      "Energy_FPR95": 52.01,
+      "MSP_AUROC": 71.98,
+      "MSP_FPR95": 53.58
+    },
+    {
+      "ood_class": "Pineapple",
+      "sample_count": 1000,
+      "Mahalanobis_AUROC": 93.0,
+      "Mahalanobis_FPR95": 12.14,
+      "Energy_AUROC": 84.23,
+      "Energy_FPR95": 24.64,
+      "MSP_AUROC": 74.94,
+      "MSP_FPR95": 39.41
+    },
+    {
+      "ood_class": "Plum",
+      "sample_count": 1000,
+      "Mahalanobis_AUROC": 88.08,
+      "Mahalanobis_FPR95": 19.89,
+      "Energy_AUROC": 87.64,
+      "Energy_FPR95": 31.39,
+      "MSP_AUROC": 76.21,
+      "MSP_FPR95": 48.52
+    }
+  ],
+  "domain_stratified": [
+    {
+      "in_domain": "fruits360",
+      "sample_count": 10974,
+      "Mahalanobis_AUROC": 93.26,
+      "Energy_AUROC": 79.99,
+      "MSP_AUROC": 75.21
+    },
+    {
+      "in_domain": "real_grade",
+      "sample_count": 67,
+      "Mahalanobis_AUROC": 18.81,
+      "Energy_AUROC": 98.89,
+      "MSP_AUROC": 96.57
+    },
+    {
+      "in_domain": "real_quality",
+      "sample_count": 1480,
+      "Mahalanobis_AUROC": 18.08,
+      "Energy_AUROC": 92.49,
+      "MSP_AUROC": 61.74
+    },
+    {
+      "in_domain": "real_severity",
+      "sample_count": 312,
+      "Mahalanobis_AUROC": 94.1,
+      "Energy_AUROC": 98.67,
+      "MSP_AUROC": 95.3
+    }
+  ],
+  "causal_attribution": {
+    "status": "UNRESOLVED",
+    "reason": "Photographic datasets lack pixel-level segmentation masks separating foreground fruit from background surfaces. While visual background differences (studio turntable white background vs natural grocery market bins) strongly correlate with feature distribution distortion, definitive causal attribution cannot be mathematically proven without intervention experiments or synthetic background swaps.",
+    "mechanism_hypothesis": "Feature-space Mahalanobis distance relies on a class-conditional Gaussian prior in the 768-D ConvNeXt embedding space. Because 85.5% of the training distribution is studio white-background, the empirical covariance matrix \u03a3 reflects studio background textures. When natural market bins (real_quality) are presented, background clutter shifts the feature vector far outside the studio Gaussian clusters, causing high Mahalanobis distance even for in-distribution fruits, inverting the detector AUROC to 18.08%. In contrast, logit-space Energy Score aggregates over class log-sum-exp logits, filtering out domain-specific visual texture shifts and achieving 92.49% AUROC on real_quality."
+  }
+}
