@@ -235,7 +235,7 @@ On representative **Seed 83** (baseline cutpoint MAE = 0.0889), confidence-thres
 | **90%** | 10.0% | $\ge 0.7854$ | **99.28%** | **0.0136** | **84.70%** | 0.0889 |
 | **85%** | 15.0% | $\ge 0.8841$ | 99.85% | 0.0024 | 97.30% | 0.0889 |
 
-- **Random-Rejection Contrast:** Under random rejection at 90% coverage, expected MAE remains 0.0889 (0% reduction), proving that confidence thresholding specifically isolates pathology misclassifications.
+- **Random-Rejection Contrast:** Under random rejection at 90% coverage, expected MAE remains 0.0889 (0% reduction); confidence-based rejection substantially reduced grading MAE compared with full-coverage prediction and the reported random-rejection baseline.
 - **30-Seed Aggregate:** Mean baseline MAE of 0.1145 drops to **0.0217 ± 0.0053** at 90% coverage (**81.05% mean error reduction**).
 - **Calibration Error (10-bin ECE):**
   - Single-Seed 83 Exemplar: **1.47%**

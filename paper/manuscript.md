@@ -184,7 +184,7 @@ Selective classification allows packing lines to abstain on low-confidence items
 - **Seed 83 Exemplar:** Full test accuracy = 93.71%, ordinal cutpoint MAE = 0.0889, categorical argmax MAE = 0.1234, Expected Calibration Error (ECE, 10 bins) = 1.47%, Brier Score = 0.0857.
 - **Selective Abstention (90% Coverage Target):** For Seed 83, abstaining on the lowest 10% confidence predictions raises selective accuracy to **99.28%** (+5.57%) and slashes ordinal cutpoint MAE to **0.0136**, achieving an exact **84.70% error reduction**:
 $$\text{Error Reduction} = \frac{0.0889 - 0.0136}{0.0889} \times 100\% = 84.70\%$$
-- **Random-Rejection Baseline:** In contrast, random rejection at 90% coverage yields an expected MAE of 0.0889 (0% error reduction), proving that confidence thresholding specifically isolates pathology misclassifications.
+- **Random-Rejection Baseline:** In contrast, random rejection at 90% coverage yields an expected MAE of 0.0889 (0% error reduction); confidence-based rejection substantially reduced grading MAE compared with full-coverage prediction and the reported random-rejection baseline.
 - **30-Seed Aggregate:** Across 30 seeds, 90% coverage drops mean MAE from 0.1145 to **0.0217 ± 0.0053** (81.05% mean reduction). Multi-seed mean ECE is **2.11% ± 0.53%**, while the 30-seed probability ensemble ECE is **2.51%** (Brier score = 0.0887).
 - **Calibration Scope and Limitation:** These ECE values reflect in-distribution test-set calibration under identical acquisition priors. In accordance with established uncertainty principles, low in-distribution ECE does not imply calibrated confidence under open-set or severe domain shifts, where neural architectures exhibit well-documented overconfidence. Probability calibration claims are strictly bounded to in-distribution evaluation.
 
@@ -232,7 +232,7 @@ This research conducted a rigorous forensic audit and 30-seed confirmatory study
 
 # Data and Code Availability Statement
 
-All code, trained model checkpoints (240 `.pth` files), raw prediction tensors (240 `.pt` files), dataset manifests with SHA-256 hashes, evaluation scripts, and statistical logs are available in the open repository archive accompanying this manuscript (`./`). Complete step-by-step reproduction instructions and execution logs are provided in `reproducibility_guide.md`.
+All source code, exemplar trained checkpoint (`outputs/casm_v2/phase50_checkpoints/model_A_seed83_best.pth`), raw prediction tensors (240 `.pt` files), dataset split manifests with cryptographic hashes, corrected OOD evaluation score arrays, verification test suites, and statistical audit logs are available in the open GitHub repository archive (`https://github.com/NathishN/Final-year-project.git`). Heavy raw image archives (56,036 images) and intermediate training checkpoints (>100 MB) are excluded from Git to maintain repository size hygiene (≤ 2.6 MB max tracked file); instructions for obtaining raw image datasets and reproducing all scientific tables and figures directly from committed prediction tensors are provided in `README.md`.
 
 ---
 

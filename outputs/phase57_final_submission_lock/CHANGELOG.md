@@ -85,7 +85,7 @@
   - Computed 95% bootstrap confidence intervals for all domain subgroups (`fruits360`, `real_quality`, `real_grade`, `real_severity`), highlighting wider uncertainty intervals on small subgroups ($n=67$ conveyor images: Mahalanobis AUROC 18.81% [15.35%, 23.11%]).
   - Strictly qualified domain-dependent inversion as an observed distribution shift, explicitly avoiding untested background texture causality claims.
 - **Uncertainty Calibration & Selective Prediction:**
-  - Evaluated random-rejection baseline: random pruning at 90% coverage preserves 0.0889 MAE (0% error reduction), proving that confidence thresholding specifically isolates pathology misclassifications (84.70% error reduction on Seed 83; 81.05% across 30 seeds).
+  - Evaluated random-rejection baseline: random pruning at 90% coverage preserves 0.0889 MAE (0% error reduction); confidence-based rejection substantially reduced grading MAE compared with full-coverage prediction and the reported random-rejection baseline (84.70% error reduction on Seed 83; 81.05% across 30 seeds).
   - Explicitly bounded probability calibration: low in-distribution ECE (1.47%–2.51%) does not imply calibrated probabilities under open-set or severe domain shifts.
 - **Package Synchronization:** Synchronized `manuscript.md`, `abstract.md`, `README.md`, `final_results.json`, tables, figures, and release reports across all submission directories.
 

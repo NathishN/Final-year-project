@@ -176,7 +176,7 @@ The draft release summary mistakenly claimed contrasts were between "Validation"
 
 ## 5. Artifact Manifest & Cryptographic Verification
 
-All authoritative release deliverables have been compiled, cross-checked, and locked with cryptographic SHA-256 hashes:
+All authoritative release deliverables have been compiled, cross-checked, and locked with cryptographic SHA-256 hashes under the documented canonical-LF convention for text files and raw-byte hashing for binary files:
 
 | Release Deliverable | File Path | Size (Bytes) | SHA-256 Cryptographic Checksum |
 | :--- | :--- | :---: | :--- |
@@ -186,17 +186,18 @@ All authoritative release deliverables have been compiled, cross-checked, and lo
 | **Per-Seed Metric Audit** | `outputs/phase57_final_submission_lock/tables/gap1_per_seed_metric_verification.csv` | 51,141 | `daebd9088ac886be6c661aa9bc12503ce7ded954475defe66b97b0b6923625cc` |
 | **Recomputed OOD Table** | `outputs/phase57_final_submission_lock/tables/ood_metrics_recomputed.csv` | 1,232 | `c801a67968cf0702eeabfc9872eec7e54497ca3d204e9c8533deb36b4053ca20` |
 | **Split Integrity Summary** | `outputs/phase57_final_submission_lock/tables/split_integrity_summary.csv` | 513 | `94a7319e497c3b401955449327b329ba79be9b2f41a7e495908492c476622424` |
-| **Full Manuscript** | `outputs/phase57_final_submission_lock/manuscript.md` | 30,997 | `687863c847897168440dd41f09f1a30321b431e5887e89da31071bb85e3d2e69` |
+| **Full Manuscript** | `outputs/phase57_final_submission_lock/manuscript.md` | 31,430 | `82fda3389d5ae33e0187820692d60d66ebd5e2d71ff1ce786661e769bffbad17` |
 | **Structured Abstract** | `outputs/phase57_final_submission_lock/abstract.md` | 4,381 | `92adedca18c229d578ea7e83a14bc7467b2d59389b1f575bc7b9156dcb183f1c` |
-| **Changelog** | `outputs/phase57_final_submission_lock/CHANGELOG.md` | 10,445 | `8b6c3a2bb6511c08f4046767ddeaa9cf3421772f1d31e9c59ae69ce875a31744` |
+| **Changelog** | `outputs/phase57_final_submission_lock/CHANGELOG.md` | 10,500 | `df5d70ab43ac97e1622c396a185a65c8ac89859928407597ce51c2eac4b3a448` |
 | **Authoritative Claim Ledger** | `outputs/phase57_final_submission_lock/claim_ledger.csv` | 11,462 | `787cfd14c408ffb83611a1064a88f44724f04d60d5eb1bd13f38579abfe1402f` |
-| **Artifact Checksum Manifest** | `outputs/phase57_final_submission_lock/tables/artifact_sha256_manifest.csv` | 2,190 | `3152080a85b048578481f5af825a1b421888a025b4b40abd08c14cfc0eee42fa` |
+| **Artifact Checksum Manifest** | `outputs/phase57_final_submission_lock/tables/artifact_sha256_manifest.csv` | 2,298 | (Self-referential exclusion documented) |
 | **Publication Figure 1** | `outputs/phase57_final_submission_lock/figures/figure1_dataset_composition.png` | 182,804 | `88f206bd640680675bd4a72cbff9038e2800f3563e27d09d7147a1d6c4b2b8ab` |
 | **Publication Figure 2** | `outputs/phase57_final_submission_lock/figures/figure2_qwk_distribution.png` | 220,539 | `a7ac45080bc0fa47c92dc28da68bfcb61b45bc3dcf24c8343c0e022a57c835b9` |
 | **Publication Figure 3** | `outputs/phase57_final_submission_lock/figures/figure3_paired_contrasts.png` | 158,426 | `64ac1255f61e5103aa8201a4f6280552032ad242c200292b0d93d20a2cffe627` |
 | **Publication Figure 4** | `outputs/phase57_final_submission_lock/figures/figure4_ood_domain_inversion.png` | 160,911 | `66b7d76b205deae73c6e50745c68d3d37c7a4f46dada50fe6b1430cba12a7b73` |
 | **Publication Figure 5** | `outputs/phase57_final_submission_lock/figures/figure5_selective_risk_coverage.png` | 264,268 | `bd1013661a1fb87da8f128659927e7b1323e813ac68f9757b6ec7360c5a89f8d` |
 | **Publication Figure 6** | `outputs/phase57_final_submission_lock/figures/figure6_inference_benchmarks.png` | 175,027 | `4a241ec6759bc7fcb3ea27a0d94f978764845079bc2a3018c3c75f7913fda3c3` |
+| **Final Submission PDF** | `outputs/final_submission/Trustworthy_Multi_Fruit_Quality_Grading.pdf` | 1,854,468 | `59e1e21ad9a82e367441a66bcfd729092f7e9bb618f661a9982820042658bc39` |
 
 ---
 
@@ -268,6 +269,8 @@ In accordance with strict scientific publishing ethics, the conclusions of this 
    Confidence thresholding at 90% coverage reduces MAE from 0.0889 to 0.0136 (84.70% error reduction for Seed 83; 81.05% across 30 seeds), substantially outperforming a random-rejection baseline (expected MAE remains unchanged at 0.0889). However, low Expected Calibration Error (1.47%–2.51%) characterizes in-distribution test data only; neural confidence estimates under severe distribution shifts or open-set anomalies exhibit well-documented overconfidence. Calibration guarantees are strictly confined to in-distribution evaluation.
 4. **Hardware Deployment Qualifications:**
    Reported inference throughput (49.0–90.4 FPS on NVIDIA RTX 3050 Laptop GPU) reflects neural forward evaluation and image pre-processing only. Industrial packinghouse sorters operating at 10–30 fruits per second require additional overhead for high-speed conveyor image acquisition, multi-camera photometric calibration, and pneumatic mechanical rejection.
+5. **Public Reproducibility & Repository Scope:**
+   All 240 model prediction tensors, 30-seed confirmatory evaluation scripts, corrected real-image OOD score arrays, model architecture modules, and statistical test harnesses are committed directly in the public Git repository, enabling full independent verification of all scientific tables, figures, and statistical tests. Heavy raw image archives (56,036 high-resolution images) and intermediate training checkpoints (>100 MB) are excluded from Git to maintain repository size hygiene (≤ 2.6 MB max tracked exemplar weight). Independent recomputation of raw neural representations from scratch requires downloading the publicly cited raw image datasets as detailed in `README.md`.
 
 ---
 
